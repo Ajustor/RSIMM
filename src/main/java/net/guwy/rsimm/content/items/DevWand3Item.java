@@ -1,7 +1,7 @@
 package net.guwy.rsimm.content.items;
 
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -25,12 +25,9 @@ public class DevWand3Item extends Item {
                 if(!hasSlot){
                     arcReactor.setHasArcReactorSlot(true);
                 }
-
-                arcReactor.setArcReactor("Mark 1", Item.getId(Items.AMETHYST_SHARD),
-                        100000, 100000, 10, 4, 4);
             });
 
-            pPlayer.sendMessage(new TextComponent("Arc Reactor Has Been Set"), pPlayer.getUUID());
+            pPlayer.sendSystemMessage(Component.literal("Arc Reactor Has Been Set"));
 
             pPlayer.getCooldowns().addCooldown(pPlayer.getItemInHand(pUsedHand).getItem(), 20);
         }

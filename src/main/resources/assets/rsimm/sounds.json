@@ -10,5 +10,23 @@
     "sounds": [
       "rsimm:human/heart_beat"
     ]
+  },
+  "arc_reactor_equip": {
+    "subtitle": "sounds.rsimm.arc_reactor_equip",
+    "sounds": [
+      "rsimm:arc_reactor/equip"
+    ]
+  },
+  "arc_reactor_unequip": {
+    "subtitle": "sounds.rsimm.arc_reactor_unequip",
+    "sounds": [
+      "rsimm:arc_reactor/unequip"
+    ]
+  },
+  "chest_cutting": {
+    "subtitle": "sounds.rsimm.chest_cutting",
+    "sounds": [
+      "rsimm:tools/chest_cutting"
+    ]
   }
 }

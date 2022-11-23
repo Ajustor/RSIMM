@@ -1,5 +1,9 @@
 {
   "replace": false,
   "values": [
+    "rsimm:palladium_ore",
+    "rsimm:palladium_ore_deepslate",
+    "rsimm:titanium_ore",
+    "rsimm:titanium_ore_deepslate"
   ]
 }

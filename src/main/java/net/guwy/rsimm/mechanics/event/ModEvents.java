@@ -1,20 +1,31 @@
 package net.guwy.rsimm.mechanics.event;
 
 import net.guwy.rsimm.RsImm;
+import net.guwy.rsimm.index.ModItems;
+import net.guwy.rsimm.index.ModTags;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlot;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorData;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
 import net.guwy.rsimm.mechanics.event.player_tick.PlayerTickEventOrganizer;
 import net.guwy.rsimm.mechanics.event.subclasses.PotionRemoveInterceptor;
+import net.guwy.rsimm.mechanics.event.subclasses.RenderArmEventHandler;
+import net.guwy.rsimm.mechanics.event.subclasses.RenderPlayerEventPreHandler;
+import net.guwy.rsimm.mechanics.event.subclasses.RenderPlayerNameEventHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.client.event.RenderArmEvent;
+import net.minecraftforge.client.event.RenderNameTagEvent;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.living.PotionEvent;
+import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
@@ -67,9 +78,25 @@ public class ModEvents {
     }
 
     @SubscribeEvent
-    public static void onRemoveEffect(PotionEvent.PotionRemoveEvent event) {
+    public static void onRemoveEffect(MobEffectEvent.Remove event) {
         PotionRemoveInterceptor.init(event);
     }
+
+    @SubscribeEvent
+    public static void renderPlayerEvent(RenderPlayerEvent.Pre event) {
+        RenderPlayerEventPreHandler.init(event);
+    }
+
+    @SubscribeEvent
+    public static void renderArmEvent(RenderArmEvent event) {
+        RenderArmEventHandler.init(event);
+    }
+
+    @SubscribeEvent
+    public static void renderPlayerNameEvent(RenderNameTagEvent event) {
+        RenderPlayerNameEventHandler.init(event);
+    }
+
 
 
 

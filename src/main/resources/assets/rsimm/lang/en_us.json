@@ -1,10 +1,23 @@
 {
+    "block.rsimm.palladium_ore": "Palladium Ore",
+    "block.rsimm.palladium_ore_deepslate": "Deepslate Palladium Ore",
+    "item.rsimm.palladium_nugget": "Palladium Nugget",
+    "block.rsimm.titanium_ore": "Titanium Ore",
+    "block.rsimm.titanium_ore_deepslate": "Deepslate Titanium Ore",
+    "item.rsimm.titanium_raw": "Raw Titanium",
+
+    "block.rsimm.arc_reactor_charger": "Arc Reactor Charger",
+
+    "item.rsimm.chest_cutter": "Chest Cutter",
+
     "item.rsimm.dev_wand_1": "Dev Wand 1 (Check Player Ticks)",
     "item.rsimm.dev_wand_2": "Dev Wand 2 (Check Arc Reactor Status)",
-    "item.rsimm.dev_wand_3": "Dev Wand 3 (Add Arc Reactor)",
+    "item.rsimm.dev_wand_3": "Dev Wand 3 (Add Arc Reactor Slot)",
     "item.rsimm.dev_wand_4": "Dev Wand 4 (Remove Arc Reactor)",
     "item.rsimm.dev_wand_5": "Dev Wand 5 (Reactor Poisoning)",
-    "item.rsimm.dev_wand_6": "Dev Wand 6 (Effect Tester)",
+    "item.rsimm.dev_wand_6": "Dev Wand 6 (None)",
+
+    "item.rsimm.mark_1_arc_reactor": "Mark 1 Arc Reactor",
 
     "item.rsimm.mark_1_helmet": "Mark 1 Helmet",
     "item.rsimm.mark_1_chestplate": "Mark 1 Chestplate",
@@ -15,10 +28,27 @@
     "effect.rsimm.better_reactor_poisoning_suppressant": "Suppressant II",
     "effect.rsimm.cough": "Cough",
     "effect.rsimm.missing_reactor": "Missing Arc Reactor",
+    "effect.rsimm.chest_cutting_hurt": "Chest Cutting Procedure",
+
+    "effect.rsimm.sound_effect_arc_reactor_equip": "Sound Effect",
+    "effect.rsimm.sound_effect_arc_reactor_unequip": "Sound Effect",
+    "effect.rsimm.sound_effect_chest_cutting": "Sound Effect",
 
     "death.attack.reactor_poisoning": "%1$s has died from Palladium Poisoning",
     "death.attack.missing_reactor": "%1$s died from the shrapnel in its heart",
+    "death.attack.chest_cutting": "%1$s didn't make it trough the surgery",
 
     "sounds.rsimm.player_cough": "Player Coughed",
-    "sounds.rsimm.heart_beat": "Heart Beats"
+    "sounds.rsimm.heart_beat": "Heart Beats",
+    "sounds.rsimm.arc_reactor_equip": "Arc Reactor Equipped",
+    "sounds.rsimm.rsimm.arc_reactor_unequip": "Arc Reactor Unequipped",
+    "sounds.rsimm.chest_cutting": "Chest Cutting",
+
+    "itemGroup.rsimm_tab_main": "IronMan",
+
+    "arc_reactor.rsimm.energy": "Energy: ",
+    "arc_reactor.rsimm.already_have": "You already have an arc reactor",
+    "arc_reactor.rsimm.already_have_slot": "You do not have a hole in your chest to put this",
+
+    "message.rsimm.chest_cutter.don't_have_slot": "You already have a slot in your chest"
 }

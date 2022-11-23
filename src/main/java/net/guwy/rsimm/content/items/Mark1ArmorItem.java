@@ -2,9 +2,7 @@ package net.guwy.rsimm.content.items;
 
 import net.guwy.rsimm.index.ModCreativeModeTabs;
 import net.guwy.rsimm.index.ModItems;
-import net.minecraft.client.resources.sounds.Sound;
-import net.minecraft.client.resources.sounds.SoundInstance;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -14,13 +12,11 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import software.bernie.example.GeckoLibMod;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -49,14 +45,13 @@ public class Mark1ArmorItem extends GeoArmorItem implements IAnimatable, ILoopTy
     public void onArmorTick(ItemStack stack, Level level, Player player) {
         if(stack.getItem().equals(ModItems.MARK_1_CHESTPLATE.get())){
             chestplateTickEvent(stack, level, player);
-            player.sendMessage(new TextComponent("player tick: " + player.tickCount), player.getUUID());
+            player.sendSystemMessage(Component.literal("player tick: " + player.tickCount));
         }
         super.onArmorTick(stack, level, player);
     }
 
     private static void chestplateTickEvent(ItemStack pStack, Level pLevel, Player player){
         if(playerHasFullSet(player)){
-            player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 2, 0, false, false, false));
             player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 2, 1, false, false, false));
         }
     }

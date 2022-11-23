@@ -1,7 +1,7 @@
 package net.guwy.rsimm.content.items;
 
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -47,16 +47,16 @@ public class DevWand2Item extends Item {
                 playerReactorPoisoning.set(arcReactor.getPlayerArcReactorPoisoning());
             });
 
-            pPlayer.sendMessage(new TextComponent("hasSlot: " + Boolean.toString(hasSlot.get())), pPlayer.getUUID());
-            pPlayer.sendMessage(new TextComponent("hasReactor: " + Boolean.toString(hasReactor.get())), pPlayer.getUUID());
-            pPlayer.sendMessage(new TextComponent("reactorTypeName: " + reactorTypeName.get()), pPlayer.getUUID());
-            pPlayer.sendMessage(new TextComponent("reactorTypeId: " + Integer.toString(reactorTypeId.get())), pPlayer.getUUID());
-            pPlayer.sendMessage(new TextComponent("reactorEnergyCapacity: " + Long.toString(reactorEnergyCapacity.get())), pPlayer.getUUID());
-            pPlayer.sendMessage(new TextComponent("reactorEnergy: " + Long.toString(reactorEnergy.get())), pPlayer.getUUID());
-            pPlayer.sendMessage(new TextComponent("reactorEnergyOutput: " + Long.toString(reactorEnergyOutput.get())), pPlayer.getUUID());
-            pPlayer.sendMessage(new TextComponent("reactorIdleDrain: " + Integer.toString(reactorIdleDrain.get())), pPlayer.getUUID());
-            pPlayer.sendMessage(new TextComponent("reactorPoisonFactor: " + Integer.toString(reactorPoisonFactor.get())), pPlayer.getUUID());
-            pPlayer.sendMessage(new TextComponent("playerReactorPoisoning: " + Integer.toString(playerReactorPoisoning.get())), pPlayer.getUUID());
+            pPlayer.sendSystemMessage(Component.literal("hasSlot: " + Boolean.toString(hasSlot.get())));
+            pPlayer.sendSystemMessage(Component.literal("hasReactor: " + Boolean.toString(hasReactor.get())));
+            pPlayer.sendSystemMessage(Component.literal("reactorTypeName: " + reactorTypeName.get()));
+            pPlayer.sendSystemMessage(Component.literal("reactorTypeId: " + Integer.toString(reactorTypeId.get())));
+            pPlayer.sendSystemMessage(Component.literal("reactorEnergyCapacity: " + Long.toString(reactorEnergyCapacity.get())));
+            pPlayer.sendSystemMessage(Component.literal("reactorEnergy: " + Long.toString(reactorEnergy.get())));
+            pPlayer.sendSystemMessage(Component.literal("reactorEnergyOutput: " + Long.toString(reactorEnergyOutput.get())));
+            pPlayer.sendSystemMessage(Component.literal("reactorIdleDrain: " + Integer.toString(reactorIdleDrain.get())));
+            pPlayer.sendSystemMessage(Component.literal("reactorPoisonFactor: " + Integer.toString(reactorPoisonFactor.get())));
+            pPlayer.sendSystemMessage(Component.literal("playerReactorPoisoning: " + Integer.toString(playerReactorPoisoning.get())));
 
             pPlayer.getCooldowns().addCooldown(pPlayer.getItemInHand(pUsedHand).getItem(), 20);
         }

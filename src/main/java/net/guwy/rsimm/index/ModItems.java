@@ -2,6 +2,7 @@ package net.guwy.rsimm.index;
 
 import net.guwy.rsimm.RsImm;
 import net.guwy.rsimm.content.items.*;
+import net.guwy.rsimm.content.items.arc_reactors.Mark1ArcReactorItem;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.Item;
@@ -41,6 +42,14 @@ public class ModItems {
             () -> new DevWand6Item(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
 
 
+
+    // Arc Reactors
+    public static final RegistryObject<Item> MARK_1_ARC_REACTOR = ITEMS.register("mark_1_arc_reactor",
+            () -> new Mark1ArcReactorItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
+
+
+
+    // Armors
     public static final RegistryObject<Item> TEST_ARMOR_HELMET = ITEMS.register("test_armor_helmet",
             () -> new TestArmorItem(ModArmorMaterials.TEST_ARMOR, EquipmentSlot.HEAD, new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
 
@@ -64,6 +73,21 @@ public class ModItems {
 
     public static final RegistryObject<Item> MARK_1_BOOTS = ITEMS.register("mark_1_boots",
             () -> new Mark1ArmorItem(ModArmorMaterials.TEST_ARMOR, EquipmentSlot.FEET, new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
+
+
+
+    // Tools
+    public static final RegistryObject<Item> CHEST_CUTTER = ITEMS.register("chest_cutter",
+            () -> new ChestCutterItem(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+
+
+    // Materials
+    public static final RegistryObject<Item> PALLADIUM_NUGGET = ITEMS.register("palladium_nugget",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> TITANIUM_RAW = ITEMS.register("titanium_raw",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
 
 
 

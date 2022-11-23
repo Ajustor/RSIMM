@@ -3,11 +3,7 @@ package net.guwy.rsimm.mechanics.event.player_tick;
 import net.guwy.rsimm.mechanics.event.player_tick.content.ChestSlotCheck;
 import net.guwy.rsimm.mechanics.event.player_tick.content.ReactorPoisoningHandler;
 import net.guwy.rsimm.mechanics.event.player_tick.content.ReactorUtilization;
-import net.minecraft.network.chat.TextComponent;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.eventbus.api.Event;
 
 public class PlayerTickEventOrganizer {
     public static void init(TickEvent.PlayerTickEvent event){

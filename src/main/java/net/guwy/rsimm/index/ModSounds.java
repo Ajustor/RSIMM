@@ -16,6 +16,9 @@ public class ModSounds {
 
     public static final RegistryObject<SoundEvent> PLAYER_COUGH = registerSoundEvent("player_cough");
     public static final RegistryObject<SoundEvent> HEARTBEAT = registerSoundEvent("heartbeat");
+    public static final RegistryObject<SoundEvent> ARC_REACTOR_EQUIP = registerSoundEvent("arc_reactor_equip");
+    public static final RegistryObject<SoundEvent> ARC_REACTOR_UNEQUIP = registerSoundEvent("arc_reactor_unequip");
+    public static final RegistryObject<SoundEvent> CHEST_CUTTING = registerSoundEvent("chest_cutting");
 
 
 

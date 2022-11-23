@@ -1,6 +1,6 @@
 package net.guwy.rsimm.content.items;
 
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -16,7 +16,7 @@ public class DevWand1Item extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         if(!pLevel.isClientSide) {
-            pPlayer.sendMessage(new TextComponent(Integer.toString(pPlayer.tickCount)), pPlayer.getUUID());
+            pPlayer.sendSystemMessage(Component.literal(Integer.toString(pPlayer.tickCount)));
             pPlayer.getCooldowns().addCooldown(pPlayer.getItemInHand(pUsedHand).getItem(), 20);
         }
         if(pLevel.isClientSide){

@@ -1,11 +1,16 @@
 package net.guwy.rsimm.index;
 
 import net.guwy.rsimm.RsImm;
+import net.guwy.rsimm.content.blocks.ArcReactorChargerBlock;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -19,13 +24,31 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, RsImm.MOD_ID);
     public static final DeferredRegister<Item> BLOCK_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, RsImm.MOD_ID);
 
+    public static final RegistryObject<Block> ARC_REACTOR_CHARGER = registerBlock("arc_reactor_charger", () ->
+            new ArcReactorChargerBlock(BlockBehaviour.Properties.of(Material.METAL).
+                    strength(4.5f).explosionResistance(3f).requiresCorrectToolForDrops().
+                    sound(SoundType.METAL).noOcclusion()), ModCreativeModeTabs.MAIN);
 
+    public static final RegistryObject<Block> PALLADIUM_ORE = registerBlock("palladium_ore", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).
+                    strength(3f).explosionResistance(3f).requiresCorrectToolForDrops().
+                    sound(SoundType.STONE), UniformInt.of(3,7)), ModCreativeModeTabs.MAIN);
 
-    /* Example
-    public static final RegistryObject<Block> FLUORITE_ORE = registerBlock("fluorite_ore", () -> new Block(BlockBehaviour.
-            Properties.of(Material.STONE).strength(3f).explosionResistance(3f).requiresCorrectToolForDrops().
-            sound(SoundType.STONE)), ModCreativeModTabs.BLOCKS);
-    */
+    public static final RegistryObject<Block> PALLADIUM_ORE_DEEPSLATE = registerBlock("palladium_ore_deepslate", () ->
+            new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).
+                    strength(4.5f).explosionResistance(3f).requiresCorrectToolForDrops().
+                    sound(SoundType.DEEPSLATE), UniformInt.of(3,7)), ModCreativeModeTabs.MAIN);
+
+    public static final RegistryObject<Block> TITANIUM_ORE = registerBlock("titanium_ore", () ->
+            new Block(BlockBehaviour.Properties.of(Material.STONE).
+                    strength(3f).explosionResistance(3f).requiresCorrectToolForDrops().
+                    sound(SoundType.STONE)), ModCreativeModeTabs.MAIN);
+
+    public static final RegistryObject<Block> TITANIUM_ORE_DEEPSLATE = registerBlock("titanium_ore_deepslate", () ->
+            new Block(BlockBehaviour.Properties.of(Material.STONE).
+                    strength(4.5f).explosionResistance(3f).requiresCorrectToolForDrops().
+                    sound(SoundType.DEEPSLATE)), ModCreativeModeTabs.MAIN);
+
 
 
 
@@ -55,7 +78,7 @@ public class ModBlocks {
         return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties().tab(tab)){
             @Override
             public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
-                pTooltip.add(new TranslatableComponent(tooltipKey));
+                pTooltip.add(Component.literal(tooltipKey));
             }
         });
     }

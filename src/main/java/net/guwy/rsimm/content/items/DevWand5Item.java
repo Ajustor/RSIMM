@@ -1,7 +1,7 @@
 package net.guwy.rsimm.content.items;
 
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -24,19 +24,19 @@ public class DevWand5Item extends Item {
                 if(hasSlot){
                     if(arcReactor.getPlayerArcReactorPoisoning() == 0){
                         arcReactor.setPlayerArcReactorPoisoning(50000);
-                        pPlayer.sendMessage(new TextComponent("Poisoning has been set to: 50000"), pPlayer.getUUID());
+                        pPlayer.sendSystemMessage(Component.literal("Poisoning has been set to: 50000"));
                     }   else if(arcReactor.getPlayerArcReactorPoisoning() == 50000){
                         arcReactor.setPlayerArcReactorPoisoning(100000);
-                        pPlayer.sendMessage(new TextComponent("Poisoning has been set to: 100000"), pPlayer.getUUID());
+                        pPlayer.sendSystemMessage(Component.literal("Poisoning has been set to: 100000"));
                     }   else if(arcReactor.getPlayerArcReactorPoisoning() == 100000){
                         arcReactor.setPlayerArcReactorPoisoning(300000);
-                        pPlayer.sendMessage(new TextComponent("Poisoning has been set to: 300000"), pPlayer.getUUID());
+                        pPlayer.sendSystemMessage(Component.literal("Poisoning has been set to: 300000"));
                     }   else if(arcReactor.getPlayerArcReactorPoisoning() == 300000){
                         arcReactor.setPlayerArcReactorPoisoning(420000);
-                        pPlayer.sendMessage(new TextComponent("Poisoning has been set to: 420000"), pPlayer.getUUID());
+                        pPlayer.sendSystemMessage(Component.literal("Poisoning has been set to: 420000"));
                     }   else if(arcReactor.getPlayerArcReactorPoisoning() == 420000){
                         arcReactor.setPlayerArcReactorPoisoning(0);
-                        pPlayer.sendMessage(new TextComponent("Poisoning has been set to: 0"), pPlayer.getUUID());
+                        pPlayer.sendSystemMessage(Component.literal("Poisoning has been set to: 0"));
                     }
                 }
             });
