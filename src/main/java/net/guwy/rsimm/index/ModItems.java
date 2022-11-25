@@ -47,6 +47,12 @@ public class ModItems {
     public static final RegistryObject<Item> MARK_1_ARC_REACTOR = ITEMS.register("mark_1_arc_reactor",
             () -> new Mark1ArcReactorItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
 
+    public static final RegistryObject<Item> MARK_1_ARC_REACTOR_DEPLETED = ITEMS.register("mark_1_arc_reactor_depleted",
+            () -> new Item(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> MARK_1_ARC_REACTOR_UNCHARGED = ITEMS.register("mark_1_arc_reactor_uncharged",
+            () -> new Item(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
+
 
 
     // Armors

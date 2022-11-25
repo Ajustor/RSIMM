@@ -9,6 +9,8 @@ public class PlayerTickEventOrganizer {
     public static void init(TickEvent.PlayerTickEvent event){
         int counter = event.player.tickCount;
 
+
+
         if((counter % 20) == 0){    //Every Second
             ChestSlotCheck.init(event);
             ReactorUtilization.init(event);

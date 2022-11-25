@@ -43,11 +43,18 @@ public class RsImm {
 
         eventBus.addListener(this::setup);
         eventBus.addListener(this::clientSetup);
+        eventBus.addListener(this::commonSetup);
 
         GeckoLib.initialize();
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    private void commonSetup(final FMLCommonSetupEvent event){
+        event.enqueueWork(() -> {
+            ModNetworking.register();
+        });
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {

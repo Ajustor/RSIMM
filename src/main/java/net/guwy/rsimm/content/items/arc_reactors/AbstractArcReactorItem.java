@@ -1,15 +1,13 @@
 package net.guwy.rsimm.content.items.arc_reactors;
 
-import net.guwy.rsimm.content.effects.ForcedSoundEffect;
-import net.guwy.rsimm.index.ModEffects;
 import net.guwy.rsimm.index.ModSounds;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -18,7 +16,6 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public abstract class AbstractArcReactorItem extends Item {
     /**
@@ -48,7 +45,7 @@ public abstract class AbstractArcReactorItem extends Item {
                         arcReactor.setArcReactor(displayName(), Item.getId(itemStack.getItem()), maxEnergy(), energy(itemStack),
                                 energyOutput(), idleDrain(), poisonFactor());
                         itemStack.setCount(0);
-                        ForcedSoundEffect.applyForcedSoundEffect(pPlayer, ModEffects.SOUND_EFFECT_ARC_REACTOR_EQUIP.get());
+                        pLevel.playSound(null, pPlayer.getOnPos(), ModSounds.ARC_REACTOR_EQUIP.get(), SoundSource.PLAYERS, 100, 1);
                         pPlayer.getCooldowns().addCooldown(itemStack.getItem(), 20);
                     } else {
                         pPlayer.sendSystemMessage(Component.translatable("arc_reactor.rsimm.already_have"));
@@ -65,12 +62,32 @@ public abstract class AbstractArcReactorItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        if(Screen.hasShiftDown()){
+            Component text;
 
-        Component text = Component.translatable("arc_reactor.rsimm.energy");
-        text = Component.literal(text + getTooltipBar(maxEnergy(), energy(pStack)))
-                .withStyle(getDisplayColour(maxEnergy(), energy(pStack)));
+            text = Component.translatable("arc_reactor.rsimm.energy").append(energy(pStack) + "/" + maxEnergy()).
+                    withStyle(ChatFormatting.BLUE);
+            pTooltipComponents.add(text);
 
-        pTooltipComponents.add(text);
+            text = Component.translatable("arc_reactor.rsimm.energy_output").append(Long.toString(energyOutput())).
+                    withStyle(ChatFormatting.BLUE);
+            pTooltipComponents.add(text);
+
+            text = Component.translatable("arc_reactor.rsimm.idle_drain").append(Integer.toString(idleDrain())).
+                    withStyle(ChatFormatting.BLUE);
+            pTooltipComponents.add(text);
+
+            text = Component.translatable("arc_reactor.rsimm.posion_factor").append(Integer.toString(poisonFactor())).
+                    withStyle(ChatFormatting.BLUE);
+            pTooltipComponents.add(text);
+
+        }   else {
+            Component text = Component.translatable("arc_reactor.rsimm.energy").append(getTooltipBar(maxEnergy(), energy(pStack)))
+                    .withStyle(getDisplayColour(maxEnergy(), energy(pStack)));
+
+            pTooltipComponents.add(text);
+        }
+
         super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
     }
 

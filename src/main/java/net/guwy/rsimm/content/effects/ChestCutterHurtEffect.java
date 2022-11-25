@@ -18,7 +18,7 @@ public class ChestCutterHurtEffect extends MobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
-        pLivingEntity.hurt(new DamageSource("chest_cutting"), 0.2f);
+        pLivingEntity.hurt(new DamageSource("chest_cutting"), 3f);
         super.applyEffectTick(pLivingEntity, pAmplifier);
     }
 }

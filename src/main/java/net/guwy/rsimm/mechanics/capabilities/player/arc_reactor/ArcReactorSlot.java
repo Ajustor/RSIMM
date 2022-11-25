@@ -119,7 +119,7 @@ public class ArcReactorSlot {
     }
 
     public void removeArcReactorEnergy(long remove) {
-        this.reactorEnergy = this.reactorEnergy - Math.max(0, Math.min(this.reactorEnergyOutput, remove));
+        this.reactorEnergy = Math.max(0, this.reactorEnergy - Math.min(this.reactorEnergyOutput, remove));
     }
 
 

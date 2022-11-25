@@ -5,6 +5,7 @@ import net.guwy.rsimm.index.ModSounds;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -38,7 +39,7 @@ public class DevWand4Item extends Item {
                             ItemStack depletedItem = new ItemStack(arcReactorItem.depletedItem());
                             pPlayer.addItem(depletedItem);
                         }
-                        pPlayer.playSound(ModSounds.ARC_REACTOR_UNEQUIP.get(), 100, 1);
+                        pPlayer.getLevel().playSound(null, pPlayer.getOnPos(), ModSounds.ARC_REACTOR_UNEQUIP.get(), SoundSource.PLAYERS, 100, 1);
 
                         arcReactor.deleteArcReactor();
 

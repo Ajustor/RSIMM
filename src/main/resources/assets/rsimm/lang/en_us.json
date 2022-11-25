@@ -18,6 +18,8 @@
     "item.rsimm.dev_wand_6": "Dev Wand 6 (None)",
 
     "item.rsimm.mark_1_arc_reactor": "Mark 1 Arc Reactor",
+    "item.rsimm.mark_1_arc_reactor_depleted": "Depleted Mark 1 Arc Reactor",
+    "item.rsimm.mark_1_arc_reactor_uncharged": "Uncharged Mark 1 Arc Reactor",
 
     "item.rsimm.mark_1_helmet": "Mark 1 Helmet",
     "item.rsimm.mark_1_chestplate": "Mark 1 Chestplate",
@@ -41,12 +43,18 @@
     "sounds.rsimm.player_cough": "Player Coughed",
     "sounds.rsimm.heart_beat": "Heart Beats",
     "sounds.rsimm.arc_reactor_equip": "Arc Reactor Equipped",
-    "sounds.rsimm.rsimm.arc_reactor_unequip": "Arc Reactor Unequipped",
+    "sounds.rsimm.arc_reactor_unequip": "Arc Reactor Unequipped",
     "sounds.rsimm.chest_cutting": "Chest Cutting",
+
+    "key.category.rsimm.ironman": "Ironman Mod",
+    "key.rsimm.ironman_menu": "Ironman Menu",
 
     "itemGroup.rsimm_tab_main": "IronMan",
 
     "arc_reactor.rsimm.energy": "Energy: ",
+    "arc_reactor.rsimm.energy_output": "Energy Output: ",
+    "arc_reactor.rsimm.idle_drain": "Idle Drain: ",
+    "arc_reactor.rsimm.posion_factor": "Poison Factor: ",
     "arc_reactor.rsimm.already_have": "You already have an arc reactor",
     "arc_reactor.rsimm.already_have_slot": "You do not have a hole in your chest to put this",
 

@@ -32,7 +32,7 @@ public class Mark1ArcReactorItem extends AbstractArcReactorItem {
 
     @Override
     public long energyOutput() {
-        return 1000;
+        return 10000;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class Mark1ArcReactorItem extends AbstractArcReactorItem {
 
     @Override
     public Item depletedItem() {
-        return Items.SPYGLASS;
+        return ModItems.MARK_1_ARC_REACTOR_DEPLETED.get();
     }
 
     @Override

@@ -1,7 +1,10 @@
 package net.guwy.rsimm.index;
 
 import net.guwy.rsimm.RsImm;
-import net.guwy.rsimm.content.effects.*;
+import net.guwy.rsimm.content.effects.BlankEffect;
+import net.guwy.rsimm.content.effects.ChestCutterHurtEffect;
+import net.guwy.rsimm.content.effects.CoughEffect;
+import net.guwy.rsimm.content.effects.MissingReactorEffect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -27,18 +30,6 @@ public class ModEffects {
 
     public static final RegistryObject<MobEffect> CHEST_CUTTING_HURT = MOB_EFFECTS.register("chest_cutting_hurt",
             () -> new ChestCutterHurtEffect(MobEffectCategory.HARMFUL, 0xFEBDEF0));
-
-
-
-    // Sound Effects
-    public static final RegistryObject<MobEffect> SOUND_EFFECT_ARC_REACTOR_EQUIP = MOB_EFFECTS.register("sound_effect_arc_reactor_equip",
-            () -> new ForcedSoundEffect(MobEffectCategory.NEUTRAL, 0xFEBDEF0, ModSounds.ARC_REACTOR_EQUIP.get()));
-
-    public static final RegistryObject<MobEffect> SOUND_EFFECT_ARC_REACTOR_UNEQUIP = MOB_EFFECTS.register("sound_effect_arc_reactor_unequip",
-            () -> new ForcedSoundEffect(MobEffectCategory.NEUTRAL, 0xFEBDEF0, ModSounds.ARC_REACTOR_UNEQUIP.get()));
-
-    public static final RegistryObject<MobEffect> SOUND_EFFECT_CHEST_CUTTING = MOB_EFFECTS.register("sound_effect_chest_cutting",
-            () -> new ForcedSoundEffect(MobEffectCategory.NEUTRAL, 0xFEBDEF0, ModSounds.CHEST_CUTTING.get()));
 
     public static void register(IEventBus eventBus){
         MOB_EFFECTS.register(eventBus);

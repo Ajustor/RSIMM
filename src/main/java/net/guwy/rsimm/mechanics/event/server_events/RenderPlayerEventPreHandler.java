@@ -1,4 +1,4 @@
-package net.guwy.rsimm.mechanics.event.subclasses;
+package net.guwy.rsimm.mechanics.event.server_events;
 
 import net.guwy.rsimm.index.ModTags;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;

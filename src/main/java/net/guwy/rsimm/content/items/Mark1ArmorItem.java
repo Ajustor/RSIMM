@@ -45,7 +45,7 @@ public class Mark1ArmorItem extends GeoArmorItem implements IAnimatable, ILoopTy
     public void onArmorTick(ItemStack stack, Level level, Player player) {
         if(stack.getItem().equals(ModItems.MARK_1_CHESTPLATE.get())){
             chestplateTickEvent(stack, level, player);
-            player.sendSystemMessage(Component.literal("player tick: " + player.tickCount));
+            //player.sendSystemMessage(Component.literal("player tick: " + player.tickCount));
         }
         super.onArmorTick(stack, level, player);
     }

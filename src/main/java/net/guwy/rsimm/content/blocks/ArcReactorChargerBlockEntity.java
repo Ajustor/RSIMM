@@ -170,7 +170,7 @@ public class ArcReactorChargerBlockEntity extends BlockEntity implements MenuPro
 
             ItemStack result = new ItemStack(ModItems.MARK_1_ARC_REACTOR.get(), pEntity.itemHandler.getStackInSlot(1).getCount() + 1);
             CompoundTag nbtTag = new CompoundTag();
-            nbtTag.putLong("energy", 1000000);
+            nbtTag.putLong("energy", 100);
             result.setTag(nbtTag);
             pEntity.itemHandler.setStackInSlot(0, result);
 
