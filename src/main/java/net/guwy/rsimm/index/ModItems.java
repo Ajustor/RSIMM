@@ -2,11 +2,13 @@ package net.guwy.rsimm.index;
 
 import net.guwy.rsimm.RsImm;
 import net.guwy.rsimm.content.items.*;
+import net.guwy.rsimm.content.items.arc_reactors.DepletedArcReactorItem;
 import net.guwy.rsimm.content.items.arc_reactors.Mark1ArcReactorItem;
+import net.guwy.rsimm.content.items.arc_reactors.UnchargedMark1ArcReactorItem;
+import net.guwy.rsimm.content.items.armors.Mark1ArmorItem;
+import net.guwy.rsimm.content.items.armors.Mark1OpenHelmetArmorItem;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.PotionItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -22,66 +24,6 @@ public class ModItems {
 
 
 
-    // Dev Tools
-    public static final RegistryObject<Item> DEV_WAND_1 = ITEMS.register("dev_wand_1",
-            () -> new DevWand1Item(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-    public static final RegistryObject<Item> DEV_WAND_2 = ITEMS.register("dev_wand_2",
-            () -> new DevWand2Item(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-    public static final RegistryObject<Item> DEV_WAND_3 = ITEMS.register("dev_wand_3",
-            () -> new DevWand3Item(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-    public static final RegistryObject<Item> DEV_WAND_4 = ITEMS.register("dev_wand_4",
-            () -> new DevWand4Item(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-    public static final RegistryObject<Item> DEV_WAND_5 = ITEMS.register("dev_wand_5",
-            () -> new DevWand5Item(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-    public static final RegistryObject<Item> DEV_WAND_6 = ITEMS.register("dev_wand_6",
-            () -> new DevWand6Item(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-
-
-    // Arc Reactors
-    public static final RegistryObject<Item> MARK_1_ARC_REACTOR = ITEMS.register("mark_1_arc_reactor",
-            () -> new Mark1ArcReactorItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-    public static final RegistryObject<Item> MARK_1_ARC_REACTOR_DEPLETED = ITEMS.register("mark_1_arc_reactor_depleted",
-            () -> new Item(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-    public static final RegistryObject<Item> MARK_1_ARC_REACTOR_UNCHARGED = ITEMS.register("mark_1_arc_reactor_uncharged",
-            () -> new Item(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-
-
-    // Armors
-    public static final RegistryObject<Item> TEST_ARMOR_HELMET = ITEMS.register("test_armor_helmet",
-            () -> new TestArmorItem(ModArmorMaterials.TEST_ARMOR, EquipmentSlot.HEAD, new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-    public static final RegistryObject<Item> TEST_ARMOR_CHESTPLATE = ITEMS.register("test_armor_chestplate",
-            () -> new TestArmorItem(ModArmorMaterials.TEST_ARMOR, EquipmentSlot.CHEST, new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-    public static final RegistryObject<Item> TEST_ARMOR_LEGGINGS = ITEMS.register("test_armor_leggings",
-            () -> new TestArmorItem(ModArmorMaterials.TEST_ARMOR, EquipmentSlot.LEGS, new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-    public static final RegistryObject<Item> TEST_ARMOR_BOOTS = ITEMS.register("test_armor_boots",
-            () -> new TestArmorItem(ModArmorMaterials.TEST_ARMOR, EquipmentSlot.FEET, new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-    public static final RegistryObject<Item> MARK_1_HELMET = ITEMS.register("mark_1_helmet",
-            () -> new Mark1ArmorItem(ModArmorMaterials.TEST_ARMOR, EquipmentSlot.HEAD, new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-    public static final RegistryObject<Item> MARK_1_CHESTPLATE = ITEMS.register("mark_1_chestplate",
-            () -> new Mark1ArmorItem(ModArmorMaterials.TEST_ARMOR, EquipmentSlot.CHEST, new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-    public static final RegistryObject<Item> MARK_1_LEGGINGS = ITEMS.register("mark_1_leggings",
-            () -> new Mark1ArmorItem(ModArmorMaterials.TEST_ARMOR, EquipmentSlot.LEGS, new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-    public static final RegistryObject<Item> MARK_1_BOOTS = ITEMS.register("mark_1_boots",
-            () -> new Mark1ArmorItem(ModArmorMaterials.TEST_ARMOR, EquipmentSlot.FEET, new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN)));
-
-
-
     // Tools
     public static final RegistryObject<Item> CHEST_CUTTER = ITEMS.register("chest_cutter",
             () -> new ChestCutterItem(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
@@ -93,6 +35,54 @@ public class ModItems {
             () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
 
     public static final RegistryObject<Item> TITANIUM_RAW = ITEMS.register("titanium_raw",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> TITANIUM_INGOT = ITEMS.register("titanium_ingot",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> TITANIUM_PLATE = ITEMS.register("titanium_plate",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> STEEL_PLATE = ITEMS.register("steel_plate",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> STEEL_WIRE = ITEMS.register("steel_wire",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> STEEL_NUGGET = ITEMS.register("steel_nugget",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> COPPER_WIRE = ITEMS.register("copper_wire",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> MOLDING_BOWL = ITEMS.register("molding_bowl",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> PALLADIUM_RING_MOLD = ITEMS.register("palladium_ring_mold",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> PALLADIUM_RING = ITEMS.register("palladium_ring",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> CIRCUITRY = ITEMS.register("circuitry",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> CIRCUITRY_ADVANCED = ITEMS.register("circuitry_advanced",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> MOTOR = ITEMS.register("motor",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> STEEL_ARMOR_PLATE = ITEMS.register("steel_armor_plate",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> TINY_PILE_OF_GUNPOWDER = ITEMS.register("tiny_pile_of_gunpowder",
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> ROCKET = ITEMS.register("rocket",
             () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
 
 

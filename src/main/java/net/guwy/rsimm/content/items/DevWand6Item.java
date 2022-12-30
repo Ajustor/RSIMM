@@ -1,6 +1,8 @@
 package net.guwy.rsimm.content.items;
 
-import net.minecraft.nbt.CompoundTag;
+import net.guwy.rsimm.content.items.armors.AbstractIronmanArmorItem;
+import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
+import net.guwy.rsimm.mechanics.KeyCallType;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -17,20 +19,17 @@ public class DevWand6Item extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         if(!pLevel.isClientSide) {
-        }
+            pPlayer.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
+                if(armorData.getHasArmor()){
+                    ItemStack itemStack = pPlayer.getItemBySlot(EquipmentSlot.CHEST);
+                    AbstractIronmanArmorItem armorItem = (AbstractIronmanArmorItem) itemStack.getItem();
 
-        ItemStack helmet = pPlayer.getItemBySlot(EquipmentSlot.HEAD);
-        if(helmet.getTag() != null){
-            CompoundTag nbtTag = new CompoundTag();
-            nbtTag.putBoolean("helmet_open", !helmet.getTag().getBoolean("helmet_open"));
-            helmet.setTag(nbtTag);
-        }   else {
-            CompoundTag nbtTag = new CompoundTag();
-            nbtTag.putBoolean("helmet_open", true);
-            helmet.setTag(nbtTag);
-        }
+                    armorItem.FireWeapon1(pPlayer, pLevel, false, KeyCallType.START_HOLD);
+                }
+            });
 
-        pPlayer.getCooldowns().addCooldown(pPlayer.getItemInHand(pUsedHand).getItem(), 20);
+            pPlayer.getCooldowns().addCooldown(pPlayer.getItemInHand(pUsedHand).getItem(), 20);
+        }
 
         if(pLevel.isClientSide){
             pPlayer.swing(pUsedHand);

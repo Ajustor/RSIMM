@@ -66,19 +66,19 @@ public abstract class AbstractArcReactorItem extends Item {
             Component text;
 
             text = Component.translatable("arc_reactor.rsimm.energy").append(energy(pStack) + "/" + maxEnergy()).
-                    withStyle(ChatFormatting.BLUE);
+                    withStyle(ChatFormatting.GRAY);
             pTooltipComponents.add(text);
 
             text = Component.translatable("arc_reactor.rsimm.energy_output").append(Long.toString(energyOutput())).
-                    withStyle(ChatFormatting.BLUE);
+                    withStyle(ChatFormatting.GRAY);
             pTooltipComponents.add(text);
 
             text = Component.translatable("arc_reactor.rsimm.idle_drain").append(Integer.toString(idleDrain())).
-                    withStyle(ChatFormatting.BLUE);
+                    withStyle(ChatFormatting.GRAY);
             pTooltipComponents.add(text);
 
             text = Component.translatable("arc_reactor.rsimm.posion_factor").append(Integer.toString(poisonFactor())).
-                    withStyle(ChatFormatting.BLUE);
+                    withStyle(ChatFormatting.GRAY);
             pTooltipComponents.add(text);
 
         }   else {

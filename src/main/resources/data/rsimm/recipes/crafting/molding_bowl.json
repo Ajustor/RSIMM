@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "y",
+    "x"
+  ],
+  "key": {
+    "x": {
+      "item": "minecraft:bowl"
+    },
+    "y": {
+      "item": "minecraft:clay_ball"
+    }
+  },
+  "result": {
+    "item": "rsimm:molding_bowl",
+    "count": 1
+  }
+}

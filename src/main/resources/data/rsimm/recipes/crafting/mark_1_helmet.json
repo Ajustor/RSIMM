@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "zzz",
+    "zxz"
+  ],
+  "key": {
+    "z": {
+      "item": "rsimm:steel_armor_plate"
+    },
+    "x": {
+      "item": "minecraft:leather_helmet"
+    }
+  },
+  "result": {
+    "item": "rsimm:unassambled_mark_1_helmet"
+  }
+}

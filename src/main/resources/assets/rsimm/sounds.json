@@ -23,10 +23,46 @@
       "rsimm:arc_reactor/unequip"
     ]
   },
+  "arc_reactor_check": {
+    "subtitle": "sounds.rsimm.arc_reactor_check",
+    "sounds": [
+      "rsimm:arc_reactor/check"
+    ]
+  },
   "chest_cutting": {
     "subtitle": "sounds.rsimm.chest_cutting",
     "sounds": [
       "rsimm:tools/chest_cutting"
+    ]
+  },
+  "mark_1_flame_thrower": {
+    "subtitle": "sounds.rsimm.mark_1_flame_thrower",
+    "sounds": [
+      "rsimm:armor/mark_1/flame_thrower"
+    ]
+  },
+  "metal_rattle_1": {
+    "subtitle": "sounds.rsimm.metal_rattle_1",
+    "sounds": [
+      "rsimm:armor/metal_rattle_1"
+    ]
+  },
+  "metal_rattle_2": {
+    "subtitle": "sounds.rsimm.metal_rattle_2",
+    "sounds": [
+      "rsimm:armor/metal_rattle_2"
+    ]
+  },
+  "metal_rattle_3": {
+    "subtitle": "sounds.rsimm.metal_rattle_3",
+    "sounds": [
+      "rsimm:armor/metal_rattle_3"
+    ]
+  },
+  "rain_in_helmet": {
+    "subtitle": "sounds.rsimm.rain_in_helmet",
+    "sounds": [
+      "rsimm:armor/rain_in_helmet"
     ]
   }
 }

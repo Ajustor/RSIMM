@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "zxz",
+    "k k"
+  ],
+  "key": {
+    "z": {
+      "item": "rsimm:steel_armor_plate"
+    },
+    "k": {
+      "item": "create:spout"
+    },
+    "x": {
+      "item": "minecraft:leather_boots"
+    }
+  },
+  "result": {
+    "item": "rsimm:unassambled_mark_1_boots"
+  }
+}

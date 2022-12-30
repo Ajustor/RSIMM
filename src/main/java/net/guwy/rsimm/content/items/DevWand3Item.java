@@ -24,6 +24,8 @@ public class DevWand3Item extends Item {
 
                 if(!hasSlot){
                     arcReactor.setHasArcReactorSlot(true);
+                }   else {
+                    arcReactor.setHasArcReactorSlot(false);
                 }
             });
 

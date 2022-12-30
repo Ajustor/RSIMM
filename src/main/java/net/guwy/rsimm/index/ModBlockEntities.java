@@ -1,7 +1,8 @@
 package net.guwy.rsimm.index;
 
 import net.guwy.rsimm.RsImm;
-import net.guwy.rsimm.content.blocks.ArcReactorChargerBlockEntity;
+import net.guwy.rsimm.content.blocks.arc_reactor_charger.ArcReactorChargerBlockEntity;
+import net.guwy.rsimm.content.blocks.armor_equipping_station.ArmorEquippingStationBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -16,6 +17,11 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("arc_reactor_charger", () ->
                     BlockEntityType.Builder.of(ArcReactorChargerBlockEntity::new,
                             ModBlocks.ARC_REACTOR_CHARGER.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<ArmorEquippingStationBlockEntity>> ARMOR_EQUIPPING_STATION =
+            BLOCK_ENTITIES.register("armor_equipping_station", () ->
+                    BlockEntityType.Builder.of(ArmorEquippingStationBlockEntity::new,
+                            ModBlocks.ARMOR_EQUIPPING_STATION.get()).build(null));
 
 
     public static void register(IEventBus eventBus) {

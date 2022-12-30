@@ -1,11 +1,15 @@
 package net.guwy.rsimm;
 
 import com.mojang.logging.LogUtils;
-import net.guwy.rsimm.content.blocks.ArcReactorChargerScreen;
+import net.guwy.rsimm.content.blocks.arc_reactor_charger.ArcReactorChargerScreen;
+import net.guwy.rsimm.content.blocks.armor_equipping_station.ArmorEquippingStationScreen;
+import net.guwy.rsimm.content.entities.non_living.mark_1_flame.Mark1FlameEntityRenderer;
+import net.guwy.rsimm.content.entities.non_living.rocket.RocketEntityRenderer;
 import net.guwy.rsimm.index.*;
 import net.guwy.rsimm.world.feature.ModConfiguredFeatures;
 import net.guwy.rsimm.world.feature.ModPlacedFeatures;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -28,7 +32,14 @@ public class RsImm {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ModItems.register(eventBus);
+        //ModDeveloperItems.register(eventBus);
+        ModArcReactorItems.register(eventBus);
+        ModArmorItems.register(eventBus);
+        ModAmmoKitItems.register(eventBus);
+
         ModBlocks.register(eventBus);
+
+        ModEntityTypes.register(eventBus);
 
         ModSounds.register(eventBus);
         ModEffects.register(eventBus);
@@ -69,6 +80,10 @@ public class RsImm {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             MenuScreens.register(ModMenuTypes.ARC_REACTOR_CHARGER_MENU.get(), ArcReactorChargerScreen::new);
+            MenuScreens.register(ModMenuTypes.ARMOR_EQUIPPING_STATION_MENU.get(), ArmorEquippingStationScreen::new);
+
+            EntityRenderers.register(ModEntityTypes.MARK_1_FLAME.get(), Mark1FlameEntityRenderer::new);
+            EntityRenderers.register(ModEntityTypes.ROCKET.get(), RocketEntityRenderer::new);
         }
     }
 }

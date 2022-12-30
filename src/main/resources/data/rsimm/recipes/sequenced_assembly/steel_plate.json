@@ -1,0 +1,30 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "forge:ingots/steel"
+  },
+  "transitionalItem": {
+    "item": "rsimm:steel_ingot"
+  },
+  "sequence": [
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "rsimm:steel_ingot"
+        }
+      ],
+      "results": [
+        {
+          "item": "rsimm:steel_ingot"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "item": "rsimm:steel_plate"
+    }
+  ],
+  "loops": 2
+}

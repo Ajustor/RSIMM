@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "bax",
+    " kz",
+    " yz"
+  ],
+  "key": {
+    "y": {
+      "tag": "forge:plates/copper"
+    },
+    "z": {
+      "tag": "forge:wires/copper"
+    },
+    "x": {
+      "item": "create:electron_tube"
+    },
+    "k": {
+      "tag": "forge:plates/steel"
+    },
+    "b": {
+      "item": "minecraft:quartz"
+    },
+    "a": {
+      "item": "rsimm:circuitry"
+    }
+  },
+  "result": {
+    "item": "rsimm:arc_reactor_charger"
+  }
+}

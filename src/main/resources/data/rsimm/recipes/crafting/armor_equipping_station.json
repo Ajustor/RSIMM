@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "zxz",
+    "xyx",
+    "zxz"
+  ],
+  "key": {
+    "y": {
+      "item": "rsimm:circuitry"
+    },
+    "z": {
+      "item": "minecraft:iron_ingot"
+    },
+    "x": {
+      "tag": "forge:plates/steel"
+    }
+  },
+  "result": {
+    "item": "rsimm:armor_equipping_station"
+  }
+}

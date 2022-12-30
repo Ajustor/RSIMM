@@ -1,0 +1,6 @@
+{
+	"parent": "block/cube_all",
+	"textures": {
+		"all": "rsimm:block/deco/marked_ground_0"
+	}
+}

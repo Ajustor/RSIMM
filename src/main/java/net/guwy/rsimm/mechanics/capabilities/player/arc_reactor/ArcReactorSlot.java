@@ -12,6 +12,7 @@ public class ArcReactorSlot {
     private long reactorEnergyCapacity = 0;
     private long reactorEnergy = 0;
     private long reactorEnergyOutput = 0;       //Max Energy Output
+    private long reactorLoad = 0;       //Current Drawn energy
     private int reactorIdleDrain = 0;
     private int reactorPoisonFactor = 0;
     private int playerReactorPoisoning = 0;
@@ -48,6 +49,7 @@ public class ArcReactorSlot {
         this.reactorEnergyCapacity = 0;
         this.reactorEnergy = 0;
         this.reactorEnergyOutput = 0;
+        this.reactorLoad = 0;
         this.reactorIdleDrain = 0;
         this.reactorPoisonFactor = 0;
     }
@@ -130,6 +132,22 @@ public class ArcReactorSlot {
 
     public void setArcReactorEnergyOutput(long output) {
         this.reactorEnergyOutput = output;
+    }
+
+    public long getEnergyLoad() {
+        return reactorLoad;
+    }
+
+    public void setEnergyLoad(long load) {
+        this.reactorLoad = load;
+    }
+
+    public void addEnergyLoad(long add){
+        this.reactorLoad = this.reactorLoad + add;
+    }
+
+    public boolean simulateAddEnergyLoad(long add){
+        return this.reactorLoad + add <= this.reactorEnergy && this.reactorLoad + add <= this.reactorEnergyOutput;
     }
 
 

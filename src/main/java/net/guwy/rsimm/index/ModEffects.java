@@ -1,10 +1,8 @@
 package net.guwy.rsimm.index;
 
 import net.guwy.rsimm.RsImm;
-import net.guwy.rsimm.content.effects.BlankEffect;
-import net.guwy.rsimm.content.effects.ChestCutterHurtEffect;
-import net.guwy.rsimm.content.effects.CoughEffect;
-import net.guwy.rsimm.content.effects.MissingReactorEffect;
+import net.guwy.rsimm.content.effects.*;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -30,6 +28,9 @@ public class ModEffects {
 
     public static final RegistryObject<MobEffect> CHEST_CUTTING_HURT = MOB_EFFECTS.register("chest_cutting_hurt",
             () -> new ChestCutterHurtEffect(MobEffectCategory.HARMFUL, 0xFEBDEF0));
+
+    public static final RegistryObject<MobEffect> ROCKET_PARTICLE_EFFECT = MOB_EFFECTS.register("rocket_particle_effect",
+            () -> new ParticleSpawningEffect(MobEffectCategory.NEUTRAL, 0xFEBDEF0, ParticleTypes.FLAME));
 
     public static void register(IEventBus eventBus){
         MOB_EFFECTS.register(eventBus);

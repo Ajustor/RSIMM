@@ -5,7 +5,8 @@ public enum FlyMode {
     HOVERING_ON_GROUND (1),     // for alternate Running
     HOVERING (2),   // Classic hover
     FLYING (3),     // Elytra flight
-    CRUISE (4);     // wasd+shift+space flight
+    CRUISE (4),     // wasd+shift+space flight
+    CUSTOM (5);     // defined in armors custom flight method
 
     private final int flyMode;
 

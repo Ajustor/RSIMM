@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "xxx",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "rsimm:tiny_pile_of_gunpowder"
+    }
+  },
+  "result": {
+    "item": "minecraft:gunpowder"
+  }
+}

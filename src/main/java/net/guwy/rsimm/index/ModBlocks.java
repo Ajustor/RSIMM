@@ -1,7 +1,9 @@
 package net.guwy.rsimm.index;
 
 import net.guwy.rsimm.RsImm;
-import net.guwy.rsimm.content.blocks.ArcReactorChargerBlock;
+import net.guwy.rsimm.content.blocks.arc_reactor_charger.ArcReactorChargerBlock;
+import net.guwy.rsimm.content.blocks.armor_equipping_station.ArmorEquippingStationBlock;
+import net.guwy.rsimm.content.blocks.armor_unequipping_station.ArmorUnequippingStationBlock;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.*;
@@ -24,11 +26,27 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, RsImm.MOD_ID);
     public static final DeferredRegister<Item> BLOCK_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, RsImm.MOD_ID);
 
+
+
+    // Machines
     public static final RegistryObject<Block> ARC_REACTOR_CHARGER = registerBlock("arc_reactor_charger", () ->
             new ArcReactorChargerBlock(BlockBehaviour.Properties.of(Material.METAL).
-                    strength(4.5f).explosionResistance(3f).requiresCorrectToolForDrops().
+                    strength(4.5f).explosionResistance(3f).
                     sound(SoundType.METAL).noOcclusion()), ModCreativeModeTabs.MAIN);
 
+    public static final RegistryObject<Block> ARMOR_EQUIPPING_STATION = registerBlock("armor_equipping_station", () ->
+            new ArmorEquippingStationBlock(BlockBehaviour.Properties.of(Material.METAL).
+                    strength(4.5f).explosionResistance(3f).
+                    sound(SoundType.METAL).noOcclusion()), ModCreativeModeTabs.MAIN);
+
+    public static final RegistryObject<Block> ARMOR_UNEQUIPPING_STATION = registerBlock("armor_unequipping_station", () ->
+            new ArmorUnequippingStationBlock(BlockBehaviour.Properties.of(Material.METAL).
+                    strength(4.5f).explosionResistance(3f).
+                    sound(SoundType.METAL).noOcclusion()), ModCreativeModeTabs.MAIN);
+
+
+
+    // Ores
     public static final RegistryObject<Block> PALLADIUM_ORE = registerBlock("palladium_ore", () ->
             new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).
                     strength(3f).explosionResistance(3f).requiresCorrectToolForDrops().

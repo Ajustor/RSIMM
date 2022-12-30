@@ -1,5 +1,7 @@
 package net.guwy.rsimm.content.items;
 
+import net.guwy.rsimm.index.ModArmorItems;
+import net.guwy.rsimm.index.ModCreativeModeTabs;
 import net.guwy.rsimm.index.ModItems;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -29,7 +31,7 @@ public class TestArmorItem extends GeoArmorItem implements IAnimatable, ILoopTyp
     public AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
     public TestArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
-        super(materialIn, slot, builder.tab(GeckoLibMod.geckolibItemGroup));
+        super(materialIn, slot, builder);
     }
 
     // Predicate runs every frame
@@ -87,7 +89,7 @@ public class TestArmorItem extends GeoArmorItem implements IAnimatable, ILoopTyp
         // Make sure the player is wearing all the armor. If they are, continue playing
         // the animation, otherwise stop
         boolean isWearingAll = armorList
-                .containsAll(Arrays.asList(ModItems.TEST_ARMOR_BOOTS.get(), ModItems.TEST_ARMOR_LEGGINGS.get(), ModItems.TEST_ARMOR_HELMET.get()));
+                .containsAll(Arrays.asList(ModArmorItems.TEST_ARMOR_BOOTS.get(), ModArmorItems.TEST_ARMOR_LEGGINGS.get(), ModArmorItems.TEST_ARMOR_HELMET.get()));
         return isWearingAll ? PlayState.CONTINUE : PlayState.STOP;
     }
 

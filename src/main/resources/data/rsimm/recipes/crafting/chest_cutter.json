@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " yk",
+    "yby",
+    "ay "
+  ],
+  "key": {
+    "y": {
+      "tag": "forge:plates/titanium"
+    },
+    "k": {
+      "tag": "forge:plates/steel"
+    },
+    "b": {
+      "item": "rsimm:motor"
+    },
+    "a": {
+      "item": "rsimm:circuitry"
+    }
+  },
+  "result": {
+    "item": "rsimm:chest_cutter"
+  }
+}

@@ -13,7 +13,9 @@ public class RenderPlayerNameEventHandler {
         if(event.getEntity().getType().equals(EntityType.PLAYER)){
             Player player = (Player)event.getEntity();
             if(player.getItemBySlot(EquipmentSlot.HEAD).is(ModTags.Items.IRONMAN_HELMETS)){
-                event.setResult(Event.Result.DENY);
+                if(!player.getItemBySlot(EquipmentSlot.HEAD).is(ModTags.Items.FORCED_NAME_TAG_HELMETS)){
+                    event.setResult(Event.Result.DENY);
+                }
             }
         }
     }

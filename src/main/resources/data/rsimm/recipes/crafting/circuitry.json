@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "zxz",
+    "xyx",
+    "zxz"
+  ],
+  "key": {
+    "y": {
+      "item": "minecraft:dried_kelp"
+    },
+    "z": {
+      "item": "minecraft:redstone"
+    },
+    "x": {
+      "tag": "forge:wires/copper"
+    }
+  },
+  "result": {
+    "item": "rsimm:circuitry"
+  }
+}

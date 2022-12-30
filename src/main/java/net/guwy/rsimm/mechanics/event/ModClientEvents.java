@@ -1,15 +1,8 @@
 package net.guwy.rsimm.mechanics.event;
 
 import net.guwy.rsimm.RsImm;
-import net.guwy.rsimm.content.Mark1ArmorOverlay;
-import net.guwy.rsimm.content.entity.client.armor.Mark1ArmorRenderer;
-import net.guwy.rsimm.content.entity.client.armor.TestArmorRenderer;
-import net.guwy.rsimm.content.items.Mark1ArmorItem;
-import net.guwy.rsimm.content.items.TestArmorItem;
-import net.guwy.rsimm.content.network_packets.ExampleC2SPacket;
-import net.guwy.rsimm.index.ModKeyBindings;
-import net.guwy.rsimm.index.ModNetworking;
-import net.guwy.rsimm.mechanics.event.client_events.RegisterArmorRenderersEventHandler;
+import net.guwy.rsimm.content.overlays.Mark1ArmorOverlay;
+import net.guwy.rsimm.mechanics.event.client_events.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
@@ -19,7 +12,6 @@ import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
 public class ModClientEvents {
 
@@ -30,9 +22,14 @@ public class ModClientEvents {
 
         @SubscribeEvent
         public static void onKeyInput(InputEvent.Key event){
-            if(ModKeyBindings.IRONMAN_MENU_KEY.consumeClick()){
-                ModNetworking.sendToServer(new ExampleC2SPacket());
-            }
+            OnKeyInputHandler.init(event);
+
+        }
+
+        @SubscribeEvent
+        public static void onMouseScroll(InputEvent.MouseScrollingEvent event){
+            MouseScrollHandler.init(event);
+
         }
 
     }
@@ -44,7 +41,7 @@ public class ModClientEvents {
 
         @SubscribeEvent
         public static void onKeyRegister(RegisterKeyMappingsEvent event){
-            event.register(ModKeyBindings.IRONMAN_MENU_KEY);
+            OnKeyRegisterHandler.init(event);
         }
 
         @SubscribeEvent
@@ -54,7 +51,7 @@ public class ModClientEvents {
 
         @SubscribeEvent
         public static void registerGuiOverlays(RegisterGuiOverlaysEvent event){
-            event.registerBelowAll("mark_1_helmet", Mark1ArmorOverlay.HELMET_OVERLAY);
+            RegisterGuiOverlaysEventHandler.init(event);
         }
     }
 

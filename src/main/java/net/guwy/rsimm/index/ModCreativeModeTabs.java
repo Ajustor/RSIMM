@@ -8,7 +8,7 @@ public class ModCreativeModeTabs {
     public static final CreativeModeTab MAIN = new CreativeModeTab("rsimm_tab_main") {
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(ModItems.MARK_1_ARC_REACTOR.get());
+            return new ItemStack(ModArcReactorItems.MARK_1_ARC_REACTOR.get());
         }
     };
 

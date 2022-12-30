@@ -60,3 +60,15 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lacinia magn
     versionRange="[1.19.2,1.19.3)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.rsimm]]
+modId="create"
+mandatory=true
+versionRange="[0.3.0,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.rsimm]]
+modId="geckolib3"
+mandatory=true
+versionRange="[3.1.37,)"
+ordering="NONE"
+side="BOTH"

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "zxz",
+    "kxa"
+  ],
+  "key": {
+    "z": {
+      "tag": "forge:plates/steel"
+    },
+    "k": {
+      "item": "create:metal_bracket"
+    },
+    "a": {
+      "item": "create:fluid_valve"
+    },
+    "x": {
+      "item": "create:fluid_tank"
+    }
+  },
+  "result": {
+    "item": "rsimm:mark_1_ammo_kit"
+  }
+}

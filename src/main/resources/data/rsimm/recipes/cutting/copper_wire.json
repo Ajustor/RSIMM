@@ -1,0 +1,15 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "tag": "forge:plates/copper"
+    }
+  ],
+  "results": [
+    {
+      "item": "rsimm:copper_wire",
+      "count": 1
+    }
+  ],
+  "processingTime": 200
+}

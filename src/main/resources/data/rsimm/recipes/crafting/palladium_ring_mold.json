@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "yyy",
+    "yxy",
+    "yyy"
+  ],
+  "key": {
+    "x": {
+      "item": "rsimm:molding_bowl"
+    },
+    "y": {
+      "item": "rsimm:palladium_nugget"
+    }
+  },
+  "result": {
+    "item": "rsimm:palladium_ring_mold",
+    "count": 1
+  }
+}

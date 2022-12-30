@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "kzk",
+    "byb",
+    " x "
+  ],
+  "key": {
+    "x": {
+      "item": "rsimm:circuitry"
+    },
+    "y": {
+      "item": "rsimm:palladium_ring"
+    },
+    "z": {
+      "item": "minecraft:glass_pane"
+    },
+    "k": {
+      "tag": "forge:wires/copper"
+    },
+    "b": {
+      "tag": "forge:plates/iron"
+    }
+  },
+  "result": {
+    "item": "rsimm:mark_1_arc_reactor_uncharged",
+    "count": 1
+  }
+}

@@ -74,8 +74,41 @@
 				}
 			}
 		},
-		"animation.model.new": {
-			"loop": true
+		"animation.model.right_hand_up": {
+			"animation_length": 0.16667,
+			"bones": {
+				"armorRightArm": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": {
+						"0.0": {
+							"vector": [0, 0, 0]
+						},
+						"0.1667": {
+							"vector": [-90.85241, 0, 0]
+						}
+					}
+				}
+			}
+		},
+		"animation.model.right_hand_down": {
+			"animation_length": 0.16667,
+			"bones": {
+				"armorRightArm": {
+					"relative_to": {
+						"rotation": "entity"
+					},
+					"rotation": {
+						"0.0": {
+							"vector": [-90.85241, 0, 0]
+						},
+						"0.1667": {
+							"vector": [0, 0, 0]
+						}
+					}
+				}
+			}
 		}
 	},
 	"geckolib_format_version": 2

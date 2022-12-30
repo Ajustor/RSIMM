@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "zyz",
+    "zzz",
+    "zxz"
+  ],
+  "key": {
+    "z": {
+      "tag": "forge:plates/iron"
+    },
+    "x": {
+      "item": "minecraft:gunpowder"
+    },
+    "y": {
+      "item": "minecraft:tnt"
+    }
+  },
+  "result": {
+    "item": "rsimm:rocket",
+    "count": 6
+  }
+}

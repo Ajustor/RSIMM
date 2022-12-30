@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "zxz",
+    "zaz",
+    "bkb"
+  ],
+  "key": {
+    "z": {
+      "item": "rsimm:steel_armor_plate"
+    },
+    "k": {
+      "item": "rsimm:motor"
+    },
+    "b": {
+      "item": "create:spout"
+    },
+    "x": {
+      "item": "minecraft:leather_chestplate"
+    },
+    "a": {
+      "item": "rsimm:circuitry"
+    }
+  },
+  "result": {
+    "item": "rsimm:unassambled_mark_1_chestplate"
+  }
+}

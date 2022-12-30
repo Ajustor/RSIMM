@@ -11,11 +11,19 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial{
-    TEST_ARMOR("test_armor", 1, new int[]{2, 5, 6, 2}, 9,
+    TEST_ARMOR("test_armor", 2, new int[]{2, 5, 6, 2}, 9,
     SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () ->
-            Ingredient.of(ModItems.DEV_WAND_1.get()));
+            Ingredient.of(ModDeveloperItems.DEV_WAND_1.get())),
 
-    private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
+    MARK_1_ARMOR("mark_1_armor", 3, new int[]{2, 5, 7, 4}, 9,
+    null, 2.0F, 0.1F, () ->
+            Ingredient.of(ModDeveloperItems.DEV_WAND_1.get())),
+
+    MARK_1_OPEN_ARMOR("mark_1_open_armor", 3, new int[]{2, 5, 7, 1}, 9,
+    null, 2.0F, 0.1F, () ->
+            Ingredient.of(ModDeveloperItems.DEV_WAND_1.get()));
+
+    private static final int[] HEALTH_PER_SLOT = new int[]{250, 250, 250, 250};
     private final String name;
     private final int durabilityMultiplier;
     private final int[] slotProtections;
@@ -25,15 +33,15 @@ public enum ModArmorMaterials implements ArmorMaterial{
     private final float knockbackResistance;
     private final LazyLoadedValue<Ingredient> repairIngredient;
 
-    ModArmorMaterials(String p_40474_, int p_40475_, int[] p_40476_, int p_40477_, SoundEvent p_40478_, float p_40479_, float p_40480_, Supplier<Ingredient> p_40481_) {
-        this.name = p_40474_;
-        this.durabilityMultiplier = p_40475_;
-        this.slotProtections = p_40476_;
-        this.enchantmentValue = p_40477_;
-        this.sound = p_40478_;
-        this.toughness = p_40479_;
-        this.knockbackResistance = p_40480_;
-        this.repairIngredient = new LazyLoadedValue<>(p_40481_);
+    ModArmorMaterials(String pName, int pDurabilityMultiplier, int[] pSlotProtections, int pEnchantmentValue, SoundEvent pSound, float pToughness, float pKnockbackResistance, Supplier<Ingredient> pRepairIngredient) {
+        this.name = pName;
+        this.durabilityMultiplier = pDurabilityMultiplier;
+        this.slotProtections = pSlotProtections;
+        this.enchantmentValue = pEnchantmentValue;
+        this.sound = pSound;
+        this.toughness = pToughness;
+        this.knockbackResistance = pKnockbackResistance;
+        this.repairIngredient = new LazyLoadedValue<>(pRepairIngredient);
     }
 
     public int getDurabilityForSlot(EquipmentSlot pSlot) {

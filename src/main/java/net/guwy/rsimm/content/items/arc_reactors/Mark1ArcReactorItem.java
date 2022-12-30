@@ -1,5 +1,6 @@
 package net.guwy.rsimm.content.items.arc_reactors;
 
+import net.guwy.rsimm.index.ModArcReactorItems;
 import net.guwy.rsimm.index.ModItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
@@ -32,7 +33,7 @@ public class Mark1ArcReactorItem extends AbstractArcReactorItem {
 
     @Override
     public long energyOutput() {
-        return 10000;
+        return 100000;
     }
 
     @Override
@@ -47,7 +48,7 @@ public class Mark1ArcReactorItem extends AbstractArcReactorItem {
 
     @Override
     public Item depletedItem() {
-        return ModItems.MARK_1_ARC_REACTOR_DEPLETED.get();
+        return ModArcReactorItems.MARK_1_ARC_REACTOR_DEPLETED.get();
     }
 
     @Override

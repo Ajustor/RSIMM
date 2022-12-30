@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": {"model": "rsimm:block/machines/armor_unequipping_station"}
+  }
+}
