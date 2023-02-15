@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "ingredient": {
-    "item": "rsimm:palladium_ring_mold"
-  },
-  "result": "rsimm:palladium_ring",
-  "experience": 1.0,
-  "cookingtime": 2400
-}

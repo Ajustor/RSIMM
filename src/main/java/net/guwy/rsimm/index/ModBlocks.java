@@ -46,29 +46,6 @@ public class ModBlocks {
 
 
 
-    // Ores
-    public static final RegistryObject<Block> PALLADIUM_ORE = registerBlock("palladium_ore", () ->
-            new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).
-                    strength(3f).explosionResistance(3f).requiresCorrectToolForDrops().
-                    sound(SoundType.STONE), UniformInt.of(3,7)), ModCreativeModeTabs.MAIN);
-
-    public static final RegistryObject<Block> PALLADIUM_ORE_DEEPSLATE = registerBlock("palladium_ore_deepslate", () ->
-            new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).
-                    strength(4.5f).explosionResistance(3f).requiresCorrectToolForDrops().
-                    sound(SoundType.DEEPSLATE), UniformInt.of(3,7)), ModCreativeModeTabs.MAIN);
-
-    public static final RegistryObject<Block> TITANIUM_ORE = registerBlock("titanium_ore", () ->
-            new Block(BlockBehaviour.Properties.of(Material.STONE).
-                    strength(3f).explosionResistance(3f).requiresCorrectToolForDrops().
-                    sound(SoundType.STONE)), ModCreativeModeTabs.MAIN);
-
-    public static final RegistryObject<Block> TITANIUM_ORE_DEEPSLATE = registerBlock("titanium_ore_deepslate", () ->
-            new Block(BlockBehaviour.Properties.of(Material.STONE).
-                    strength(4.5f).explosionResistance(3f).requiresCorrectToolForDrops().
-                    sound(SoundType.DEEPSLATE)), ModCreativeModeTabs.MAIN);
-
-
-
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block,
                                                                      CreativeModeTab tab){

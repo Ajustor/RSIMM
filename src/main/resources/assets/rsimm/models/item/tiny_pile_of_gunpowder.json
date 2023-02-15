@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "rsimm:item/materials/tiny_pile_of_gunpowder"
-  }
-}

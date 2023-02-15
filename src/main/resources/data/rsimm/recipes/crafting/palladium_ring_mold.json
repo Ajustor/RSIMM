@@ -7,10 +7,10 @@
   ],
   "key": {
     "x": {
-      "item": "rsimm:molding_bowl"
+      "item": "sticky_foundations:molding_bowl"
     },
     "y": {
-      "item": "rsimm:palladium_nugget"
+      "tag": "forge:nuggets/palladium"
     }
   },
   "result": {

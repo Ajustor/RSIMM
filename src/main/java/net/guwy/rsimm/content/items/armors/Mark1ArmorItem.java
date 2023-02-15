@@ -9,6 +9,7 @@ import net.guwy.rsimm.index.*;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.FlyMode;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
 import net.guwy.rsimm.mechanics.KeyCallType;
+import net.guwy.sticky_foundations.index.ModMinerals;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -72,19 +73,19 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
         List<ItemStack> list = new ArrayList<>();
         ItemStack itemStack;
 
-        itemStack = new ItemStack(ModItems.STEEL_PLATE.get());
+        itemStack = new ItemStack(ModMinerals.STEEL_PLATE.get());
         itemStack.setCount(18);
         list.add(itemStack);
 
-        itemStack = new ItemStack(ModItems.CIRCUITRY.get());
+        itemStack = new ItemStack(net.guwy.sticky_foundations.index.ModItems.CIRCUITRY_BASIC.get());
         itemStack.setCount(2);
         list.add(itemStack);
 
-        itemStack = new ItemStack(ModItems.MOTOR.get());
+        itemStack = new ItemStack(net.guwy.sticky_foundations.index.ModItems.MOTOR.get());
         itemStack.setCount(1);
         list.add(itemStack);
 
-        itemStack = new ItemStack(ModItems.COPPER_WIRE.get());
+        itemStack = new ItemStack(ModMinerals.COPPER_WIRE.get());
         itemStack.setCount(3);
         list.add(itemStack);
 

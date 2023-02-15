@@ -14,7 +14,7 @@ public class PlayerTickEventOrganizer {
         if((counter % 20) == 0){    //Every Second
             ChestSlotCheck.init(event);
             ReactorUtilization.init(event);
-            ReactorPoisoningHandler.init(event);
+            //ReactorPoisoningHandler.init(event);
             ArmorNBTWriteHandler.init(event);
             ReactorLoadHandler.init(event);
 

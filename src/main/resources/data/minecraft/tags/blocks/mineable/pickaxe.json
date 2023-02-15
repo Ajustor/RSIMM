@@ -1,10 +1,6 @@
 {
   "replace": false,
   "values": [
-    "rsimm:palladium_ore",
-    "rsimm:palladium_ore_deepslate",
-    "rsimm:titanium_ore",
-    "rsimm:titanium_ore_deepslate",
     "rsimm:arc_reactor_charger",
     "rsimm:armor_equipping_station"
   ]

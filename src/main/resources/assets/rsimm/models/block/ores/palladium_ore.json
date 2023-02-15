@@ -1,6 +1,0 @@
-{
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "rsimm:block/ores/palladium_ore"
-  }
-}

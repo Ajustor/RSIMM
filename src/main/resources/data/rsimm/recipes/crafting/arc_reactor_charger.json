@@ -22,7 +22,7 @@
       "item": "minecraft:quartz"
     },
     "a": {
-      "item": "rsimm:circuitry"
+      "item": "sticky_foundations:circuitry_basic"
     }
   },
   "result": {

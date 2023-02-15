@@ -13,10 +13,10 @@
       "tag": "forge:plates/steel"
     },
     "b": {
-      "item": "rsimm:motor"
+      "item": "sticky_foundations:motor"
     },
     "a": {
-      "item": "rsimm:circuitry"
+      "item": "sticky_foundations:circuitry_basic"
     }
   },
   "result": {

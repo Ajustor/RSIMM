@@ -32,12 +32,19 @@ public class ModTags {
 
         public static final TagKey<Item> UNCHARGED_ARC_REACTORS = tag("uncharged_arc_reactors");
 
+
+        public static final TagKey<Item> PLANKS = minecraftTags("planks");
+
         private static TagKey<Item> tag(String name){
             return ItemTags.create(new ResourceLocation(RsImm.MOD_ID, name));
         }
 
         private static TagKey<Item> forgeTags(String name){
             return ItemTags.create(new ResourceLocation("forge", name));
+        }
+
+        private static TagKey<Item> minecraftTags(String name){
+            return ItemTags.create(new ResourceLocation("minecraft", name));
         }
     }
 

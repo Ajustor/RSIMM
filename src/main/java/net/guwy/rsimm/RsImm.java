@@ -6,8 +6,6 @@ import net.guwy.rsimm.content.blocks.armor_equipping_station.ArmorEquippingStati
 import net.guwy.rsimm.content.entities.non_living.mark_1_flame.Mark1FlameEntityRenderer;
 import net.guwy.rsimm.content.entities.non_living.rocket.RocketEntityRenderer;
 import net.guwy.rsimm.index.*;
-import net.guwy.rsimm.world.feature.ModConfiguredFeatures;
-import net.guwy.rsimm.world.feature.ModPlacedFeatures;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.common.MinecraftForge;
@@ -43,9 +41,6 @@ public class RsImm {
 
         ModSounds.register(eventBus);
         ModEffects.register(eventBus);
-
-        ModConfiguredFeatures.register(eventBus);
-        ModPlacedFeatures.register(eventBus);
 
         ModBlockEntities.register(eventBus);
         ModMenuTypes.register(eventBus);

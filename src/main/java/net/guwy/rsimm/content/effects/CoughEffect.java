@@ -1,5 +1,6 @@
 package net.guwy.rsimm.content.effects;
 
+import net.guwy.rsimm.index.ModItems;
 import net.guwy.rsimm.index.ModSounds;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;

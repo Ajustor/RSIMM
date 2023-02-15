@@ -8,6 +8,7 @@ import software.bernie.geckolib3.model.AnimatedGeoModel;
 public class Mark1ArmorModel extends AnimatedGeoModel<Mark1ArmorItem> {
     @Override
     public ResourceLocation getModelResource(Mark1ArmorItem object) {
+
         return new ResourceLocation(RsImm.MOD_ID, "geo/mark_1.geo.json");
     }
 

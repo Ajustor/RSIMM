@@ -32,6 +32,10 @@ public class ModSounds {
         return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(RsImm.MOD_ID, name)));
     }
 
+    private static RegistryObject<SoundEvent> registerSoundEvent(String name, float range){
+        return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(RsImm.MOD_ID, name), range));
+    }
+
     public static void register(IEventBus eventBus){
         SOUND_EVENTS.register(eventBus);
     }

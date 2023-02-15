@@ -1,6 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "rsimm:item/materials/steel_plate"
-  }
-}

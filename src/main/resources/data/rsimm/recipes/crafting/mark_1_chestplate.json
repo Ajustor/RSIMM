@@ -10,7 +10,7 @@
       "item": "rsimm:steel_armor_plate"
     },
     "k": {
-      "item": "rsimm:motor"
+      "item": "sticky_foundations:motor"
     },
     "b": {
       "item": "create:spout"
@@ -19,7 +19,7 @@
       "item": "minecraft:leather_chestplate"
     },
     "a": {
-      "item": "rsimm:circuitry"
+      "item": "sticky_foundations:circuitry_basic"
     }
   },
   "result": {
