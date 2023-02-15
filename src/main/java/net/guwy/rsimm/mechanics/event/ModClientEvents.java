@@ -3,13 +3,12 @@ package net.guwy.rsimm.mechanics.event;
 import net.guwy.rsimm.RsImm;
 import net.guwy.rsimm.content.overlays.Mark1ArmorOverlay;
 import net.guwy.rsimm.mechanics.event.client_events.*;
+import net.guwy.rsimm.mechanics.event.server_events.RenderPlayerEventPreHandler;
+import net.guwy.rsimm.mechanics.event.server_events.RenderPlayerNameEventHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.InputEvent;
-import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
-import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
+import net.minecraftforge.client.event.*;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -30,6 +29,21 @@ public class ModClientEvents {
         public static void onMouseScroll(InputEvent.MouseScrollingEvent event){
             MouseScrollHandler.init(event);
 
+        }
+
+        @SubscribeEvent
+        public static void renderPlayerEvent(RenderPlayerEvent.Pre event) {
+            RenderPlayerEventPreHandler.init(event);
+        }
+
+        @SubscribeEvent
+        public static void renderArmEvent(RenderArmEvent event) {
+            //RenderArmEventHandler.init(event);
+        }
+
+        @SubscribeEvent
+        public static void renderPlayerNameEvent(RenderNameTagEvent event) {
+            RenderPlayerNameEventHandler.init(event);
         }
 
     }

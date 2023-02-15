@@ -102,21 +102,6 @@ public class ModEvents {
         }
 
         @SubscribeEvent
-        public static void renderPlayerEvent(RenderPlayerEvent.Pre event) {
-            RenderPlayerEventPreHandler.init(event);
-        }
-
-        @SubscribeEvent
-        public static void renderArmEvent(RenderArmEvent event) {
-            //RenderArmEventHandler.init(event);
-        }
-
-        @SubscribeEvent
-        public static void renderPlayerNameEvent(RenderNameTagEvent event) {
-            RenderPlayerNameEventHandler.init(event);
-        }
-
-        @SubscribeEvent
         public static void entityHurtEvent(LivingHurtEvent event) {
             EntityHurtHandler.init(event);
         }
