@@ -32,6 +32,13 @@ public class ModTags {
 
         public static final TagKey<Item> UNCHARGED_ARC_REACTORS = tag("uncharged_arc_reactors");
 
+        public static final TagKey<Item> UNASSEMBLED_IRONMAN_HELMETS = tag("unassembled_ironman_helmets");
+        public static final TagKey<Item> UNASSEMBLED_IRONMAN_CHESTPLATES = tag("unassembled_ironman_chestplates");
+        public static final TagKey<Item> UNASSEMBLED_IRONMAN_LEGGINGS = tag("unassembled_ironman_leggings");
+        public static final TagKey<Item> UNASSEMBLED_IRONMAN_BOOTS = tag("unassembled_ironman_boots");
+
+        public static final TagKey<Item> AMMO_KITS = tag("ammo_kits");
+
 
         public static final TagKey<Item> PLANKS = minecraftTags("planks");
 

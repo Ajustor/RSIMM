@@ -1,13 +1,7 @@
 package net.guwy.rsimm.index;
 
 import net.guwy.rsimm.RsImm;
-import net.guwy.rsimm.content.items.*;
-import net.guwy.rsimm.content.items.arc_reactors.DepletedArcReactorItem;
-import net.guwy.rsimm.content.items.arc_reactors.Mark1ArcReactorItem;
-import net.guwy.rsimm.content.items.arc_reactors.UnchargedMark1ArcReactorItem;
-import net.guwy.rsimm.content.items.armors.Mark1ArmorItem;
-import net.guwy.rsimm.content.items.armors.Mark1OpenHelmetArmorItem;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.guwy.rsimm.content.items.ChestCutterItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

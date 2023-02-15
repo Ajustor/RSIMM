@@ -47,6 +47,26 @@ public class ArmorEquippingStationBlockEntity extends BlockEntity implements Men
         protected void onContentsChanged(int slot) {
             setChanged();
         }
+
+        @Override
+        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+            if(slot == 0){
+                return stack.is(ModTags.Items.UNASSEMBLED_IRONMAN_HELMETS);
+            }
+            if(slot == 1){
+                return stack.is(ModTags.Items.UNASSEMBLED_IRONMAN_CHESTPLATES);
+            }
+            if(slot == 2){
+                return stack.is(ModTags.Items.UNASSEMBLED_IRONMAN_LEGGINGS);
+            }
+            if(slot == 3){
+                return stack.is(ModTags.Items.UNASSEMBLED_IRONMAN_BOOTS);
+            }
+            if(slot == 4){
+                return stack.is(ModTags.Items.AMMO_KITS);
+            }
+            return super.isItemValid(slot, stack);
+        }
     };
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();

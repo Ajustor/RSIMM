@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "rsimm:mark_1_arc_reactor_uncharged"
+    "rsimm:mark_1_arc_reactor_uncharged",
+    "rsimm:mark_2_arc_reactor_uncharged"
   ]
 }

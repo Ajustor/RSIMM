@@ -124,4 +124,6 @@ public class ArcReactorChargerMenu extends AbstractContainerMenu {
     public ArcReactorChargerBlockEntity getBlockEntity() {
         return this.blockEntity;
     }
+
+
 }

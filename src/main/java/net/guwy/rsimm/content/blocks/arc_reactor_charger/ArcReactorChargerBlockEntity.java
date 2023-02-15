@@ -40,6 +40,11 @@ public class ArcReactorChargerBlockEntity extends BlockEntity implements MenuPro
         protected void onContentsChanged(int slot) {
             setChanged();
         }
+
+        @Override
+        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+            return stack.is(ModTags.Items.UNCHARGED_ARC_REACTORS);
+        }
     };
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
