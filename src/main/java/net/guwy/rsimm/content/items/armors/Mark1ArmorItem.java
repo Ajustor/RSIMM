@@ -6,10 +6,10 @@ import net.guwy.rsimm.content.data.ArmorClientData;
 import net.guwy.rsimm.content.entities.non_living.mark_1_flame.Mark1FlameEntity;
 import net.guwy.rsimm.content.entities.non_living.rocket.RocketEntity;
 import net.guwy.rsimm.index.*;
+import net.guwy.rsimm.mechanics.KeyCallType;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.FlyMode;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
-import net.guwy.rsimm.mechanics.KeyCallType;
-import net.guwy.sticky_foundations.index.ModMinerals;
+import net.guwy.sticky_foundations.index.SFMinerals;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -20,7 +20,10 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -73,19 +76,19 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
         List<ItemStack> list = new ArrayList<>();
         ItemStack itemStack;
 
-        itemStack = new ItemStack(ModMinerals.STEEL_PLATE.get());
+        itemStack = new ItemStack(SFMinerals.STEEL_PLATE.get());
         itemStack.setCount(18);
         list.add(itemStack);
 
-        itemStack = new ItemStack(net.guwy.sticky_foundations.index.ModItems.CIRCUITRY_BASIC.get());
+        itemStack = new ItemStack(net.guwy.sticky_foundations.index.SFItems.CIRCUITRY_BASIC.get());
         itemStack.setCount(2);
         list.add(itemStack);
 
-        itemStack = new ItemStack(net.guwy.sticky_foundations.index.ModItems.MOTOR.get());
+        itemStack = new ItemStack(net.guwy.sticky_foundations.index.SFItems.MOTOR.get());
         itemStack.setCount(1);
         list.add(itemStack);
 
-        itemStack = new ItemStack(ModMinerals.COPPER_WIRE.get());
+        itemStack = new ItemStack(SFMinerals.COPPER_WIRE.get());
         itemStack.setCount(3);
         list.add(itemStack);
 
