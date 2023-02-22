@@ -124,18 +124,19 @@ public class ArcReactorChargerBlockEntity extends BlockEntity implements MenuPro
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
-        pTag.put("inventory", itemHandler.serializeNBT());
-        pTag.put("energy", ENERGY_STORAGE.serializeNBT());
-        pTag.putInt("progress", this.progress);
         super.saveAdditional(pTag);
+        pTag.put("inventory", this.itemHandler.serializeNBT());
+        pTag.putInt("energy", this.ENERGY_STORAGE.getEnergyStored());
+        pTag.putInt("progress", this.progress);
     }
 
     @Override
     public void load(CompoundTag pTag) {
         super.load(pTag);
-        itemHandler.deserializeNBT(pTag.getCompound("inventory"));
-        ENERGY_STORAGE.deserializeNBT(pTag.getCompound("energy"));
-        progress = pTag.getInt("progress");
+        this.itemHandler.deserializeNBT(pTag.getCompound("inventory"));
+        //this.ENERGY_STORAGE.deserializeNBT(pTag.getCompound("energy"));
+        this.ENERGY_STORAGE.setEnergy(pTag.getInt("energy"));
+        this.progress = pTag.getInt("progress");
     }
 
     public void drops(){
