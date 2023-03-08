@@ -73,19 +73,19 @@ public class ArmorUnequippingStationBlock extends Block {
 
             itemStack = new ItemStack(ammoKit.UnassembledHelmetItem());
             itemStack.setDamageValue(player.getItemBySlot(EquipmentSlot.HEAD).getDamageValue());
-            player.addItem(itemStack);
+            player.getInventory().placeItemBackInInventory(itemStack);
 
             itemStack = new ItemStack(ammoKit.UnassembledChestplateItem());
             itemStack.setDamageValue(player.getItemBySlot(EquipmentSlot.CHEST).getDamageValue());
-            player.addItem(itemStack);
+            player.getInventory().placeItemBackInInventory(itemStack);
 
             itemStack = new ItemStack(ammoKit.UnassembledLeggingsItem());
             itemStack.setDamageValue(player.getItemBySlot(EquipmentSlot.LEGS).getDamageValue());
-            player.addItem(itemStack);
+            player.getInventory().placeItemBackInInventory(itemStack);
 
             itemStack = new ItemStack(ammoKit.UnassembledBootsItem());
             itemStack.setDamageValue(player.getItemBySlot(EquipmentSlot.FEET).getDamageValue());
-            player.addItem(itemStack);
+            player.getInventory().placeItemBackInInventory(itemStack);
 
             itemStack = new ItemStack(ammoKit);
             CompoundTag tag = new CompoundTag();
@@ -100,7 +100,7 @@ public class ArmorUnequippingStationBlock extends Block {
             tag.putInt("9", armorData.getArmorStorage(9));
             tag.putInt("10", armorData.getArmorStorage(10));
             itemStack.setTag(tag);
-            player.addItem(itemStack);
+            player.getInventory().placeItemBackInInventory(itemStack);
         });
     }
 
