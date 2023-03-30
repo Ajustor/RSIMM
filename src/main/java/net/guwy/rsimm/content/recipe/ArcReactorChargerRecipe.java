@@ -11,20 +11,20 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 public class ArcReactorChargerRecipe implements Recipe<SimpleContainer> {
-
     private final ResourceLocation id;
     private final ItemStack output;
     private final NonNullList<Ingredient> recipeItems;
 
-    public ArcReactorChargerRecipe(ResourceLocation id, ItemStack output,
-                                    NonNullList<Ingredient> recipeItems) {
+    public ArcReactorChargerRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> recipeItems) {
         this.id = id;
         this.output = output;
         this.recipeItems = recipeItems;
     }
+
 
     @Override
     public boolean matches(SimpleContainer pContainer, Level pLevel) {
@@ -32,7 +32,12 @@ public class ArcReactorChargerRecipe implements Recipe<SimpleContainer> {
             return false;
         }
 
-        return recipeItems.get(0).test(pContainer.getItem(1));
+        return recipeItems.get(0).test(pContainer.getItem(0));
+    }
+
+    @Override
+    public NonNullList<Ingredient> getIngredients() {
+        return recipeItems;
     }
 
     @Override
@@ -71,6 +76,7 @@ public class ArcReactorChargerRecipe implements Recipe<SimpleContainer> {
         public static final String ID = "arc_reactor_charging";
     }
 
+
     public static class Serializer implements RecipeSerializer<ArcReactorChargerRecipe> {
         public static final Serializer INSTANCE = new Serializer();
         public static final ResourceLocation ID =
@@ -91,25 +97,25 @@ public class ArcReactorChargerRecipe implements Recipe<SimpleContainer> {
         }
 
         @Override
-        public @Nullable ArcReactorChargerRecipe fromNetwork(ResourceLocation pRecipeId, FriendlyByteBuf pBuffer) {
-            NonNullList<Ingredient> inputs = NonNullList.withSize(pBuffer.readInt(), Ingredient.EMPTY);
+        public @Nullable ArcReactorChargerRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
+            NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
 
             for (int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromNetwork(pBuffer));
+                inputs.set(i, Ingredient.fromNetwork(buf));
             }
 
-            ItemStack output = pBuffer.readItem();
-            return new ArcReactorChargerRecipe(pRecipeId, output, inputs);
+            ItemStack output = buf.readItem();
+            return new ArcReactorChargerRecipe(id, output, inputs);
         }
 
         @Override
-        public void toNetwork(FriendlyByteBuf pBuffer, ArcReactorChargerRecipe pRecipe) {
-            pBuffer.writeInt(pRecipe.getIngredients().size());
+        public void toNetwork(FriendlyByteBuf buf, ArcReactorChargerRecipe recipe) {
+            buf.writeInt(recipe.getIngredients().size());
 
-            for (Ingredient ing : pRecipe.getIngredients()) {
-                ing.toNetwork(pBuffer);
+            for (Ingredient ing : recipe.getIngredients()) {
+                ing.toNetwork(buf);
             }
-            pBuffer.writeItemStack(pRecipe.getResultItem(), false);
+            buf.writeItemStack(recipe.getResultItem(), false);
         }
     }
 }

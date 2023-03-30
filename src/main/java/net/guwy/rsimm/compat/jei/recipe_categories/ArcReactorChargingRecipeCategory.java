@@ -10,13 +10,13 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.guwy.rsimm.RsImm;
 import net.guwy.rsimm.compat.jei.JEIRsimmPlugin;
+import net.guwy.rsimm.content.recipe.ArcReactorChargerRecipe;
 import net.guwy.rsimm.index.ModBlocks;
-import net.guwy.rsimm.recipes.ArcReactorChargingRecipe;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
-public class ArcReactorChargingRecipeCategory implements IRecipeCategory<ArcReactorChargingRecipe> {
+public class ArcReactorChargingRecipeCategory implements IRecipeCategory<ArcReactorChargerRecipe> {
     public final static ResourceLocation UID = new ResourceLocation(RsImm.MOD_ID, "arc_reactor_charging");
     public final static ResourceLocation TEXTURE =
             new ResourceLocation(RsImm.MOD_ID, "textures/jei/jei_this_to_that.png");
@@ -51,7 +51,7 @@ public class ArcReactorChargingRecipeCategory implements IRecipeCategory<ArcReac
     }
 
     @Override
-    public void setRecipe(IRecipeLayoutBuilder builder, ArcReactorChargingRecipe recipe, IFocusGroup focuses) {
+    public void setRecipe(IRecipeLayoutBuilder builder, ArcReactorChargerRecipe recipe, IFocusGroup focuses) {
 
         builder.addSlot(RecipeIngredientRole.INPUT, 16, 10).addIngredients(recipe.getIngredients().get(0));
 

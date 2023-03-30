@@ -8,8 +8,8 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.guwy.rsimm.RsImm;
 import net.guwy.rsimm.compat.jei.recipe_categories.ArcReactorChargingRecipeCategory;
+import net.guwy.rsimm.content.recipe.ArcReactorChargerRecipe;
 import net.guwy.rsimm.index.ModBlocks;
-import net.guwy.rsimm.recipes.ArcReactorChargingRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -20,8 +20,8 @@ import java.util.Objects;
 
 @JeiPlugin
 public class JEIRsimmPlugin implements IModPlugin {
-    public static RecipeType<ArcReactorChargingRecipe> ARC_REACTOR_CHARGING_TYPE =
-            new RecipeType<>(ArcReactorChargingRecipeCategory.UID, ArcReactorChargingRecipe.class);
+    public static RecipeType<ArcReactorChargerRecipe> ARC_REACTOR_CHARGING_TYPE =
+            new RecipeType<>(ArcReactorChargingRecipeCategory.UID, ArcReactorChargerRecipe.class);
 
     @Override
     public ResourceLocation getPluginUid() {
@@ -39,7 +39,7 @@ public class JEIRsimmPlugin implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registration) {
         RecipeManager rm = Objects.requireNonNull(Minecraft.getInstance().level).getRecipeManager();
 
-        List<ArcReactorChargingRecipe> recipesArcReactorCharging = rm.getAllRecipesFor(ArcReactorChargingRecipe.Type.INSTANCE);
+        List<ArcReactorChargerRecipe> recipesArcReactorCharging = rm.getAllRecipesFor(ArcReactorChargerRecipe.Type.INSTANCE);
         registration.addRecipes(ARC_REACTOR_CHARGING_TYPE, recipesArcReactorCharging);
 
 
