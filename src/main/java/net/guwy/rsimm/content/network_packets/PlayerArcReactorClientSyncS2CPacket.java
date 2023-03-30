@@ -9,23 +9,19 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class ArcReactorChargerClientSyncS2CPacket {
-    /**
-     * Used To sync arc reactor charger energy data
-     *
-     * its block specific because i don't know how to make it work universally
-     */
+public class PlayerArcReactorClientSyncS2CPacket {
     private final int energy;
     private final BlockPos pos;
 
-    public ArcReactorChargerClientSyncS2CPacket(int energy, BlockPos pos) {
+    public PlayerArcReactorClientSyncS2CPacket(int energy, BlockPos pos) {
         this.energy = energy;
         this.pos = pos;
     }
 
-    public ArcReactorChargerClientSyncS2CPacket(FriendlyByteBuf buf) {
+    public PlayerArcReactorClientSyncS2CPacket(FriendlyByteBuf buf) {
         this.energy = buf.readInt();
         this.pos = buf.readBlockPos();
+
     }
 
     public void toBytes(FriendlyByteBuf buf) {

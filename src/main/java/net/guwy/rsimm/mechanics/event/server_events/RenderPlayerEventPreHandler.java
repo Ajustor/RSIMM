@@ -1,18 +1,30 @@
 package net.guwy.rsimm.mechanics.event.server_events;
 
+import com.mojang.math.Vector3f;
+import com.simibubi.create.foundation.item.render.CustomItemModels;
 import net.guwy.rsimm.content.entities.armor.Mark1ArmorModel;
 import net.guwy.rsimm.content.entities.armor.Mark1ArmorRenderer;
 import net.guwy.rsimm.content.items.TestArmorItem;
 import net.guwy.rsimm.content.items.armors.AbstractIronmanArmorItem;
 import net.guwy.rsimm.content.items.armors.Mark1ArmorItem;
+import net.guwy.rsimm.index.ModArcReactorItems;
 import net.guwy.rsimm.index.ModArmorItems;
 import net.guwy.rsimm.index.ModTags;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.LightTexture;
+import net.minecraft.client.renderer.block.model.ItemTransforms;
+import net.minecraft.client.renderer.entity.ItemRenderer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.LightLayer;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
@@ -20,6 +32,12 @@ public class RenderPlayerEventPreHandler {
     public static void init(RenderPlayerEvent.Pre event){
         Player player = (Player) event.getEntity();
 
+        /**
+         * The Part That hides the player limbs when wearing ironman armor
+         *
+         * Due to complications with GeckoLib armors that have a very tight fit on the player
+         * sometimes clip through the body thus making weird glitches
+         **/
         if(player.getItemBySlot(EquipmentSlot.HEAD).is(ModTags.Items.IRONMAN_HELMETS)){
 
             player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armor -> {
@@ -45,5 +63,49 @@ public class RenderPlayerEventPreHandler {
             event.getRenderer().getModel().rightLeg.visible = false;
             event.getRenderer().getModel().rightPants.visible = false;
         }
+
+
+        /**
+         * The Part That Renders The Arc Reactor on the player
+         */
+
+        event.getPoseStack().pushPose();
+
+        event.getPoseStack().mulPose(Vector3f.YN.rotationDegrees(180 + event.getEntity().yBodyRot));
+
+        double x = 0;
+        double y = -0.13;
+
+        event.getPoseStack().translate(x, 1.18, y);
+        event.getPoseStack().scale(0.2f, 0.2f, 0.2f);
+
+        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+
+        ItemStack stack = new ItemStack(ModArcReactorItems.MARK_2_ARC_REACTOR.get());
+        stack = new ItemStack(ModArcReactorItems.MARK_1_ARC_REACTOR.get());
+
+        BakedModel bakedModel = itemRenderer.getModel(stack, event.getEntity().getLevel(), event.getEntity(), 1);
+
+        itemRenderer.render(stack, ItemTransforms.TransformType.FIXED, false, event.getPoseStack(),
+                event.getMultiBufferSource(), getLightLevel(event.getEntity()), OverlayTexture.NO_OVERLAY,
+                bakedModel);
+
+        event.getPoseStack().popPose();
+
+    }
+
+    private static int getLightLevel(Player entity) {
+        int bLight = entity.level.getBrightness(LightLayer.BLOCK, entity.getOnPos().offset(0, 1, 0));
+        int sLight = entity.level.getBrightness(LightLayer.SKY, entity.getOnPos().offset(0, 1, 0));
+        return LightTexture.pack(bLight, sLight);
+    }
+
+    private static ItemStack getArcReactorItem(Player player){
+        ItemStack itemStack;
+
+        Entity entity;
+        entity.
+
+        return itemStack;
     }
 }
