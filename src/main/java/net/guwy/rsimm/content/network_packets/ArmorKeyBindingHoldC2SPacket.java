@@ -21,6 +21,11 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 public class ArmorKeyBindingHoldC2SPacket {
+    /**
+     * Key Binding Transmitter to the server for keybinding handling
+     *
+     * Should probably be reformatted to be like the weapon key binding
+     */
     public ArmorKeyBindingHoldC2SPacket() {
 
     }

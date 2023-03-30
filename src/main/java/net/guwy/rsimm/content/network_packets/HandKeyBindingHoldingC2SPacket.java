@@ -13,6 +13,11 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 public class HandKeyBindingHoldingC2SPacket {
+    /**
+     * Key Binding Transmitter to the server for keybinding handling
+     *
+     * Should probably be reformatted to be like the weapon key binding
+     */
     public HandKeyBindingHoldingC2SPacket() {
 
     }

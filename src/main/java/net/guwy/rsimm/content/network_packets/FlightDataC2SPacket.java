@@ -9,6 +9,12 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 public class FlightDataC2SPacket {
+    /**
+     * sends data on client side to server side for processing
+     *
+     * this being the flight speed for flight overspeed handling
+     */
+
     private final double totalSpeed;
 
     public FlightDataC2SPacket(double totalSpeed) {

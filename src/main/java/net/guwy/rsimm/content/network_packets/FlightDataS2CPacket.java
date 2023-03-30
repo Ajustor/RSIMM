@@ -8,6 +8,13 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 public class FlightDataS2CPacket {
+    /**
+     * Sends data from server to client for flight handling
+     *
+     * These data used by the client to check if the player is flying at ar which mode
+     * which then translates to motion as speed is non-existent at the server side
+     */
+
     private final double playerRotation;
     private final boolean isFlying;
     private final FlyMode flyMode;

@@ -28,10 +28,10 @@ public class ModNetworking {
         INSTANCE = net;
 
 
-        net.messageBuilder(ExampleC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(ExampleC2SPacket::new)
-                .encoder(ExampleC2SPacket::toBytes)
-                .consumerMainThread(ExampleC2SPacket::handle)
+        net.messageBuilder(Mark1FlameThrowerC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(Mark1FlameThrowerC2SPacket::new)
+                .encoder(Mark1FlameThrowerC2SPacket::toBytes)
+                .consumerMainThread(Mark1FlameThrowerC2SPacket::handle)
                 .add();
 
 

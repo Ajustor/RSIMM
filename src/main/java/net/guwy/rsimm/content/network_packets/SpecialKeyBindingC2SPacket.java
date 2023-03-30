@@ -14,6 +14,12 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 public class SpecialKeyBindingC2SPacket {
+    /**
+     * Sends a request to the server side with the key's call type for handling of this event
+     *
+     * Special key being the super ability of sorts
+     */
+
     private final KeyCallType keyCallType;
     public SpecialKeyBindingC2SPacket(KeyCallType fireCall) {
         this.keyCallType = fireCall;

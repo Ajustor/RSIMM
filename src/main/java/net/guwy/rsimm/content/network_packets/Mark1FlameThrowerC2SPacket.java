@@ -9,12 +9,16 @@ import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
 
-public class ExampleC2SPacket {
-    public ExampleC2SPacket() {
+public class Mark1FlameThrowerC2SPacket {
+    /**
+     * sends a request to the server to spawn fire stream
+     * since it won't work if it was the client side that did this
+     */
+    public Mark1FlameThrowerC2SPacket() {
 
     }
 
-    public ExampleC2SPacket(FriendlyByteBuf buf) {
+    public Mark1FlameThrowerC2SPacket(FriendlyByteBuf buf) {
 
     }
 

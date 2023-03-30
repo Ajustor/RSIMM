@@ -1,15 +1,9 @@
 package net.guwy.rsimm.mechanics.event.server_events;
 
 import com.mojang.math.Vector3f;
-import com.simibubi.create.foundation.item.render.CustomItemModels;
-import net.guwy.rsimm.content.entities.armor.Mark1ArmorModel;
-import net.guwy.rsimm.content.entities.armor.Mark1ArmorRenderer;
-import net.guwy.rsimm.content.items.TestArmorItem;
-import net.guwy.rsimm.content.items.armors.AbstractIronmanArmorItem;
-import net.guwy.rsimm.content.items.armors.Mark1ArmorItem;
 import net.guwy.rsimm.index.ModArcReactorItems;
-import net.guwy.rsimm.index.ModArmorItems;
 import net.guwy.rsimm.index.ModTags;
+import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
@@ -17,16 +11,15 @@ import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.LightLayer;
 import net.minecraftforge.client.event.RenderPlayerEvent;
-import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 public class RenderPlayerEventPreHandler {
     public static void init(RenderPlayerEvent.Pre event){
@@ -82,7 +75,7 @@ public class RenderPlayerEventPreHandler {
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 
         ItemStack stack = new ItemStack(ModArcReactorItems.MARK_2_ARC_REACTOR.get());
-        stack = new ItemStack(ModArcReactorItems.MARK_1_ARC_REACTOR.get());
+        stack = getArcReactorItem(player);
 
         BakedModel bakedModel = itemRenderer.getModel(stack, event.getEntity().getLevel(), event.getEntity(), 1);
 
@@ -101,11 +94,15 @@ public class RenderPlayerEventPreHandler {
     }
 
     private static ItemStack getArcReactorItem(Player player){
-        ItemStack itemStack;
+        AtomicReference<ItemStack> itemStack = new AtomicReference<ItemStack>(new ItemStack(Items.BUCKET));
 
-        Entity entity;
-        entity.
+        Player serverPlayer = player.getServer().getLevel(player.getLevel().dimension()).getPlayerByUUID(player.getUUID());
+        serverPlayer.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(handler -> {
+            itemStack.set(new ItemStack(Item.byId(handler.getArcReactorTypeId())));
+        });
 
-        return itemStack;
+        player.getUUID();
+
+        return itemStack.get();
     }
 }

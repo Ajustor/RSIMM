@@ -8,6 +8,10 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 public class FreezeDataS2CPacket {
+    /**
+     * sends the freeze amount of the armor to the client side to handle freeze particles
+     */
+
     private final double freezing;
 
     public FreezeDataS2CPacket(double freezing) {

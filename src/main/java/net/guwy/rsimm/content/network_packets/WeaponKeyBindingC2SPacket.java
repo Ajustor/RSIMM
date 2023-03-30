@@ -14,6 +14,11 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 public class WeaponKeyBindingC2SPacket {
+    /**
+     * Sends a request to the server side with the key's call type for handling of this event
+     *
+     * Used to fire and cycle between selected weapons
+     */
     private final KeyCallType keyCallType;
     public WeaponKeyBindingC2SPacket(KeyCallType fireCall) {
         this.keyCallType = fireCall;
