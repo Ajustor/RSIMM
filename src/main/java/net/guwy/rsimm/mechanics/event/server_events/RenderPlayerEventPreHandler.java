@@ -1,6 +1,7 @@
 package net.guwy.rsimm.mechanics.event.server_events;
 
 import com.mojang.math.Vector3f;
+import net.guwy.rsimm.content.data.ArcReactorClientData;
 import net.guwy.rsimm.index.ModArcReactorItems;
 import net.guwy.rsimm.index.ModTags;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
@@ -64,24 +65,28 @@ public class RenderPlayerEventPreHandler {
 
         event.getPoseStack().pushPose();
 
+        // Rotates the model to match the body rotation
         event.getPoseStack().mulPose(Vector3f.YN.rotationDegrees(180 + event.getEntity().yBodyRot));
 
+        // Re-positions and re-scales the model to the set parameters
+        // The display model may broke depending on how the model is defined to look in an item frame
         double x = 0;
         double y = -0.13;
-
         event.getPoseStack().translate(x, 1.18, y);
         event.getPoseStack().scale(0.2f, 0.2f, 0.2f);
 
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 
-        ItemStack stack = new ItemStack(ModArcReactorItems.MARK_2_ARC_REACTOR.get());
-        stack = getArcReactorItem(player);
+        ItemStack stack = getArcReactorItem(player);
 
-        BakedModel bakedModel = itemRenderer.getModel(stack, event.getEntity().getLevel(), event.getEntity(), 1);
+        // Renders the item if it isn't null
+        if(stack != null){
+            BakedModel bakedModel = itemRenderer.getModel(stack, event.getEntity().getLevel(), event.getEntity(), 1);
 
-        itemRenderer.render(stack, ItemTransforms.TransformType.FIXED, false, event.getPoseStack(),
-                event.getMultiBufferSource(), getLightLevel(event.getEntity()), OverlayTexture.NO_OVERLAY,
-                bakedModel);
+            itemRenderer.render(stack, ItemTransforms.TransformType.FIXED, false, event.getPoseStack(),
+                    event.getMultiBufferSource(), getLightLevel(event.getEntity()), OverlayTexture.NO_OVERLAY,
+                    bakedModel);
+        }
 
         event.getPoseStack().popPose();
 
@@ -94,15 +99,12 @@ public class RenderPlayerEventPreHandler {
     }
 
     private static ItemStack getArcReactorItem(Player player){
-        AtomicReference<ItemStack> itemStack = new AtomicReference<ItemStack>(new ItemStack(Items.BUCKET));
+        Item item = ArcReactorClientData.getReactorItem(player.getUUID());
 
-        Player serverPlayer = player.getServer().getLevel(player.getLevel().dimension()).getPlayerByUUID(player.getUUID());
-        serverPlayer.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(handler -> {
-            itemStack.set(new ItemStack(Item.byId(handler.getArcReactorTypeId())));
-        });
+        // Check if the item is null
+        // if it is return null for itemstack too else just continue
+        ItemStack itemStack = item != null ? new ItemStack(item) : null;
 
-        player.getUUID();
-
-        return itemStack.get();
+        return itemStack;
     }
 }

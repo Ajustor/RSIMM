@@ -4,10 +4,12 @@ import net.guwy.rsimm.index.ModSounds;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -127,7 +129,7 @@ public abstract class AbstractArcReactorItem extends Item {
         if(itemStack.getTag() != null) {
             return itemStack.getTag().getLong("energy");
         }   else {
-            return 0;
+            return maxEnergy();
         }
     }
 
@@ -138,4 +140,19 @@ public abstract class AbstractArcReactorItem extends Item {
     public abstract int poisonFactor();
 
     public abstract Item depletedItem();
+
+    @Override
+    public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
+        // will set arc reactor energy to max if there is no data set for the energy value
+        // Which should be only in the case of it being taken from the creative inventory
+
+        if(pStack.getTag() == null){
+            CompoundTag tag = new CompoundTag();
+            tag.putLong("energy", maxEnergy());
+
+            pStack.setTag(tag);
+        }
+
+        super.inventoryTick(pStack, pLevel, pEntity, pSlotId, pIsSelected);
+    }
 }

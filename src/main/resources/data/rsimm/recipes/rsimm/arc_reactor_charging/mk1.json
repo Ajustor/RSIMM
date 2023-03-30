@@ -1,0 +1,11 @@
+{
+  "type": "rsimm:arc_reactor_charging",
+  "ingredients": [
+    {
+      "item": "rsimm:mark_1_arc_reactor_uncharged"
+    }
+  ],
+  "output": {
+    "item": "rsimm:mark_1_arc_reactor"
+  }
+}
