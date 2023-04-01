@@ -6,6 +6,7 @@ import net.guwy.rsimm.mechanics.event.client_events.*;
 import net.guwy.rsimm.mechanics.event.server_events.RenderPlayerEventPreHandler;
 import net.guwy.rsimm.mechanics.event.server_events.RenderPlayerNameEventHandler;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;

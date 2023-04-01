@@ -19,20 +19,24 @@ public class PlayerArcReactorClientSyncS2CPacket {
      */
     private final int itemId;
     private final UUID uuid;
+    private final double energy;
 
-    public PlayerArcReactorClientSyncS2CPacket(int itemId, UUID uuid) {
+    public PlayerArcReactorClientSyncS2CPacket(int itemId, UUID uuid, double energy) {
         this.itemId = itemId;
         this.uuid = uuid;
+        this.energy = energy;
     }
 
     public PlayerArcReactorClientSyncS2CPacket(FriendlyByteBuf buf) {
         this.itemId = buf.readInt();
         this.uuid = buf.readUUID();
+        this.energy = buf.readDouble();
     }
 
     public void toBytes(FriendlyByteBuf buf) {
         buf.writeInt(itemId);
         buf.writeUUID(uuid);
+        buf.writeDouble(energy);
     }
 
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {
@@ -41,7 +45,7 @@ public class PlayerArcReactorClientSyncS2CPacket {
 
 
             if (this.itemId != 0){
-                ArcReactorClientData.setReactorData(this.itemId, this.uuid);
+                ArcReactorClientData.setReactorData(this.itemId, this.uuid, this.energy);
             } else {
                 ArcReactorClientData.removeArcReactorData(this.uuid);
             }

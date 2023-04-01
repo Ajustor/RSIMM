@@ -7,11 +7,14 @@ import net.guwy.rsimm.index.ModTags;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
+import net.minecraft.client.renderer.entity.ArmorStandRenderer;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -19,6 +22,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.LightLayer;
 import net.minecraftforge.client.event.RenderPlayerEvent;
+import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
+import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
+import software.bernie.geckolib3.renderers.geo.GeoItemRenderer;
+import software.bernie.geckolib3.renderers.geo.GeoLayerRenderer;
 
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -63,32 +70,47 @@ public class RenderPlayerEventPreHandler {
          * The Part That Renders The Arc Reactor on the player
          */
 
-        event.getPoseStack().pushPose();
+        // will check if the player is in certain states to decide whether or not to render
+        if(shouldRenderArcReactor(event.getEntity())){
 
-        // Rotates the model to match the body rotation
-        event.getPoseStack().mulPose(Vector3f.YN.rotationDegrees(180 + event.getEntity().yBodyRot));
+            event.getPoseStack().pushPose();
 
-        // Re-positions and re-scales the model to the set parameters
-        // The display model may broke depending on how the model is defined to look in an item frame
-        double x = 0;
-        double y = -0.13;
-        event.getPoseStack().translate(x, 1.18, y);
-        event.getPoseStack().scale(0.2f, 0.2f, 0.2f);
+            float rotOff = 0, zOff = 0, yOff = 0;
 
-        ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+            // adjusts the model if the entity is crouching
+            if(event.getEntity().isCrouching()){
+                rotOff = -20;
+                zOff = 0.45f;
+                yOff = -0.27f;
+            }
 
-        ItemStack stack = getArcReactorItem(player);
+            // Rotates the model to match the body rotation
+            event.getPoseStack().mulPose(Vector3f.YN.rotationDegrees(180 + event.getEntity().yBodyRot));
+            event.getPoseStack().mulPose(Vector3f.XP.rotationDegrees(rotOff));
 
-        // Renders the item if it isn't null
-        if(stack != null){
-            BakedModel bakedModel = itemRenderer.getModel(stack, event.getEntity().getLevel(), event.getEntity(), 1);
 
-            itemRenderer.render(stack, ItemTransforms.TransformType.FIXED, false, event.getPoseStack(),
-                    event.getMultiBufferSource(), getLightLevel(event.getEntity()), OverlayTexture.NO_OVERLAY,
-                    bakedModel);
+            // Re-positions and re-scales the model to the set parameters
+            // The display model may broke depending on how the model is defined to look in an item frame
+            double x = 0;
+            double z = -0.13;
+            event.getPoseStack().translate(x, 1.18 + yOff, z + zOff);
+            event.getPoseStack().scale(0.2f, 0.2f, 0.2f);
+
+
+            ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
+            ItemStack stack = getArcReactorItem(player);
+
+            // Renders the item if it isn't null
+            if(stack != null){
+                BakedModel bakedModel = itemRenderer.getModel(stack, event.getEntity().getLevel(), event.getEntity(), 1);
+
+                itemRenderer.render(stack, ItemTransforms.TransformType.FIXED, false, event.getPoseStack(),
+                        event.getMultiBufferSource(), getLightLevel(event.getEntity()), OverlayTexture.NO_OVERLAY,
+                        bakedModel);
+            }
+
+            event.getPoseStack().popPose();
         }
-
-        event.getPoseStack().popPose();
 
     }
 
@@ -106,5 +128,15 @@ public class RenderPlayerEventPreHandler {
         ItemStack itemStack = item != null ? new ItemStack(item) : null;
 
         return itemStack;
+    }
+
+    private static boolean shouldRenderArcReactor(Player player){
+        // this will return false under certain player conditions
+        // because i don't know how to get the body pitch and too lazy to hard code it all
+        if(player.isSwimming() || player.isVisuallyCrawling() || player.isSleeping() || player.isFallFlying()){
+            return false;
+        } else {
+            return true;
+        }
     }
 }

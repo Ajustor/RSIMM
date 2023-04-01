@@ -18,6 +18,9 @@ public class ChestSlotCheck {
         event.player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactor -> {
             if(arcReactor.hasArcReactorSlot()){
 
+                /**
+                 * The part that handles what happens if the player doesn't have energy in its reactor and similar
+                 */
                 // checks if the player has an arc reactor with energy
                 // if not adds the required effect to handle the situation
                 if(!(arcReactor.hasArcReactor()) || !(arcReactor.getArcReactorEnergy() > 0)){
@@ -27,40 +30,29 @@ public class ChestSlotCheck {
                 }
 
 
+                /**
+                 * The part that handles data transmission to the clients for rendering
+                 */
+                //gets the energy percentage for use in transmission
+                double energyPercentage = (double) arcReactor.getArcReactorEnergy() / arcReactor.getArcReactorEnergyCapacity();
+
+                //sends the arc reactor with its energy if it exists in player
                 if(arcReactor.hasArcReactor()){
-                    int id, workingId;
-                    workingId = arcReactor.getArcReactorTypeId();
-                    ArcReactorItem item = (ArcReactorItem) Item.byId(workingId);
 
-
-                    // if the energy is above 10% set id for the working reactor
-                    if(arcReactor.getArcReactorEnergy() >= (arcReactor.getArcReactorEnergyCapacity() * 0.1)){
-                        id = workingId;
-                    }
-
-                    // if between 10% and 0% select a random reactor between the depleted and working one
-                    else if (arcReactor.getArcReactorEnergy() > 0){
-                        if(Math.random() > 0.5){
-                            id = workingId;
-                        } else {
-                            id = Item.getId(item.depletedItem());
-                        }
-                    }
-
-                    //else just use the depleted one
-                    else {
-                        id = Item.getId(item.depletedItem());
-                    }
-
-                    ModNetworking.sendToClients(new PlayerArcReactorClientSyncS2CPacket(id, event.player.getUUID()));
-                } else {
-                    ModNetworking.sendToClients(new PlayerArcReactorClientSyncS2CPacket(0, event.player.getUUID()));
+                    int id = arcReactor.getArcReactorTypeId();
+                    ArcReactorItem item = (ArcReactorItem) Item.byId(id);
+                    ModNetworking.sendToClients(new PlayerArcReactorClientSyncS2CPacket(id, event.player.getUUID(), energyPercentage));
+                }
+                // if no reactor is present sends a blank slate with the uuid which the client will use it to remove the arc reactor data from itself
+                else {
+                    ModNetworking.sendToClients(new PlayerArcReactorClientSyncS2CPacket(0, event.player.getUUID(), 0));
                 }
 
             }
         });
     }
 
+    // this method can be used to check if a player has an arc reactor without accessing its capabilities
     public static boolean hasArcReactor(Player player){
         AtomicBoolean condition = new AtomicBoolean(false);
 

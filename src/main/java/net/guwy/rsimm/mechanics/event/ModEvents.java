@@ -69,9 +69,6 @@ public class ModEvents {
 
         @SubscribeEvent
         public static void tooltipEvent(ItemTooltipEvent event) {
-            //if(event.getItemStack().is(ModTags.Items.PLANKS)){
-            //    event.getToolTip().add(Component.literal("hello").withStyle(ChatFormatting.AQUA));
-            //}
         }
 
         @SubscribeEvent

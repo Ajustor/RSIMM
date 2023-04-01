@@ -66,6 +66,7 @@ public class RsImm {
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
+        event.enqueueWork(RSIMMPonder::register);
     }
 
     private void setup(final FMLCommonSetupEvent event) {
