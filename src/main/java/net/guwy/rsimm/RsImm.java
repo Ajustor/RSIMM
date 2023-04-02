@@ -12,6 +12,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -26,6 +27,8 @@ public class RsImm {
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
     public static final String MOD_ID = "rsimm";
+
+    private static boolean curiosLoaded = false;
 
     public RsImm() {
         // Register the setup method for modloading
@@ -57,6 +60,8 @@ public class RsImm {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+
+        curiosLoaded = ModList.get().isLoaded("curios");
     }
 
     private void commonSetup(final FMLCommonSetupEvent event){
@@ -84,5 +89,10 @@ public class RsImm {
             EntityRenderers.register(ModEntityTypes.MARK_1_FLAME.get(), Mark1FlameEntityRenderer::new);
             EntityRenderers.register(ModEntityTypes.ROCKET.get(), RocketEntityRenderer::new);
         }
+    }
+
+    public static boolean isCuriosLoaded()
+    {
+        return curiosLoaded;
     }
 }

@@ -6,6 +6,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import java.util.function.Supplier;
@@ -21,7 +22,11 @@ public enum ModArmorMaterials implements ArmorMaterial{
 
     MARK_1_OPEN_ARMOR("mark_1_open_armor", 3, new int[]{2, 5, 7, 1}, 9,
     null, 2.0F, 0.1F, () ->
-            Ingredient.of(ModDeveloperItems.DEV_WAND_1.get()));
+            Ingredient.of(ModDeveloperItems.DEV_WAND_1.get())),
+
+    ARC_REACTOR_CONNECTOR("arc_reactor_connector", 0, new int[]{0, 0, 0, 0}, 0,
+    SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () ->
+            Ingredient.of(ItemStack.EMPTY));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{250, 250, 250, 250};
     private final String name;

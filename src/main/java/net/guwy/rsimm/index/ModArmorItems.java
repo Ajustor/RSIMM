@@ -1,8 +1,8 @@
 package net.guwy.rsimm.index;
 
 import net.guwy.rsimm.RsImm;
-import net.guwy.rsimm.content.items.ChestCutterItem;
 import net.guwy.rsimm.content.items.TestArmorItem;
+import net.guwy.rsimm.content.items.armors.ArcReactorConnectorArmorItem;
 import net.guwy.rsimm.content.items.armors.Mark1ArmorItem;
 import net.guwy.rsimm.content.items.armors.Mark1OpenHelmetArmorItem;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -16,6 +16,12 @@ public class ModArmorItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, RsImm.MOD_ID);
 
 
+
+    // Utility
+    public static final RegistryObject<Item> ARC_REACTOR_CONNECTOR_ARMOR = ITEMS.register("arc_reactor_connector_armor",
+            () -> new ArcReactorConnectorArmorItem(ModArmorMaterials.ARC_REACTOR_CONNECTOR,
+                    EquipmentSlot.CHEST, new Item.Properties().stacksTo(1)
+                    .tab(ModCreativeModeTabs.MAIN)));
 
     // Armors
     public static final RegistryObject<Item> TEST_ARMOR_HELMET = ITEMS.register("test_armor_helmet",
@@ -48,16 +54,16 @@ public class ModArmorItems {
             () -> new Mark1ArmorItem(ModArmorMaterials.MARK_1_ARMOR, EquipmentSlot.FEET, new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> UNASSAMBLED_MARK_1_HELMET = ITEMS.register("unassambled_mark_1_helmet",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN).stacksTo(1).durability(1000)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN).stacksTo(1).durability(750)));
 
     public static final RegistryObject<Item> UNASSAMBLED_MARK_1_CHESTPLATE = ITEMS.register("unassambled_mark_1_chestplate",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN).stacksTo(1).durability(1000)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN).stacksTo(1).durability(750)));
 
     public static final RegistryObject<Item> UNASSAMBLED_MARK_1_LEGGINGS = ITEMS.register("unassambled_mark_1_leggings",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN).stacksTo(1).durability(1000)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN).stacksTo(1).durability(750)));
 
     public static final RegistryObject<Item> UNASSAMBLED_MARK_1_BOOTS = ITEMS.register("unassambled_mark_1_boots",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN).stacksTo(1).durability(1000)));
+            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN).stacksTo(1).durability(750)));
 
 
 

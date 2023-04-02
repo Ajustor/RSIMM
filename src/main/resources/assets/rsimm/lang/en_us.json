@@ -37,6 +37,12 @@
     "item.rsimm.mark_2_arc_reactor_depleted": "Depleted Mark 2 Arc Reactor",
     "item.rsimm.mark_2_arc_reactor_uncharged": "Uncharged Mark 2 Arc Reactor",
 
+    "item.rsimm.arc_reactor_connector_armor": "Wearable Arc Reactor Power Connector",
+    "tooltip.rsimm.arc_reactor_connector_armor.t.1": "§7Charges any worn piece of",
+    "tooltip.rsimm.arc_reactor_connector_armor.t.2": "§7equipment and anything you're holding",
+    "tooltip.rsimm.arc_reactor_connector_armor.t.3": "§7with the power from your Arc Reactor.",
+    "tooltip.rsimm.arc_reactor_connector_armor.t.4": "§7Must be Worn",
+
     "item.rsimm.mark_1_helmet": "Mark 1 Helmet",
     "item.rsimm.mark_1_open_helmet": "Mark 1 Helmet",
     "item.rsimm.mark_1_chestplate": "Mark 1 Chestplate",
