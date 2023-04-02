@@ -133,7 +133,7 @@ public class RenderPlayerEventPreHandler {
     private static boolean shouldRenderArcReactor(Player player){
         // this will return false under certain player conditions
         // because i don't know how to get the body pitch and too lazy to hard code it all
-        if(player.isSwimming() || player.isVisuallyCrawling() || player.isSleeping() || player.isFallFlying()){
+        if(player.isSwimming() || player.isVisuallyCrawling() || player.isSleeping() || player.isFallFlying() || player.isInvisible()){
             return false;
         } else {
             return true;
