@@ -93,7 +93,7 @@ public class RenderPlayerEventPreHandler {
             // The display model may broke depending on how the model is defined to look in an item frame
             double x = 0;
             double z = -0.13;
-            event.getPoseStack().translate(x, 1.18 + yOff, z + zOff);
+            event.getPoseStack().translate(x, 1.22 + yOff, z + zOff);
             event.getPoseStack().scale(0.2f, 0.2f, 0.2f);
 
 

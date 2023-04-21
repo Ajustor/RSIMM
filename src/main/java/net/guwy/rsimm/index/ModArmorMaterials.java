@@ -16,11 +16,11 @@ public enum ModArmorMaterials implements ArmorMaterial{
     SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () ->
             Ingredient.of(ModDeveloperItems.DEV_WAND_1.get())),
 
-    MARK_1_ARMOR("mark_1_armor", 3, new int[]{2, 5, 7, 4}, 9,
+    MARK_1_ARMOR("mark_1_armor", 3, new int[]{3, 6, 8, 3}, 9,
     null, 2.0F, 0.1F, () ->
             Ingredient.of(ModDeveloperItems.DEV_WAND_1.get())),
 
-    MARK_1_OPEN_ARMOR("mark_1_open_armor", 3, new int[]{2, 5, 7, 1}, 9,
+    MARK_1_OPEN_ARMOR("mark_1_open_armor", 3, new int[]{3, 6, 8, 1}, 9,
     null, 2.0F, 0.1F, () ->
             Ingredient.of(ModDeveloperItems.DEV_WAND_1.get())),
 

@@ -1,25 +1,14 @@
 {
+    "itemGroup.rsimm_tab_main": "IronMan",
+    "rsimm.ponder.tag.rsimm": "Iron Man Mod",
+    "rsimm.ponder.tag.rsimm.description": "All the blocks with ponder index in Iron Man Mod",
+
+
+
     "item.rsimm.palladium_ring_mold": "Palladium Ring Mold",
     "item.rsimm.palladium_ring": "Palladium Ring",
     "item.rsimm.steel_armor_plate": "Steel Armor Plate",
     "item.rsimm.rocket": "Rocket (HE)",
-
-    "block.rsimm.arc_reactor_charger": "Arc Reactor Charger",
-    "tooltip.rsimm.arc_reactor_charger.t.1": "§8-Used to turn uncharged",
-    "tooltip.rsimm.arc_reactor_charger.t.2": "§8arc reactors to charged ones.",
-    "tooltip.rsimm.arc_reactor_charger.t.3": "§8-Has a energy input at the bottom",
-    "block.rsimm.armor_equipping_station": "Armor Equipping Station",
-    "tooltip.rsimm.armor_equipping_station.t.1": "§8Used to Assemble iron man armor",
-    "tooltip.rsimm.armor_equipping_station.t.2": "§8Press [§7Shift§8] for Summary",
-    "tooltip.rsimm.armor_equipping_station.s.1": "§8Press [§fShift§8] for Summary",
-    "tooltip.rsimm.armor_equipping_station.s.2": "§8 Place unassambled armor pieces in the",
-    "tooltip.rsimm.armor_equipping_station.s.3": "§8inventory with the appropriate ammo kit.",
-    "tooltip.rsimm.armor_equipping_station.s.4": "§8 Crouch while staying on top of it",
-    "tooltip.rsimm.armor_equipping_station.s.5": "§8to assemble the armor on you",
-    "block.rsimm.armor_unequipping_station": "Armor Unequipping Station",
-    "tooltip.rsimm.armor_unequipping_station.t.1": "§8 Crouch on top of this to take",
-    "tooltip.rsimm.armor_unequipping_station.t.2": "§8of the armor you're wearing,",
-    "tooltip.rsimm.armor_unequipping_station.t.3": "§8without breaking it",
 
     "item.rsimm.chest_cutter": "Chest Cutter",
 
@@ -33,15 +22,58 @@
     "item.rsimm.mark_1_arc_reactor": "Mark 1 Arc Reactor",
     "item.rsimm.mark_1_arc_reactor_depleted": "Depleted Mark 1 Arc Reactor",
     "item.rsimm.mark_1_arc_reactor_uncharged": "Uncharged Mark 1 Arc Reactor",
+
     "item.rsimm.mark_2_arc_reactor": "Mark 2 Arc Reactor",
     "item.rsimm.mark_2_arc_reactor_depleted": "Depleted Mark 2 Arc Reactor",
     "item.rsimm.mark_2_arc_reactor_uncharged": "Uncharged Mark 2 Arc Reactor",
+
+
+
+    "block.rsimm.arc_reactor_charger": "Arc Reactor Charger",
+    "tooltip.rsimm.arc_reactor_charger.t.1": "§8-Used to turn uncharged",
+    "tooltip.rsimm.arc_reactor_charger.t.2": "§8arc reactors to charged ones.",
+    "tooltip.rsimm.arc_reactor_charger.t.3": "§8-Has a energy input at the bottom",
+    "rsimm.ponder.arc_reactor_charger.header": "Charging Arc Reactors",
+    "rsimm.ponder.arc_reactor_charger.text_1": "Arc Reactor Charger can be used to turn uncharged arc reactors into their charged counterparts",
+    "rsimm.ponder.arc_reactor_charger.text_2": "It does this by consuming forge energy (FE)",
+    "rsimm.ponder.arc_reactor_charger_2.header": "Forge Energy (Seriously do i really need to explain this?)",
+    "rsimm.ponder.arc_reactor_charger_2.text_1": "Forge Energy(FE) being,§8 in 1.18 and §8above§r, the universal energy/electricity format.",
+    "rsimm.ponder.arc_reactor_charger_2.text_2": "Meaning it should accept energy from any mod, except a few rare cases",
+    "rsimm.ponder.arc_reactor_charger_2.text_3": "Keep in mind that some mods may have renamed FE, a few examples being RF, MJ, IF, J",
+    "rsimm.ponder.arc_reactor_charger_3.header": "Where to Connect Electricity",
+    "rsimm.ponder.arc_reactor_charger_3.text_1": "Arc Reactor Charger block only accepts energy from the bottom side of it (where the magenta glazed terracotta is)",
+    "rsimm.ponder.arc_reactor_charger_3.text_2": "If you where to put any cable under it, you'll see it connect",
+    "rsimm.ponder.arc_reactor_charger_3.text_3": "Keep in mind some mods may have cables that only connect to 1 side. ex. Immersive Engineering",
+    "rsimm.ponder.arc_reactor_charger_3.text_4": "After you supply the cable with energy you'll see the energy meter in the right side of the Arc Reactor Chargers GUI fill up",
+    "rsimm.ponder.arc_reactor_charger_4.header": "Things to Keep in Mind",
+    "rsimm.ponder.arc_reactor_charger_4.text_1": "Keep in mind that while charging an arc reactor it will constantly consume energy",
+    "rsimm.ponder.arc_reactor_charger_4.text_2": "If you don't see the Reactor Charging but the Charger block receives energy, you need to provide more energy",
+    "rsimm.ponder.arc_reactor_charger_4.text_3": "In some cases the amount of energy the Charger can accept may not be enough to breach that barrier",
+    "rsimm.ponder.arc_reactor_charger_4.text_4": "In those situations you may need to look into higher tiers of Chargers (Currently not in the game)",
+
+    "block.rsimm.armor_equipping_station": "Armor Equipping Station",
+    "tooltip.rsimm.armor_equipping_station.t.1": "§8Used to Assemble iron man armor",
+    "tooltip.rsimm.armor_equipping_station.t.2": "§8Press [§7Shift§8] for Summary",
+    "tooltip.rsimm.armor_equipping_station.s.1": "§8Press [§fShift§8] for Summary",
+    "tooltip.rsimm.armor_equipping_station.s.2": "§8 Place unassambled armor pieces in the",
+    "tooltip.rsimm.armor_equipping_station.s.3": "§8inventory with the appropriate ammo kit.",
+    "tooltip.rsimm.armor_equipping_station.s.4": "§8 Crouch while staying on top of it",
+    "tooltip.rsimm.armor_equipping_station.s.5": "§8to assemble the armor on you",
+
+    "block.rsimm.armor_unequipping_station": "Armor Unequipping Station",
+    "tooltip.rsimm.armor_unequipping_station.t.1": "§8 Crouch on top of this to take",
+    "tooltip.rsimm.armor_unequipping_station.t.2": "§8of the armor you're wearing,",
+    "tooltip.rsimm.armor_unequipping_station.t.3": "§8without breaking it",
+
+
 
     "item.rsimm.arc_reactor_connector_armor": "Wearable Arc Reactor Power Connector",
     "tooltip.rsimm.arc_reactor_connector_armor.t.1": "§7Charges any worn piece of",
     "tooltip.rsimm.arc_reactor_connector_armor.t.2": "§7equipment and anything you're holding",
     "tooltip.rsimm.arc_reactor_connector_armor.t.3": "§7with the power from your Arc Reactor.",
     "tooltip.rsimm.arc_reactor_connector_armor.t.4": "§7Must be Worn",
+
+
 
     "item.rsimm.mark_1_helmet": "Mark 1 Helmet",
     "item.rsimm.mark_1_open_helmet": "Mark 1 Helmet",
@@ -54,6 +86,8 @@
     "item.rsimm.unassambled_mark_1_boots": "Unassembled Mark 1 Boots",
     "item.rsimm.mark_1_ammo_kit": "Mark 1 Ammo Kit",
 
+
+
     "effect.rsimm.reactor_poisoning_suppressant": "Suppressant",
     "effect.rsimm.better_reactor_poisoning_suppressant": "Suppressant II",
     "effect.rsimm.cough": "Cough",
@@ -64,9 +98,13 @@
     "effect.rsimm.sound_effect_arc_reactor_unequip": "Sound Effect",
     "effect.rsimm.sound_effect_chest_cutting": "Sound Effect",
 
+
+
     "death.attack.reactor_poisoning": "%1$s has died from Palladium Poisoning",
     "death.attack.missing_reactor": "%1$s died from the shrapnel in its heart",
     "death.attack.chest_cutting": "%1$s didn't make it trough the surgery",
+
+
 
     "sounds.rsimm.player_cough": "Player Coughed",
     "sounds.rsimm.heart_beat": "Heart Beats",
@@ -80,6 +118,8 @@
     "sounds.rsimm.metal_rattle_3": "Metal Rattles",
     "sounds.rsimm.rain_in_helmet": "Raining On Metal",
 
+
+
     "key.category.rsimm.ironman": "Ironman Mod",
     "key.rsimm.armor_key": "Arc Reactor/Armor Ability",
     "key.rsimm.hand_key": "Hand Ability",
@@ -88,7 +128,7 @@
     "key.rsimm.weapon_key": "Fire Weapon",
     "key.rsimm.switch_weapon_key": "Switch Weapon",
 
-    "itemGroup.rsimm_tab_main": "IronMan",
+
 
     "arc_reactor.rsimm.energy": "Energy: ",
     "arc_reactor.rsimm.energy_output": "Energy Output: ",

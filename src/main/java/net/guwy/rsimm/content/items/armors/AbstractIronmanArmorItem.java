@@ -79,9 +79,21 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
             energyHandler(player);
             rainSoundHandler(player);
             handKeyHoldActionHandler(player);
+            fireproofHandler(player);
         }
 
         super.inventoryTick(pStack, pLevel, pEntity, pSlotId, pIsSelected);
+    }
+
+
+
+    public boolean isLavaProof(){
+        return false;
+    }
+    private void fireproofHandler(Player player) {
+        if(!player.isInLava() && !isLavaProof()){
+            player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 2, 0, false, false, false));
+        }
     }
 
 
@@ -520,7 +532,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
                 if(level.canSeeSky(pos)){
                     if(player.getItemBySlot(EquipmentSlot.HEAD).is(ModTags.Items.IRONMAN_HELMETS)){
                         if(player.tickCount % 20 == 0){
-                            level.playSound(null, player.getOnPos(), ModSounds.RAIN_IN_HELMET.get(), SoundSource.PLAYERS, 100, 1);
+                            level.playSound(null, player.getOnPos(), ModSounds.RAIN_IN_HELMET.get(), SoundSource.PLAYERS, 0.5F, 0.7F);
                         }
                     }
                 }

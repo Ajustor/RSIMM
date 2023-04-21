@@ -20,7 +20,10 @@ public class RSIMMPonder {
     public static void register(){
         //HELPER.addStoryBoard(CABlocks.ELECTRIC_MOTOR, "electric_motor", PonderScenes::electricMotor, PonderTag.KINETIC_SOURCES, ELECTRIC);
 
-        HELPER.addStoryBoard(ModBlocks.ARC_REACTOR_CHARGER.getId(), "arc_reactor_charger/main", PonderSchenes::arcReactorCharger, RSIMM);
+        HELPER.addStoryBoard(ModBlocks.ARC_REACTOR_CHARGER.getId(), "arc_reactor_charger/arc_reactor_charger_wood", PonderSchenes::arcReactorCharger1, RSIMM);
+        HELPER.addStoryBoard(ModBlocks.ARC_REACTOR_CHARGER.getId(), "arc_reactor_charger/arc_reactor_charger_wood", PonderSchenes::arcReactorCharger2, RSIMM);
+        HELPER.addStoryBoard(ModBlocks.ARC_REACTOR_CHARGER.getId(), "arc_reactor_charger/arc_reactor_charger_terracotta", PonderSchenes::arcReactorCharger3, RSIMM);
+        HELPER.addStoryBoard(ModBlocks.ARC_REACTOR_CHARGER.getId(), "arc_reactor_charger/arc_reactor_charger_wood", PonderSchenes::arcReactorCharger4, RSIMM);
 
 
         PonderRegistry.TAGS.forTag(RSIMM)

@@ -9,12 +9,12 @@ public class ArcReactorConnectorModel extends AnimatedGeoModel<ArcReactorConnect
     @Override
     public ResourceLocation getModelResource(ArcReactorConnectorArmorItem object) {
 
-        return new ResourceLocation(RsImm.MOD_ID, "geo/mark_1.geo.json");
+        return new ResourceLocation(RsImm.MOD_ID, "geo/arc_reactor_connector_armor.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(ArcReactorConnectorArmorItem object) {
-        return new ResourceLocation(RsImm.MOD_ID, "textures/models/armors/mark_1_texture.png");
+        return new ResourceLocation(RsImm.MOD_ID, "textures/models/arc_reactor_connector_armor.png");
     }
 
     @Override
