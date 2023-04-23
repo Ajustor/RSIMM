@@ -25,7 +25,7 @@ public class ChestSlotCheck {
                 // if not adds the required effect to handle the situation
                 if(!(arcReactor.hasArcReactor()) || !(arcReactor.getArcReactorEnergy() > 0)){
                     if(!event.player.hasEffect(ModEffects.MISSING_REACTOR.get())){
-                        event.player.addEffect(new MobEffectInstance(ModEffects.MISSING_REACTOR.get(), 12000, 0 ,false, false, true));
+                        event.player.addEffect(new MobEffectInstance(ModEffects.MISSING_REACTOR.get(), 6000, 0 ,false, false, true));
                     }
                 }
 
