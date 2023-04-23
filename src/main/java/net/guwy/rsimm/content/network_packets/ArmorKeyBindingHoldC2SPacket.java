@@ -49,12 +49,15 @@ public class ArmorKeyBindingHoldC2SPacket {
             player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactor -> {
                 player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
 
+                    // The part that does the armor stuff
                     if(armorData.getHasArmor()){
                         ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
                         AbstractIronmanArmorItem armor = (AbstractIronmanArmorItem) chestplate.getItem();
                         armor.armorKeyHoldAction(player);
 
-                    }   else {
+                    }
+                    // The part that does the Arc Reactor Stuff
+                    else {
                         if(arcReactor.hasArcReactor()){
                             if(player.getItemBySlot(EquipmentSlot.CHEST).isEmpty()){
 
@@ -65,10 +68,11 @@ public class ArmorKeyBindingHoldC2SPacket {
 
                                 if(arcReactor.getArcReactorEnergy() <= 0){
                                     AbstractArcReactorItem arcReactorItem = (AbstractArcReactorItem) itemStack.getItem();
-                                    player.addItem(new ItemStack(arcReactorItem.depletedItem()));
+                                    player.getInventory().placeItemBackInInventory(new ItemStack(arcReactorItem.depletedItem()));
                                 }   else {
-                                    player.addItem(itemStack);
+                                    player.getInventory().add(itemStack);
                                 }
+                                player.getInventory().placeItemBackInInventory(itemStack);
 
                                 arcReactor.deleteArcReactor();
 

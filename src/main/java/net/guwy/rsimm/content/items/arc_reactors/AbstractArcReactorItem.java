@@ -141,16 +141,22 @@ public abstract class AbstractArcReactorItem extends Item {
 
     public abstract Item depletedItem();
 
+    public boolean shouldFillReactorIfNBTNotPresent(){
+        return true;
+    }
+
     @Override
     public void inventoryTick(ItemStack pStack, Level pLevel, Entity pEntity, int pSlotId, boolean pIsSelected) {
         // will set arc reactor energy to max if there is no data set for the energy value
         // Which should be only in the case of it being taken from the creative inventory
 
-        if(pStack.getTag() == null){
-            CompoundTag tag = new CompoundTag();
-            tag.putLong("energy", maxEnergy());
+        if(shouldFillReactorIfNBTNotPresent()){
+            if(pStack.getTag() == null){
+                CompoundTag tag = new CompoundTag();
+                tag.putLong("energy", maxEnergy());
 
-            pStack.setTag(tag);
+                pStack.setTag(tag);
+            }
         }
 
         super.inventoryTick(pStack, pLevel, pEntity, pSlotId, pIsSelected);

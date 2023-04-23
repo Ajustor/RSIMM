@@ -91,9 +91,11 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
         return false;
     }
     private void fireproofHandler(Player player) {
-        if(!player.isInLava() && !isLavaProof()){
-            player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 2, 0, false, false, false));
-        }
+        player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(handler -> {
+            if(( !player.isInLava() || isLavaProof() ) && !handler.getHelmetOpen()){
+                player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 2, 0, false, false, false));
+            }
+        });
     }
 
 

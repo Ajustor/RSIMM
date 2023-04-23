@@ -4,11 +4,18 @@ import net.guwy.rsimm.RsImm;
 import net.guwy.rsimm.content.items.arc_reactors.ArcReactorItem;
 import net.guwy.rsimm.content.items.arc_reactors.DepletedArcReactorItem;
 import net.guwy.rsimm.content.items.arc_reactors.UnchargedArcReactorItem;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class ModArcReactorItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, RsImm.MOD_ID);
@@ -39,6 +46,20 @@ public class ModArcReactorItems {
     public static final RegistryObject<Item> MARK_2_ARC_REACTOR_UNCHARGED = ITEMS.register("mark_2_arc_reactor_uncharged",
             () -> new UnchargedArcReactorItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN),
                     MARK_2_ARC_REACTOR.get(), 50000000, 1000));
+
+
+
+    // Non Fission Reactors
+    public static final RegistryObject<Item> BATTERY_REACTOR = ITEMS.register("battery_reactor",
+            () -> new ArcReactorItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN),
+                    "AA Battery", 6000, 5, 1, 0, MARK_2_ARC_REACTOR_DEPLETED.get()){
+                @Override
+                public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+                    pTooltipComponents.add(Component.translatable("tooltip.rsimm.battery_reactor"));
+                    super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+                }
+            });
+
 
 
 

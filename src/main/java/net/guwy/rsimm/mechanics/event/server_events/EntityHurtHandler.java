@@ -15,11 +15,11 @@ public class EntityHurtHandler {
             if(event.getEntity().getType().equals(EntityType.PLAYER)){
                 Player player = (Player) event.getEntity();
 
-                player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
-                    if(armorData.getHasArmor() && !armorData.getHelmetOpen()){
-                        event.setCanceled(true);
-                    }
-                });
+                //player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
+                //    if(armorData.getHasArmor() && !armorData.getHelmetOpen()){
+                //        event.setCanceled(true);
+                //    }
+                //});
             }
         }
     }
