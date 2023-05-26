@@ -14,8 +14,10 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -45,6 +47,8 @@ public class ArmorKeyBindingPressC2SPacket {
 
             ServerPlayer player = context.getSender();
             ServerLevel level = player.getLevel();
+            Level nLevel = level;
+            Player nPlayer = player;
 
             player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactor -> {
                 player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
@@ -71,7 +75,7 @@ public class ArmorKeyBindingPressC2SPacket {
                             player.sendSystemMessage(energyText);
 
                             // Arc Reactor Check Sound
-                            level.playSound(null, player.getOnPos(), ModSounds.ARC_REACTOR_CHECK.get(), SoundSource.PLAYERS, 100, 1);
+                            nLevel.playSound(null, nPlayer.getOnPos(), ModSounds.ARC_REACTOR_CHECK.get(), SoundSource.PLAYERS, 100, 1);
 
                         }
                     }

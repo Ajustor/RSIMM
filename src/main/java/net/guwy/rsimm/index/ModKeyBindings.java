@@ -24,11 +24,11 @@ public class ModKeyBindings {
             InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_H, KEY_CATEGORY_IRONMAN);
 
     public static final KeyMapping FLIGHT_KEY = new KeyMapping(KEY_FLIGHT_KEY, KeyConflictContext.IN_GAME,
-            InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_C, KEY_CATEGORY_IRONMAN);
+            InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_V, KEY_CATEGORY_IRONMAN);
 
     public static final KeyMapping WEAPON_KEY = new KeyMapping(KEY_WEAPON_KEY, KeyConflictContext.IN_GAME,
-            InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_F, KEY_CATEGORY_IRONMAN);
+            InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_X, KEY_CATEGORY_IRONMAN);
 
     public static final KeyMapping SWITCH_WEAPON_KEY = new KeyMapping(KEY_SWITCH_WEAPON_KEY, KeyConflictContext.IN_GAME,
-            InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_V, KEY_CATEGORY_IRONMAN);
+            InputConstants.Type.KEYSYM, GLFW.GLFW_KEY_C, KEY_CATEGORY_IRONMAN);
 }
