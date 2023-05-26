@@ -13,10 +13,13 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.GameRules;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraftforge.client.event.RenderArmEvent;
 import net.minecraftforge.client.event.RenderNameTagEvent;
@@ -31,6 +34,7 @@ import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.level.ChunkDataEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.LogicalSide;
 import net.minecraftforge.fml.common.Mod;
@@ -46,6 +50,9 @@ public class ModEvents {
             if(event.side == LogicalSide.SERVER) {
                 if(event.phase == TickEvent.Phase.END){
                     PlayerTickEventOrganizer.init(event);
+
+                    // Dont mind this it is for the future of other mods
+                    //
                     //if((event.player.tickCount % 20) == 0){
                     //    event.player.getLevel().getChunkAt(event.player.getOnPos()).getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(h -> {
                     //        event.player.sendSystemMessage(Component.literal("this chunk has data: ").append(Long.toString(h.getArcReactorEnergy())));
@@ -65,10 +72,6 @@ public class ModEvents {
                 }
 
             }
-        }
-
-        @SubscribeEvent
-        public static void tooltipEvent(ItemTooltipEvent event) {
         }
 
         @SubscribeEvent

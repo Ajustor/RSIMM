@@ -3,6 +3,7 @@ package net.guwy.rsimm.mechanics.event.server_events;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlot;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorData;
+import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 
@@ -10,6 +11,10 @@ public class CapabilityCarryOverDeathHandler {
 
     public static void init(PlayerEvent.Clone event){
         event.getOriginal().reviveCaps();
+
+
+
+        // Copy Arc Reactor Data
         event.getOriginal().getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(oldStore -> {
             event.getEntity().getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(newStore -> {
 
@@ -19,6 +24,20 @@ public class CapabilityCarryOverDeathHandler {
                 newStore.copyFrom(oldStore);
             });
         });
+
+
+
+        // Copy Armor Data (only when you trave from end to the overworld)
+        if(!event.isWasDeath()){
+            event.getOriginal().getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(oldStore -> {
+                event.getEntity().getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(newStore -> {
+                    newStore.copyFrom(oldStore);
+                });
+            });
+        }
+
+
+
         event.getOriginal().invalidateCaps();
 
     }

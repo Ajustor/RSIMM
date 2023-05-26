@@ -8,6 +8,7 @@ import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotPr
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.PartPose;
+import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.entity.ArmorStandRenderer;
@@ -83,11 +84,6 @@ public class RenderPlayerEventPreHandler {
                 zOff = 0.45f;
                 yOff = -0.27f;
             }
-
-            // Rotates the model to match the body rotation
-            event.getPoseStack().mulPose(Vector3f.YN.rotationDegrees(180 + event.getEntity().yBodyRot));
-            event.getPoseStack().mulPose(Vector3f.XP.rotationDegrees(rotOff));
-
 
             // Re-positions and re-scales the model to the set parameters
             // The display model may broke depending on how the model is defined to look in an item frame
