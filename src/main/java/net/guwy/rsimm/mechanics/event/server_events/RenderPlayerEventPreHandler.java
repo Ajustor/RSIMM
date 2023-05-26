@@ -85,6 +85,11 @@ public class RenderPlayerEventPreHandler {
                 yOff = -0.27f;
             }
 
+            // Rotates the model to match the body rotation
+            event.getPoseStack().mulPose(Vector3f.YN.rotationDegrees(180 + event.getEntity().yBodyRot));
+            event.getPoseStack().mulPose(Vector3f.XP.rotationDegrees(rotOff));
+
+
             // Re-positions and re-scales the model to the set parameters
             // The display model may broke depending on how the model is defined to look in an item frame
             double x = 0;
