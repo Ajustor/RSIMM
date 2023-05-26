@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  k",
+    "zaz",
+    "xk "
+  ],
+  "key": {
+    "z": {
+      "tag": "forge:coils/copper"
+    },
+    "x": {
+      "item": "create:electron_tube"
+    },
+    "k": {
+      "item": "minecraft:leather"
+    },
+    "a": {
+      "item": "sticky_foundations:circuitry_capacitive"
+    }
+  },
+  "result": {
+    "item": "rsimm:arc_reactor_connector_armor"
+  }
+}
