@@ -70,9 +70,8 @@ public class ArmorKeyBindingHoldC2SPacket {
                                     AbstractArcReactorItem arcReactorItem = (AbstractArcReactorItem) itemStack.getItem();
                                     player.getInventory().placeItemBackInInventory(new ItemStack(arcReactorItem.depletedItem()));
                                 }   else {
-                                    player.getInventory().add(itemStack);
+                                    player.getInventory().placeItemBackInInventory(itemStack);
                                 }
-                                player.getInventory().placeItemBackInInventory(itemStack);
 
                                 arcReactor.deleteArcReactor();
 
