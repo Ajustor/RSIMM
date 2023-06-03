@@ -6,6 +6,7 @@ import net.guwy.rsimm.index.ModNetworking;
 import net.guwy.rsimm.mechanics.KeyCallType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.client.event.InputEvent;
 
 public class OnKeyInputHandler {
@@ -19,6 +20,7 @@ public class OnKeyInputHandler {
     private static final int holdTreshold = 2;     // 15: too much, 7: a bit much, 5: fine but still not fast enough
 
     public static void init(InputEvent.Key event){
+        Player player = Minecraft.getInstance().player;
 
 
 
@@ -37,7 +39,7 @@ public class OnKeyInputHandler {
                     // Hold Release Action
                 }   else {
                     // Press Action
-                    ModNetworking.sendToServer(new ArmorKeyBindingPressC2SPacket());
+                    ModNetworking.sendToServer(new ArmorKeyBindingPressC2SPacket(player.getUUID()));
                 }
                 armorKeyHoldDuration = 0;
             }

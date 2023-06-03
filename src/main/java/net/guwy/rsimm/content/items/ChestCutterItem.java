@@ -27,7 +27,22 @@ public class ChestCutterItem extends Item {
             pPlayer.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactor -> {
                 if(!arcReactor.hasArcReactorSlot()){
                     arcReactor.setHasArcReactorSlot(true);
-                    pPlayer.getLevel().playSound(null, pPlayer.getOnPos(), ModSounds.CHEST_CUTTING.get(), SoundSource.PLAYERS, 100, 1);
+
+                    // Fake player for sounds
+                    Player soundPlayer = new Player(pLevel, pPlayer.getOnPos(), 0, pPlayer.getGameProfile(), null) {
+                        @Override
+                        public boolean isSpectator() {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean isCreative() {
+                            return false;
+                        }
+                    };
+                    soundPlayer.playSound(ModSounds.CHEST_CUTTING.get());
+
+                    // Effect to handle damaging over time
                     pPlayer.addEffect(new MobEffectInstance(ModEffects.CHEST_CUTTING_HURT.get(),
                             30, 1, false, false, false));
                 }   else {

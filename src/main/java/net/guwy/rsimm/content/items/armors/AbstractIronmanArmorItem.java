@@ -27,6 +27,7 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.fml.common.Mod;
 import software.bernie.geckolib3.item.GeoArmorItem;
 
 import javax.annotation.Nullable;
@@ -129,7 +130,19 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
     }
 
     private void removeArmor(ItemStack pStack, Player player){
-        player.getLevel().playSound(null, player.getOnPos(), SoundEvents.ITEM_BREAK, SoundSource.PLAYERS, 100, 1);
+        // Fake player for sounds
+        Player soundPlayer = new Player(player.getLevel(), player.getOnPos(), 0, player.getGameProfile(), null) {
+            @Override
+            public boolean isSpectator() {
+                return false;
+            }
+
+            @Override
+            public boolean isCreative() {
+                return false;
+            }
+        };
+        soundPlayer.playSound(SoundEvents.ITEM_BREAK);
         pStack.setCount(0);
 
         player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
@@ -170,12 +183,39 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
             player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
                 if(armorData.getHelmetOpen()){
                     armorData.setHelmetOpen(false, player);
+
                     // This will be helmet down sound
-                    level.playSound(null, player.getOnPos(), SoundEvents.ANVIL_PLACE, SoundSource.PLAYERS, 100, 1);
+                    // Fake player for sounds
+                    Player soundPlayer = new Player(level, player.getOnPos(), 0, player.getGameProfile(), null) {
+                        @Override
+                        public boolean isSpectator() {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean isCreative() {
+                            return false;
+                        }
+                    };
+                    soundPlayer.playSound(SoundEvents.ANVIL_PLACE);
+
                 }   else {
                     armorData.setHelmetOpen(true, player);
+
                     // This will be helmet up sound
-                    level.playSound(null, player.getOnPos(), SoundEvents.IRON_TRAPDOOR_OPEN, SoundSource.PLAYERS, 100, 1);
+                    // Fake player for sounds
+                    Player soundPlayer = new Player(level, player.getOnPos(), 0, player.getGameProfile(), null) {
+                        @Override
+                        public boolean isSpectator() {
+                            return false;
+                        }
+
+                        @Override
+                        public boolean isCreative() {
+                            return false;
+                        }
+                    };
+                    soundPlayer.playSound(SoundEvents.IRON_TRAPDOOR_OPEN);
                 }
             });
         }
@@ -264,16 +304,27 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
 
     public void flightSpeedArmorDamageEffects(Player player){
         if(player.tickCount % 20 == 0){
+            // Fake player for sounds
+            Player soundPlayer = new Player(player.getLevel(), player.getOnPos(), 0, player.getGameProfile(), null) {
+                @Override
+                public boolean isSpectator() {
+                    return false;
+                }
+
+                @Override
+                public boolean isCreative() {
+                    return false;
+                }
+            };
+
             // Armor Break Sound
-            player.getLevel().playSound(player, player.getOnPos(), ModSounds.METAL_RATTLE_1.get(), SoundSource.PLAYERS, 100,
-                    1 + (float)((Math.random() - 0.5) * 0.2));
+            soundPlayer.playSound(ModSounds.METAL_RATTLE_1.get(), 100,1 + (float)((Math.random() - 0.5) * 0.2) );
+
             if(Math.random() < 0.3) {
-                player.getLevel().playSound(player, player.getOnPos(), ModSounds.METAL_RATTLE_2.get(), SoundSource.PLAYERS, 20,
-                        1 + (float)((Math.random() - 0.5) * 0.2));
+                soundPlayer.playSound(ModSounds.METAL_RATTLE_2.get(), 100,1 + (float)((Math.random() - 0.5) * 0.2) );
             }
             if(Math.random() < 0.1) {
-                player.getLevel().playSound(player, player.getOnPos(), ModSounds.METAL_RATTLE_3.get(), SoundSource.PLAYERS, 100,
-                        1 + (float)((Math.random() - 0.5) * 0.2));
+                soundPlayer.playSound(ModSounds.METAL_RATTLE_3.get(), 100,1 + (float)((Math.random() - 0.5) * 0.2) );
             }
         }
         player.level.addParticle(ParticleTypes.CRIT, player.getX() + (Math.random() - 0.5) * 3, player.getY() + 0.9 + (Math.random() - 0.5) * 3,
@@ -534,7 +585,20 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
                 if(level.canSeeSky(pos)){
                     if(player.getItemBySlot(EquipmentSlot.HEAD).is(ModTags.Items.IRONMAN_HELMETS)){
                         if(player.tickCount % 20 == 0){
-                            level.playSound(null, player.getOnPos(), ModSounds.RAIN_IN_HELMET.get(), SoundSource.PLAYERS, 0.5F, 0.7F);
+
+                            // Fake player for sounds
+                            Player soundPlayer = new Player(level, player.getOnPos(), 0, player.getGameProfile(), null) {
+                                @Override
+                                public boolean isSpectator() {
+                                    return false;
+                                }
+
+                                @Override
+                                public boolean isCreative() {
+                                    return false;
+                                }
+                            };
+                            soundPlayer.playSound(ModSounds.RAIN_IN_HELMET.get(), 0.5f, 0.7f );
                         }
                     }
                 }
@@ -555,7 +619,20 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
         player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
             if(armorData.getHasArmor()){
                 armorData.setHandActTogether(!armorData.getHandActTogether());
-                player.getLevel().playSound(null, player.getOnPos(), SoundEvents.STONE_BUTTON_CLICK_ON, SoundSource.PLAYERS, 100, 0.5f);
+
+                // Fake player for sounds
+                Player soundPlayer = new Player(player.getLevel(), player.getOnPos(), 0, player.getGameProfile(), null) {
+                    @Override
+                    public boolean isSpectator() {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean isCreative() {
+                        return false;
+                    }
+                };
+                soundPlayer.playSound(SoundEvents.STONE_BUTTON_CLICK_ON, 100, 0.5f);
             }
         });
     }

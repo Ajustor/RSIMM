@@ -14,6 +14,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.network.NetworkEvent;
@@ -75,7 +76,20 @@ public class ArmorKeyBindingHoldC2SPacket {
 
                                 arcReactor.deleteArcReactor();
 
-                                level.playSound(null, player.getOnPos(), ModSounds.ARC_REACTOR_UNEQUIP.get(), SoundSource.PLAYERS, 100, 1);
+                                // Arc Reactor Unequip Sound
+                                // Fake player for sounds
+                                Player soundPlayer = new Player(level, player.getOnPos(), 0, player.getGameProfile(), null) {
+                                    @Override
+                                    public boolean isSpectator() {
+                                        return false;
+                                    }
+
+                                    @Override
+                                    public boolean isCreative() {
+                                        return false;
+                                    }
+                                };
+                                soundPlayer.playSound(ModSounds.ARC_REACTOR_UNEQUIP.get());
                             }   else {
                                 player.sendSystemMessage(Component.translatable("arc_reactor.rsimm.chest_blocked"));
                             }

@@ -233,7 +233,20 @@ public abstract class AbstractAmmoKit extends Item {
                         if(!inventoryItem.hurt(1, RandomSource.create(), (ServerPlayer) pPlayer)){
                             inventoryItem.setCount(inventoryItem.getCount() - 1);
                         }
-                        pPlayer.getLevel().playSound(null, pPlayer.getOnPos(), SoundEvents.ITEM_PICKUP, SoundSource.PLAYERS, 100, 0.7f);
+
+                        // Fake player for sounds
+                        Player soundPlayer = new Player(pPlayer.getLevel(), pPlayer.getOnPos(), 0, pPlayer.getGameProfile(), null) {
+                            @Override
+                            public boolean isSpectator() {
+                                return false;
+                            }
+
+                            @Override
+                            public boolean isCreative() {
+                                return false;
+                            }
+                        };
+                        soundPlayer.playSound(SoundEvents.ITEM_PICKUP, 1, 0.7f);
                     }
                 }
             }
@@ -245,7 +258,20 @@ public abstract class AbstractAmmoKit extends Item {
         if(nbtTag.getInt(nbtKey) > 0){
             pPlayer.addItem(new ItemStack(itemToGive));
             nbtTag.putInt(nbtKey, nbtTag.getInt(nbtKey) - 1);
-            pPlayer.getLevel().playSound(null, pPlayer.getOnPos(), SoundEvents.ITEM_PICKUP, SoundSource.PLAYERS, 100, 1.4f);
+
+            // Fake player for sounds
+            Player soundPlayer = new Player(pPlayer.getLevel(), pPlayer.getOnPos(), 0, pPlayer.getGameProfile(), null) {
+                @Override
+                public boolean isSpectator() {
+                    return false;
+                }
+
+                @Override
+                public boolean isCreative() {
+                    return false;
+                }
+            };
+            soundPlayer.playSound(SoundEvents.ITEM_PICKUP, 1, 1.4f);
         }
         return nbtTag;
     }

@@ -24,7 +24,7 @@ public class MissingReactorEffect extends MobEffect {
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
         Player player = (Player) pLivingEntity;
         if(player.tickCount % 20 == 0){
-            float volume = 1 - ((float)player.getEffect(ModEffects.MISSING_REACTOR.get()).getDuration() / 12000);
+            float volume = 1 - ((float)player.getEffect(ModEffects.MISSING_REACTOR.get()).getDuration() / 6000);
             player.playSound(ModSounds.HEARTBEAT.get(), volume, 1);
         }
 

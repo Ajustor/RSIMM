@@ -7,6 +7,7 @@ import net.guwy.rsimm.content.items.arc_reactors.AbstractUnchargedArcReactorItem
 import net.guwy.rsimm.content.items.armors.AbstractIronmanArmorItem;
 import net.guwy.rsimm.index.ModArmorItems;
 import net.guwy.rsimm.index.ModBlockEntities;
+import net.guwy.rsimm.index.ModSounds;
 import net.guwy.rsimm.index.ModTags;
 import net.guwy.rsimm.mechanics.ModEnergyStorage;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.ArmorEnergyType;
@@ -213,7 +214,19 @@ public class ArmorEquippingStationBlockEntity extends BlockEntity implements Men
                         pEntity.itemHandler.extractItem(3, 1, false);
                         pEntity.itemHandler.extractItem(4, 1, false);
 
-                        player.getLevel().playSound(null, player.getOnPos(), SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 100, 1);
+                        // Fake player for sounds
+                        Player soundPlayer = new Player(player.getLevel(), player.getOnPos(), 0, player.getGameProfile(), null) {
+                            @Override
+                            public boolean isSpectator() {
+                                return false;
+                            }
+
+                            @Override
+                            public boolean isCreative() {
+                                return false;
+                            }
+                        };
+                        soundPlayer.playSound(SoundEvents.ANVIL_USE);
                     }
                 }
             }

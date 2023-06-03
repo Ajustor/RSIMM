@@ -2,6 +2,7 @@ package net.guwy.rsimm.content.blocks.armor_unequipping_station;
 
 import net.guwy.rsimm.content.items.ammo_kits.AbstractAmmoKit;
 import net.guwy.rsimm.content.items.armors.AbstractIronmanArmorItem;
+import net.guwy.rsimm.index.ModSounds;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorData;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
 import net.minecraft.core.BlockPos;
@@ -44,7 +45,20 @@ public class ArmorUnequippingStationBlock extends Block {
             if(pEntity.isCrouching() && isWearingIronmanArmor(player)){
                 giveUnassambledArmor(player);
                 deleteArmor(player);
-                pLevel.playSound(null, pEntity.getOnPos(), SoundEvents.ANVIL_DESTROY, SoundSource.BLOCKS, 100, 1);
+
+                // Fake player for sounds
+                Player soundPlayer = new Player(pLevel, player.getOnPos(), 0, player.getGameProfile(), null) {
+                    @Override
+                    public boolean isSpectator() {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean isCreative() {
+                        return false;
+                    }
+                };
+                soundPlayer.playSound(SoundEvents.ANVIL_DESTROY);
             }
         }
         super.stepOn(pLevel, pPos, pState, pEntity);

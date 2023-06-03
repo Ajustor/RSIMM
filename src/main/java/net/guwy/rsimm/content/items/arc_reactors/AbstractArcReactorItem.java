@@ -6,6 +6,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -47,7 +48,21 @@ public abstract class AbstractArcReactorItem extends Item {
                         arcReactor.setArcReactor(displayName(), Item.getId(itemStack.getItem()), maxEnergy(), energy(itemStack),
                                 energyOutput(), idleDrain(), poisonFactor());
                         itemStack.setCount(0);
-                        pLevel.playSound(null, pPlayer.getOnPos(), ModSounds.ARC_REACTOR_EQUIP.get(), SoundSource.PLAYERS, 100, 1);
+
+                        // Fake player for sounds
+                        Player soundPlayer = new Player(pLevel, pPlayer.getOnPos(), 0, pPlayer.getGameProfile(), null) {
+                            @Override
+                            public boolean isSpectator() {
+                                return false;
+                            }
+
+                            @Override
+                            public boolean isCreative() {
+                                return false;
+                            }
+                        };
+                        soundPlayer.playSound(ModSounds.ARC_REACTOR_EQUIP.get());
+
                         pPlayer.getCooldowns().addCooldown(itemStack.getItem(), 20);
                     } else {
                         pPlayer.sendSystemMessage(Component.translatable("arc_reactor.rsimm.already_have"));
