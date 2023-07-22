@@ -1,6 +1,5 @@
 package net.guwy.rsimm.content.blocks.arc_reactor_charger;
 
-import com.simibubi.create.foundation.utility.placement.PlacementOffset;
 import net.guwy.rsimm.index.ModBlocks;
 import net.guwy.rsimm.index.ModMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
