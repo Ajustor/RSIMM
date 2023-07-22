@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "rsimm:unassambled_mark_1_helmet"
+    "rsimm:unassambled_mark_1_helmet",
+    "rsimm:unassambled_mark_2_helmet"
   ]
 }

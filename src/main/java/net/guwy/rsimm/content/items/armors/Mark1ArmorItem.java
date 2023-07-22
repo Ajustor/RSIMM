@@ -12,7 +12,6 @@ import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataP
 import net.guwy.sticky_foundations.index.SFMinerals;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
@@ -373,15 +372,15 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
     @Override
     public void flyCustomTickClient(Player player) {
         player.setDeltaMovement(player.getDeltaMovement().x()
-                ,player.getDeltaMovement().y() + (FlightMaxAcceleration()/20)
+                ,player.getDeltaMovement().y() + (FlightMaxAccelerationAtSeaLevel()/20)
                 , player.getDeltaMovement().z());
 
 
 
         //Drag is applied here
-        player.setDeltaMovement(player.getDeltaMovement().x() - (player.getDeltaMovement().x() * FlightDragCoefficient()),
-                player.getDeltaMovement().y() - (player.getDeltaMovement().y() * FlightDragCoefficient()),
-                player.getDeltaMovement().z() - (player.getDeltaMovement().z() * FlightDragCoefficient()));
+        player.setDeltaMovement(player.getDeltaMovement().x() - (player.getDeltaMovement().x() * FlightDragCoefficientAtSeaLevel()),
+                player.getDeltaMovement().y() - (player.getDeltaMovement().y() * FlightDragCoefficientAtSeaLevel()),
+                player.getDeltaMovement().z() - (player.getDeltaMovement().z() * FlightDragCoefficientAtSeaLevel()));
 
 
 
@@ -406,23 +405,23 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
     }
 
     @Override
-    public double MinimumFlightSpeed() {
+    public double FlightStallSpeed() {
         return 0;
     }
     @Override
-    public double MaximumFlightSpeed() {
+    public double FlightOverSpeedThreshold() {
         return 15;
     }
     @Override
-    public double FlightDragCoefficient() {
+    public double FlightDragCoefficientAtSeaLevel() {
         return 0.002;
     }
     @Override
-    public double FlightMaxAcceleration() {
+    public double FlightMaxAccelerationAtSeaLevel() {
         return 2.0;
     }
     @Override
-    public double FlightAccelerationEfficinecy() {
+    public double FlightEnergyConsumptionAtMaxThrottle() {
         return 1;
     }
     @Override

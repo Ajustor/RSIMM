@@ -17,7 +17,6 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -27,13 +26,18 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.fml.common.Mod;
 import software.bernie.geckolib3.item.GeoArmorItem;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+/** !Deprecated!
+ * Bad code, is old
+ * Use the "AbstractGen2IronmanArmorItem" instead
+ *
+ * This class will stay if there's any need for it in the future
+ */
 public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
     public AbstractIronmanArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
         super(materialIn, slot, builder);
@@ -225,11 +229,11 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
 
 
     // flight Controller
-    public abstract double MinimumFlightSpeed();
-    public abstract double MaximumFlightSpeed();
-    public abstract double FlightDragCoefficient();
-    public abstract double FlightMaxAcceleration();
-    public abstract double FlightAccelerationEfficinecy();
+    public abstract double FlightStallSpeed();
+    public abstract double FlightOverSpeedThreshold();
+    public abstract double FlightDragCoefficientAtSeaLevel();
+    public abstract double FlightMaxAccelerationAtSeaLevel();
+    public abstract double FlightEnergyConsumptionAtMaxThrottle();
     public abstract double FlightBootRequirement();
 
 
@@ -256,7 +260,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
                         ModNetworking.sendToPlayer(new FlightDataS2CPacket(player.getVisualRotationYInDegrees(),
                                 true, armorData.getFlyMode()), (ServerPlayer) player);
 
-                        if(armorData.getMoveSpeed() * 20 > MaximumFlightSpeed()){
+                        if(armorData.getMoveSpeed() * 20 > FlightOverSpeedThreshold()){
                             flightSpeedArmorDamage(player);
                             flightSpeedArmorDamageEffects(player);
                         }
@@ -280,7 +284,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
 
                 ModNetworking.sendToServer(new FlightDataC2SPacket(totalSpeed));
 
-                if(totalSpeed * 20 > MaximumFlightSpeed()){
+                if(totalSpeed * 20 > FlightOverSpeedThreshold()){
                     flightSpeedArmorDamageEffects(player);
                 }
             }

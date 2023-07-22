@@ -1,15 +1,9 @@
 package net.guwy.rsimm.content.blocks.armor_equipping_station;
 
-import net.guwy.rsimm.content.blocks.arc_reactor_charger.ArcReactorChargerMenu;
 import net.guwy.rsimm.content.items.ammo_kits.AbstractAmmoKit;
-import net.guwy.rsimm.content.items.arc_reactors.AbstractArcReactorItem;
-import net.guwy.rsimm.content.items.arc_reactors.AbstractUnchargedArcReactorItem;
 import net.guwy.rsimm.content.items.armors.AbstractIronmanArmorItem;
-import net.guwy.rsimm.index.ModArmorItems;
 import net.guwy.rsimm.index.ModBlockEntities;
-import net.guwy.rsimm.index.ModSounds;
 import net.guwy.rsimm.index.ModTags;
-import net.guwy.rsimm.mechanics.ModEnergyStorage;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.ArmorEnergyType;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
 import net.minecraft.core.BlockPos;
@@ -17,7 +11,6 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -32,8 +25,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -194,7 +185,7 @@ public class ArmorEquippingStationBlockEntity extends BlockEntity implements Men
                             CompoundTag nbtTag = supplierItem.getTag();
 
                             armorData.compileArmor(nbtTag.getLong("energy"), armorItem.MaxStableEnergy(), ArmorEnergyType.EMERGENCY, armorItem.MaxEnergyOutput()
-                                    , armorItem.MaximumFlightSpeed(), armorItem.MinimumFlightSpeed());
+                                    , armorItem.FlightOverSpeedThreshold(), armorItem.FlightStallSpeed());
 
                             armorData.setArmorStorage(1, nbtTag.getInt("1"));
                             armorData.setArmorStorage(2, nbtTag.getInt("2"));

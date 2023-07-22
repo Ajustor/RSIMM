@@ -71,8 +71,6 @@ public abstract class AbstractArcReactorItem extends Item {
                     pPlayer.sendSystemMessage(Component.translatable("arc_reactor.rsimm.already_have_slot"));
                 }
             });
-
-            pLevel.playSound(pPlayer, pPlayer.blockPosition(), ModSounds.ARC_REACTOR_EQUIP.get(), SoundSource.PLAYERS, 100f, 1f);
         }
         return super.use(pLevel, pPlayer, pUsedHand);
     }

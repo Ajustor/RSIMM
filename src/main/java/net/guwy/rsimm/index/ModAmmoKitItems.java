@@ -3,6 +3,7 @@ package net.guwy.rsimm.index;
 import net.guwy.rsimm.RsImm;
 import net.guwy.rsimm.content.items.TestArmorItem;
 import net.guwy.rsimm.content.items.ammo_kits.Mark1AmmoKit;
+import net.guwy.rsimm.content.items.ammo_kits.Mark2AmmoKit;
 import net.guwy.rsimm.content.items.armors.Mark1ArmorItem;
 import net.guwy.rsimm.content.items.armors.Mark1OpenHelmetArmorItem;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -20,6 +21,9 @@ public class ModAmmoKitItems {
     // Ammo Kits
     public static final RegistryObject<Item> MARK_1_AMMO_KIT = ITEMS.register("mark_1_ammo_kit",
             () -> new Mark1AmmoKit(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+    public static final RegistryObject<Item> MARK_2_AMMO_KIT = ITEMS.register("mark_2_ammo_kit",
+            () -> new Mark2AmmoKit(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
 
 
 

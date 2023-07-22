@@ -83,5 +83,16 @@ public class ArcReactorClientData {
         }
     }
 
+    /**
+     * Used to remove all data upon logging out of a save to prevent crashes
+     *
+     * DO NOT use unless necessary
+     */
+    public static void purgeArcReactorData(){
+        ArcReactorClientData.itemId.clear();
+        ArcReactorClientData.playerUUID.clear();
+        ArcReactorClientData.energyPercentage.clear();
+    }
+
 
 }

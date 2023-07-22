@@ -1,5 +1,6 @@
 package net.guwy.rsimm.content.items.ammo_kits;
 
+import net.guwy.rsimm.index.ModArmorItems;
 import net.minecraft.world.item.Item;
 
 public class Mark2AmmoKit extends AbstractAmmoKit{
@@ -9,41 +10,41 @@ public class Mark2AmmoKit extends AbstractAmmoKit{
 
     @Override
     public Item UnassembledHelmetItem() {
-        return null;
+        return ModArmorItems.UNASSAMBLED_MARK_2_HELMET.get();
     }
 
     @Override
     public Item UnassembledChestplateItem() {
-        return null;
+        return ModArmorItems.UNASSAMBLED_MARK_2_CHESTPLATE.get();
     }
 
     @Override
     public Item UnassembledLeggingsItem() {
-        return null;
+        return ModArmorItems.UNASSAMBLED_MARK_2_LEGGINGS.get();
     }
 
     @Override
     public Item UnassembledBootsItem() {
-        return null;
+        return ModArmorItems.UNASSAMBLED_MARK_2_BOOTS.get();
     }
 
     @Override
     public Item HelmetItem() {
-        return null;
+        return ModArmorItems.MARK_2_HELMET.get();
     }
 
     @Override
     public Item ChestplateItem() {
-        return null;
+        return ModArmorItems.MARK_2_CHESTPLATE.get();
     }
 
     @Override
     public Item LeggingsItem() {
-        return null;
+        return ModArmorItems.MARK_2_LEGGINGS.get();
     }
 
     @Override
     public Item BootsItem() {
-        return null;
+        return ModArmorItems.MARK_2_BOOTS.get();
     }
 }

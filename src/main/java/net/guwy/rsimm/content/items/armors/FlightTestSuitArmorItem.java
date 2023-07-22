@@ -1,74 +1,70 @@
 package net.guwy.rsimm.content.items.armors;
 
-import net.guwy.rsimm.index.ModAmmoKitItems;
-import net.guwy.rsimm.index.ModArmorItems;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import software.bernie.geckolib3.core.IAnimatable;
+import software.bernie.geckolib3.core.builder.ILoopType;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
-import software.bernie.geckolib3.util.GeckoLibUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Mark2ArmorItem extends AbstractGen2IronmanArmorItem implements IAnimatable {
-    public Mark2ArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
+public class FlightTestSuitArmorItem extends AbstractGen2IronmanArmorItem implements IAnimatable, ILoopType {
+    public FlightTestSuitArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
         super(materialIn, slot, builder);
     }
 
     @Override
     public Item HelmetItem() {
-        return ModArmorItems.MARK_2_HELMET.get();
+        return null;
     }
 
     @Override
     public Item HelmetOpenItem() {
-        return ModArmorItems.MARK_2_OPEN_HELMET.get();
+        return null;
     }
 
     @Override
     public Item ChestplateItem() {
-        return ModArmorItems.MARK_2_CHESTPLATE.get();
+        return null;
     }
 
     @Override
     public Item LeggingsItem() {
-        return ModArmorItems.MARK_2_LEGGINGS.get();
+        return null;
     }
 
     @Override
     public Item BootsItem() {
-        return ModArmorItems.MARK_2_BOOTS.get();
+        return null;
     }
 
     @Override
     public Item AmmoKitItem() {
-        return ModAmmoKitItems.MARK_2_AMMO_KIT.get();
+        return null;
     }
 
     @Override
     public List<ItemStack> getBrokenLoot() {
-        List<ItemStack> list = new ArrayList<>();
-        return list;
+        return null;
     }
 
     @Override
     public double FlightStallSpeed() {
-        return 5;
+        return 0;
     }
 
     @Override
     public double FlightOverSpeedThreshold() {
-        return 20;
+        return 0;
     }
 
     @Override
     public double FlightDragCoefficientAtSeaLevel() {
-        return 0.02;
+        return 0;
     }
 
     @Override
@@ -88,15 +84,17 @@ public class Mark2ArmorItem extends AbstractGen2IronmanArmorItem implements IAni
 
     @Override
     public void flyCustomTickServer(Player player) {
+
     }
 
     @Override
     public void flyCustomTickClient(Player player) {
+
     }
 
     @Override
     public int FreezingHeight() {
-        return 128;
+        return 0;
     }
 
     @Override
@@ -121,12 +119,12 @@ public class Mark2ArmorItem extends AbstractGen2IronmanArmorItem implements IAni
 
     @Override
     public double bootRate() {
-        return 0.1;
+        return 0;
     }
 
     @Override
     public double OverloadTextDisappearThreshold() {
-        return 0.1;
+        return 0;
     }
 
     @Override
@@ -141,7 +139,7 @@ public class Mark2ArmorItem extends AbstractGen2IronmanArmorItem implements IAni
 
     @Override
     public int ConstantEnergyDraw() {
-        return 10;
+        return 0;
     }
 
     @Override
@@ -159,17 +157,18 @@ public class Mark2ArmorItem extends AbstractGen2IronmanArmorItem implements IAni
         return 0;
     }
 
-
-
-    // Gecko Lib Stuff
     @Override
     public void registerControllers(AnimationData data) {
 
     }
 
-    public AnimationFactory factory = GeckoLibUtil.createFactory(this);
     @Override
     public AnimationFactory getFactory() {
-        return this.factory;
+        return null;
+    }
+
+    @Override
+    public boolean isRepeatingAfterEnd() {
+        return false;
     }
 }
