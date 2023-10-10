@@ -1,12 +1,14 @@
 package net.guwy.rsimm.content.items.arc_reactors;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
 
@@ -17,8 +19,9 @@ public class ArcReactorItem extends AbstractArcReactorItem{
     int idleDrain;
     int poisonFactor;
     Item depletedItem;
+    ResourceLocation overlayTexture;
 
-    public ArcReactorItem(Properties pProperties, String displayName, long maxEnergy, long energyOutput, int idleDrain, int poisonFactor, Item depletedItem) {
+    public ArcReactorItem(Properties pProperties, String displayName, long maxEnergy, long energyOutput, int idleDrain, int poisonFactor, Item depletedItem, @Nullable ResourceLocation overlayTexture) {
         super(pProperties);
         this.displayName = displayName;
         this.maxEnergy = maxEnergy;
@@ -26,6 +29,12 @@ public class ArcReactorItem extends AbstractArcReactorItem{
         this.idleDrain = idleDrain;
         this.poisonFactor = poisonFactor;
         this.depletedItem = depletedItem;
+        this.overlayTexture = overlayTexture;
+    }
+
+    @Override
+    public @Nullable ResourceLocation OverlayIcon() {
+        return overlayTexture;
     }
 
     @Override

@@ -1,7 +1,6 @@
 package net.guwy.rsimm.content.network_packets;
 
-import net.guwy.rsimm.content.data.ArmorClientData;
-import net.guwy.rsimm.mechanics.capabilities.player.armor_data.FlyMode;
+import net.guwy.rsimm.client.ArmorClientData;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 

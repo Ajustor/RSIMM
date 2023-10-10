@@ -2,11 +2,11 @@ package net.guwy.rsimm.content.items.armors;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
-import net.guwy.rsimm.content.data.ArmorClientData;
+import net.guwy.rsimm.client.ArmorClientData;
 import net.guwy.rsimm.content.entities.non_living.mark_1_flame.Mark1FlameEntity;
 import net.guwy.rsimm.content.entities.non_living.rocket.RocketEntity;
 import net.guwy.rsimm.index.*;
-import net.guwy.rsimm.mechanics.KeyCallType;
+import net.guwy.rsimm.utils.KeyCallType;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.FlyMode;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
 import net.guwy.sticky_foundations.index.SFMinerals;

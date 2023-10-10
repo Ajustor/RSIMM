@@ -2,6 +2,7 @@ package net.guwy.rsimm.index;
 
 import net.guwy.rsimm.RsImm;
 import net.guwy.rsimm.content.items.ChestCutterItem;
+import net.guwy.rsimm.content.items.RepulsorItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -21,6 +22,9 @@ public class ModItems {
     // Tools
     public static final RegistryObject<Item> CHEST_CUTTER = ITEMS.register("chest_cutter",
             () -> new ChestCutterItem(new Item.Properties().tab(ModCreativeModeTabs.MAIN).stacksTo(1)));
+
+    public static final RegistryObject<Item> REPULSOR = ITEMS.register("repulsor",
+            () -> new RepulsorItem(new Item.Properties().tab(ModCreativeModeTabs.MAIN).stacksTo(1)));
 
 
 

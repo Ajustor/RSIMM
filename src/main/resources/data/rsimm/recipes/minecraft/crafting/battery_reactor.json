@@ -10,7 +10,7 @@
       "tag": "forge:plates/iron"
     },
     "z": {
-      "tag": "forge:wires/copper"
+      "tag": "forge:plates/copper"
     },
     "x": {
       "item": "sticky_foundations:insulator"

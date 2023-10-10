@@ -4,7 +4,7 @@ import com.simibubi.create.foundation.ponder.PonderRegistrationHelper;
 import com.simibubi.create.foundation.ponder.PonderRegistry;
 import com.simibubi.create.foundation.ponder.PonderTag;
 import net.guwy.rsimm.RsImm;
-import net.guwy.rsimm.ponder.PonderSchenes;
+import net.guwy.rsimm.compat.create.ponder.PonderSchenes;
 import net.minecraft.resources.ResourceLocation;
 
 public class RSIMMPonder {

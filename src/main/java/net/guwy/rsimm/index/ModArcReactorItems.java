@@ -5,6 +5,7 @@ import net.guwy.rsimm.content.items.arc_reactors.ArcReactorItem;
 import net.guwy.rsimm.content.items.arc_reactors.DepletedArcReactorItem;
 import net.guwy.rsimm.content.items.arc_reactors.UnchargedArcReactorItem;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -28,7 +29,8 @@ public class ModArcReactorItems {
 
     public static final RegistryObject<Item> MARK_1_ARC_REACTOR = ITEMS.register("mark_1_arc_reactor",
             () -> new ArcReactorItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN),
-                    "mark 1", 1000000, 100000, 5, 4, MARK_1_ARC_REACTOR_DEPLETED.get()));
+                    "mark 1", 1000000, 100000, 5, 4, MARK_1_ARC_REACTOR_DEPLETED.get(),
+                    new ResourceLocation(RsImm.MOD_ID, "textures/overlay/armor/edith_glasses/mk1_overlay_sprites.png")));
 
     public static final RegistryObject<Item> MARK_1_ARC_REACTOR_UNCHARGED = ITEMS.register("mark_1_arc_reactor_uncharged",
             () -> new UnchargedArcReactorItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN),
@@ -41,7 +43,8 @@ public class ModArcReactorItems {
 
     public static final RegistryObject<Item> MARK_2_ARC_REACTOR = ITEMS.register("mark_2_arc_reactor",
             () -> new ArcReactorItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN),
-                    "mark 2", 10000000, 1000000, 25, 8, MARK_2_ARC_REACTOR_DEPLETED.get()));
+                    "mark 2", 10000000, 1000000, 25, 8, MARK_2_ARC_REACTOR_DEPLETED.get(),
+                    new ResourceLocation(RsImm.MOD_ID, "textures/overlay/armor/edith_glasses/edith_glasses_overlay.png")));
 
     public static final RegistryObject<Item> MARK_2_ARC_REACTOR_UNCHARGED = ITEMS.register("mark_2_arc_reactor_uncharged",
             () -> new UnchargedArcReactorItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN),
@@ -52,7 +55,8 @@ public class ModArcReactorItems {
     // Non Fission Reactors
     public static final RegistryObject<Item> BATTERY_REACTOR = ITEMS.register("battery_reactor",
             () -> new ArcReactorItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN),
-                    "AA Battery", 6000, 5, 1, 0, MARK_2_ARC_REACTOR_DEPLETED.get()){
+                    "AA Battery", 6000, 5, 1, 0, MARK_2_ARC_REACTOR_DEPLETED.get(),
+                    new ResourceLocation(RsImm.MOD_ID, "textures/overlay/armor/edith_glasses/battery_overlay_sprites.png")){
                 @Override
                 public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
                     pTooltipComponents.add(Component.translatable("tooltip.rsimm.battery_reactor"));

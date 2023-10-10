@@ -2,7 +2,7 @@ package net.guwy.rsimm.content.items;
 
 import net.guwy.rsimm.content.items.armors.AbstractIronmanArmorItem;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
-import net.guwy.rsimm.mechanics.KeyCallType;
+import net.guwy.rsimm.utils.KeyCallType;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;

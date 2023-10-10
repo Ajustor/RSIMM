@@ -1,6 +1,7 @@
 package net.guwy.rsimm.index;
 
 import net.guwy.rsimm.RsImm;
+import net.guwy.rsimm.content.items.EdithGlassesArmorItem;
 import net.guwy.rsimm.content.items.TestArmorItem;
 import net.guwy.rsimm.content.items.armors.*;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -21,6 +22,12 @@ public class ModArmorItems {
                     EquipmentSlot.CHEST, new Item.Properties().stacksTo(1)
                     .tab(ModCreativeModeTabs.MAIN)));
 
+    public static final RegistryObject<Item> EDITH_GLASSES = ITEMS.register("edith_glasses",
+            () -> new EdithGlassesArmorItem(ModArmorMaterials.EDITH_GLASSES, EquipmentSlot.HEAD
+                    , new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
+
+
+
     // Armors
     public static final RegistryObject<Item> TEST_ARMOR_HELMET = ITEMS.register("test_armor_helmet",
             () -> new TestArmorItem(ModArmorMaterials.TEST_ARMOR, EquipmentSlot.HEAD, new Item.Properties().stacksTo(1)));
@@ -33,6 +40,8 @@ public class ModArmorItems {
 
     public static final RegistryObject<Item> TEST_ARMOR_BOOTS = ITEMS.register("test_armor_boots",
             () -> new TestArmorItem(ModArmorMaterials.TEST_ARMOR, EquipmentSlot.FEET, new Item.Properties().stacksTo(1)));
+
+
 
 
     // Mark 1
@@ -64,33 +73,8 @@ public class ModArmorItems {
             () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN).stacksTo(1).durability(750)));
 
 
-    // Mark 2
-    public static final RegistryObject<Item> MARK_2_HELMET = ITEMS.register("mark_2_helmet",
-            () -> new Mark2ArmorItem(ModArmorMaterials.MARK_2_ARMOR, EquipmentSlot.HEAD, new Item.Properties().stacksTo(1)));
 
-    public static final RegistryObject<Item> MARK_2_OPEN_HELMET = ITEMS.register("mark_2_open_helmet",
-            () -> new Mark2OpenHelmetArmorItem(ModArmorMaterials.MARK_2_OPEN_ARMOR, EquipmentSlot.HEAD, new Item.Properties().stacksTo(1)));
-
-    public static final RegistryObject<Item> MARK_2_CHESTPLATE = ITEMS.register("mark_2_chestplate",
-            () -> new Mark2ArmorItem(ModArmorMaterials.MARK_2_ARMOR, EquipmentSlot.CHEST, new Item.Properties().stacksTo(1)));
-
-    public static final RegistryObject<Item> MARK_2_LEGGINGS = ITEMS.register("mark_2_leggings",
-            () -> new Mark2ArmorItem(ModArmorMaterials.MARK_2_ARMOR, EquipmentSlot.LEGS, new Item.Properties().stacksTo(1)));
-
-    public static final RegistryObject<Item> MARK_2_BOOTS = ITEMS.register("mark_2_boots",
-            () -> new Mark2ArmorItem(ModArmorMaterials.MARK_2_ARMOR, EquipmentSlot.FEET, new Item.Properties().stacksTo(1)));
-
-    public static final RegistryObject<Item> UNASSAMBLED_MARK_2_HELMET = ITEMS.register("unassambled_mark_2_helmet",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN).stacksTo(1).durability(750)));
-
-    public static final RegistryObject<Item> UNASSAMBLED_MARK_2_CHESTPLATE = ITEMS.register("unassambled_mark_2_chestplate",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN).stacksTo(1).durability(750)));
-
-    public static final RegistryObject<Item> UNASSAMBLED_MARK_2_LEGGINGS = ITEMS.register("unassambled_mark_2_leggings",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN).stacksTo(1).durability(750)));
-
-    public static final RegistryObject<Item> UNASSAMBLED_MARK_2_BOOTS = ITEMS.register("unassambled_mark_2_boots",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTabs.MAIN).stacksTo(1).durability(750)));
+    // Flight Test Suit
 
 
     public static void register(IEventBus eventBus){

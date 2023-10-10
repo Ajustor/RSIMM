@@ -13,6 +13,7 @@ public class ArcReactorSlot {
     private long reactorEnergy = 0;
     private long reactorEnergyOutput = 0;       //Max Energy Output
     private long reactorLoad = 0;       //Current Drawn energy
+    private long reactorLastLoad = 0;       //Energy draw from the last second for use in displays
     private int reactorIdleDrain = 0;
     private int reactorPoisonFactor = 0;
     private int playerReactorPoisoning = 0;
@@ -150,6 +151,14 @@ public class ArcReactorSlot {
         return this.reactorLoad + add <= this.reactorEnergy && this.reactorLoad + add <= this.reactorEnergyOutput;
     }
 
+    public long getEnergyLastLoad() {
+        return reactorLastLoad;
+    }
+
+    public void setEnergyLastLoad(long lastLoad) {
+        this.reactorLastLoad = lastLoad;
+    }
+
 
     //reactorIdleDrain
     public int getArcReactorIdleDrain() {
@@ -203,6 +212,8 @@ public class ArcReactorSlot {
         this.reactorEnergyCapacity = source.reactorEnergyCapacity;
         this.reactorEnergy = source.reactorEnergy;
         this.reactorEnergyOutput = source.reactorEnergyOutput;
+        this.reactorLoad = source.reactorLoad;
+        this.reactorLastLoad = source.reactorLastLoad;
         this.reactorIdleDrain = source.reactorIdleDrain;
         this.reactorPoisonFactor = source.reactorPoisonFactor;
         this.playerReactorPoisoning = source.playerReactorPoisoning;
@@ -216,6 +227,8 @@ public class ArcReactorSlot {
         nbt.putLong("arcReactorEnergyCapacity", reactorEnergyCapacity);
         nbt.putLong("arcReactorEnergy", reactorEnergy);
         nbt.putLong("arcReactorEnergyOutput", reactorEnergyOutput);
+        nbt.putLong("arcReactorEnergyLoad", reactorLoad);
+        nbt.putLong("reactorLastLoad", reactorLastLoad);
         nbt.putInt("arcReactorIdleDrain", reactorIdleDrain);
         nbt.putInt("arcReactorPoisonFactor", reactorPoisonFactor);
         nbt.putInt("playerArcReactorPoisoning", playerReactorPoisoning);
@@ -229,6 +242,8 @@ public class ArcReactorSlot {
         reactorEnergyCapacity = nbt.getLong("arcReactorEnergyCapacity");
         reactorEnergy = nbt.getLong("arcReactorEnergy");
         reactorEnergyOutput = nbt.getLong("arcReactorEnergyOutput");
+        reactorLoad = nbt.getLong("arcReactorEnergyLoad");
+        reactorLastLoad = nbt.getLong("reactorLastLoad");
         reactorIdleDrain = nbt.getInt("arcReactorIdleDrain");
         reactorPoisonFactor = nbt.getInt("arcReactorPoisonFactor");
         playerReactorPoisoning = nbt.getInt("playerArcReactorPoisoning");

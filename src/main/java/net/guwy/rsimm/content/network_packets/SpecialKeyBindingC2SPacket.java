@@ -1,7 +1,7 @@
 package net.guwy.rsimm.content.network_packets;
 
 import net.guwy.rsimm.content.items.armors.AbstractIronmanArmorItem;
-import net.guwy.rsimm.mechanics.KeyCallType;
+import net.guwy.rsimm.utils.KeyCallType;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
 import net.minecraft.network.FriendlyByteBuf;

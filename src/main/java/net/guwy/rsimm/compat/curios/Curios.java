@@ -34,4 +34,22 @@ public class Curios {
             }
         });
     }
+
+    public static ICapabilityProvider createEdithGlassesProvider(ItemStack stack)
+    {
+        return CurioItemCapability.createProvider(new ICurio()
+        {
+            @Override
+            public ItemStack getStack()
+            {
+                return stack;
+            }
+
+            @Override
+            public boolean canEquipFromUse(SlotContext context)
+            {
+                return true;
+            }
+        });
+    }
 }

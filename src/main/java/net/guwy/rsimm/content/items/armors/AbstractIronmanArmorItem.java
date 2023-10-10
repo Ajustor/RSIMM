@@ -1,6 +1,6 @@
 package net.guwy.rsimm.content.items.armors;
 
-import net.guwy.rsimm.content.data.ArmorClientData;
+import net.guwy.rsimm.client.ArmorClientData;
 import net.guwy.rsimm.content.network_packets.FlightDataC2SPacket;
 import net.guwy.rsimm.content.network_packets.FlightDataS2CPacket;
 import net.guwy.rsimm.content.network_packets.FreezeDataS2CPacket;
@@ -11,7 +11,7 @@ import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotPr
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.ArmorEnergyType;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.FlyMode;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
-import net.guwy.rsimm.mechanics.KeyCallType;
+import net.guwy.rsimm.utils.KeyCallType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;

@@ -37,7 +37,14 @@ public enum ModArmorMaterials implements ArmorMaterial{
 
     ARC_REACTOR_CONNECTOR("arc_reactor_connector", 0, new int[]{0, 0, 0, 0}, 0,
     SoundEvents.ARMOR_EQUIP_CHAIN, 0.0F, 0.0F, () ->
+            Ingredient.of(ItemStack.EMPTY)),
+
+    EDITH_GLASSES("edith_glasses", 0, new int[]{0, 0, 0, 0}, 0,
+            SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () ->
             Ingredient.of(ItemStack.EMPTY));
+
+
+
 
     private static final int[] HEALTH_PER_SLOT = new int[]{250, 250, 250, 250};
     private final String name;

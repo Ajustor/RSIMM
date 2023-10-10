@@ -1,10 +1,6 @@
 package net.guwy.rsimm.content.network_packets;
 
-import net.guwy.rsimm.content.blocks.arc_reactor_charger.ArcReactorChargerBlockEntity;
-import net.guwy.rsimm.content.blocks.arc_reactor_charger.ArcReactorChargerMenu;
-import net.guwy.rsimm.content.data.ArcReactorClientData;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
+import net.guwy.rsimm.client.ArcReactorClientData;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 
