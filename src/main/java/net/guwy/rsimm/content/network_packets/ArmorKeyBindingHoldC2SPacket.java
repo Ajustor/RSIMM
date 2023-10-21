@@ -66,11 +66,14 @@ public class ArmorKeyBindingHoldC2SPacket {
                                 CompoundTag tag = new CompoundTag();
                                 tag.putLong("energy", arcReactor.getArcReactorEnergy());
                                 itemStack.setTag(tag);
+                                AbstractArcReactorItem arcReactorItem = (AbstractArcReactorItem) itemStack.getItem();
 
-                                if(arcReactor.getArcReactorEnergy() <= 0){
-                                    AbstractArcReactorItem arcReactorItem = (AbstractArcReactorItem) itemStack.getItem();
+                                // If energy is 0 and there is a valid depleted item defined, give the depleted item instead
+                                if(arcReactor.getArcReactorEnergy() <= 0 && arcReactorItem.depletedItem() != null){
                                     player.getInventory().placeItemBackInInventory(new ItemStack(arcReactorItem.depletedItem()));
-                                }   else {
+                                }
+                                // else continue as usual
+                                else {
                                     player.getInventory().placeItemBackInInventory(itemStack);
                                 }
 

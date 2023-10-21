@@ -55,7 +55,7 @@ public class ModArcReactorItems {
     // Non Fission Reactors
     public static final RegistryObject<Item> BATTERY_REACTOR = ITEMS.register("battery_reactor",
             () -> new ArcReactorItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN),
-                    "AA Battery", 6000, 5, 1, 0, MARK_2_ARC_REACTOR_DEPLETED.get(),
+                    "AA Battery", 6000, 5, 1, 0, null,
                     new ResourceLocation(RsImm.MOD_ID, "textures/overlay/armor/edith_glasses/battery_overlay_sprites.png")){
                 @Override
                 public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {

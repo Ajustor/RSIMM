@@ -144,7 +144,7 @@
     "arc_reactor.rsimm.uncharged.instructions.1": "You need to charge this in a ",
     "arc_reactor.rsimm.uncharged.instructions.2": "arc reactor charging station",
     "arc_reactor.rsimm.already_have": "You already have an arc reactor",
-    "arc_reactor.rsimm.already_have_slot": "You do not have a hole in your chest to put this",
+    "arc_reactor.rsimm.dont_have_slot": "You do not have a hole in your chest to put this",
     "arc_reactor.rsimm.chest_blocked": "Your chest is obstructed",
     "arc_reactor.rsimm.chat_display_title": "--| Arc Reactor Status |--",
     "arc_reactor.rsimm.chat_display_name": "Model: ",

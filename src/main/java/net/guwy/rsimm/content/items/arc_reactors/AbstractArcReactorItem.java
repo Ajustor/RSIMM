@@ -1,14 +1,10 @@
 package net.guwy.rsimm.content.items.arc_reactors;
 
 import net.guwy.rsimm.index.ModSounds;
-import net.guwy.rsimm.mechanics.ArcReactorForgeEnergyImplementation;
-import net.guwy.rsimm.mechanics.IEnergyContainer;
-import net.guwy.rsimm.mechanics.ItemEnergyStorageImpl;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.sticky_foundations.utils.ItemTagUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -20,13 +16,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
-import net.minecraftforge.common.util.LazyOptional;
 import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nonnull;
 import java.util.List;
 
 public abstract class AbstractArcReactorItem extends Item {
@@ -53,12 +45,21 @@ public abstract class AbstractArcReactorItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         if(!pLevel.isClientSide) {
             ItemStack itemStack = pPlayer.getItemInHand(pUsedHand);
+            pPlayer.getCooldowns().addCooldown(itemStack.getItem(), 20);
 
             pPlayer.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactor -> {
                 if (arcReactor.hasArcReactorSlot()) {
                     if (!arcReactor.hasArcReactor()) {
+
+                        // if the arc reactor item has any buffered forge energy transfer that back into the energy storage first
+                        itemStack.getCapability(ForgeCapabilities.ENERGY).ifPresent(energy -> {
+                            ItemTagUtils.putLong(itemStack, "energy", ItemTagUtils.getLong(itemStack, "energy") + energy.getEnergyStored());
+                        });
+
+                        // bake the arc reactor to the player as capability
                         arcReactor.setArcReactor(displayName(), Item.getId(itemStack.getItem()), maxEnergy(), energy(itemStack),
                                 energyOutput(), idleDrain(), poisonFactor());
+                        // remove the item
                         itemStack.setCount(0);
 
                         // Fake player for sounds
@@ -74,13 +75,12 @@ public abstract class AbstractArcReactorItem extends Item {
                             }
                         };
                         soundPlayer.playSound(ModSounds.ARC_REACTOR_EQUIP.get());
-
-                        pPlayer.getCooldowns().addCooldown(itemStack.getItem(), 20);
+                        soundPlayer.discard();
                     } else {
                         pPlayer.sendSystemMessage(Component.translatable("arc_reactor.rsimm.already_have"));
                     }
                 } else {
-                    pPlayer.sendSystemMessage(Component.translatable("arc_reactor.rsimm.already_have_slot"));
+                    pPlayer.sendSystemMessage(Component.translatable("arc_reactor.rsimm.dont_have_slot"));
                 }
             });
         }
@@ -164,6 +164,7 @@ public abstract class AbstractArcReactorItem extends Item {
 
     public abstract int poisonFactor();
 
+    @Nullable
     public abstract Item depletedItem();
 
     public boolean shouldFillReactorIfNBTNotPresent(){
@@ -188,19 +189,4 @@ public abstract class AbstractArcReactorItem extends Item {
     }
 
 
-    /** The part that makes the arc reactor act like a battery */
-    //@Override
-    //public @Nullable ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt) {
-    //    IEnergyContainer container = this;
-    //    return new ICapabilityProvider() {
-    //        @Nonnull
-    //        @Override
-    //        public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
-    //            if (cap == ForgeCapabilities.ENERGY){
-    //                return LazyOptional.of(() -> new ItemEnergyStorageImpl.EnergyStorageImpl(stack, container)).cast();
-    //            } else
-    //                return LazyOptional.empty();
-    //        }
-    //    };
-    //}
 }
