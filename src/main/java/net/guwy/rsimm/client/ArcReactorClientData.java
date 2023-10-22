@@ -1,7 +1,9 @@
 package net.guwy.rsimm.client;
 
 import net.guwy.rsimm.content.items.arc_reactors.ArcReactorItem;
+import net.guwy.sticky_foundations.utils.ItemTagUtils;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +37,7 @@ public class ArcReactorClientData {
 
     }
 
-    public static Item getReactorItem(UUID uuid){
+    public static ItemStack getReactorItem(UUID uuid){
         if(ArcReactorClientData.playerUUID.contains(uuid)){
 
             // gets the itemId on the same index as the uuid and assigns it to a item
@@ -44,24 +46,14 @@ public class ArcReactorClientData {
             ArcReactorItem arcReactorItem = (ArcReactorItem) Item.byId(ArcReactorClientData.itemId.get(index));
             double percentage = ArcReactorClientData.energyPercentage.get(index);
 
-            Item item;
+            ItemStack itemStack = new ItemStack(arcReactorItem);
 
-            //if energy is above 10% return the working item
-            if(percentage > 0.10){
-                item = Item.byId(ArcReactorClientData.itemId.get(index));
-            }
+            // If energy is below 10% roll a random chance that increases as the energy reaches 0%
+            // then if it succeeds set the CustomModelData to 1 which will render the depleted reactor model if it exists
+            if(Math.random() >= percentage * 10)
+                ItemTagUtils.putInt(itemStack, "CustomModelData", 1);
 
-            // if energy is below 10% return the working item based on a chance which changes with the remaining energy
-            else if (percentage > 0 && Math.random() <= percentage * 10){
-                item = Item.byId(ArcReactorClientData.itemId.get(index));
-            }
-
-            // if all of them fails return the depleted item
-            else {
-                item = arcReactorItem.depletedItem();
-            }
-
-            return item;
+            return itemStack;
         } else {
             return null;
         }

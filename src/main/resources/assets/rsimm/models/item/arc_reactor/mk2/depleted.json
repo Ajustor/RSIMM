@@ -1,0 +1,6 @@
+{
+	"parent": "rsimm:item/arc_reactor/mk2/model",
+	"textures": {
+		"1": "rsimm:item/arc_reactor/mark_2_arc_reactor_depleted"
+	}
+}

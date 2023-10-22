@@ -109,13 +109,7 @@ public class RenderPlayerEventPreHandler {
     }
 
     private static ItemStack getArcReactorItem(Player player){
-        Item item = ArcReactorClientData.getReactorItem(player.getUUID());
-
-        // Check if the item is null
-        // if it is return null for itemstack too else just continue
-        ItemStack itemStack = item != null ? new ItemStack(item) : null;
-
-        return itemStack;
+        return ArcReactorClientData.getReactorItem(player.getUUID());
     }
 
     private static boolean shouldRenderArcReactor(Player player){

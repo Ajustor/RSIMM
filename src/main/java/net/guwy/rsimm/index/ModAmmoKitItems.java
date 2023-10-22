@@ -22,9 +22,6 @@ public class ModAmmoKitItems {
     public static final RegistryObject<Item> MARK_1_AMMO_KIT = ITEMS.register("mark_1_ammo_kit",
             () -> new Mark1AmmoKit(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
 
-    public static final RegistryObject<Item> MARK_2_AMMO_KIT = ITEMS.register("mark_2_ammo_kit",
-            () -> new Mark2AmmoKit(new Item.Properties().tab(ModCreativeModeTabs.MAIN)));
-
 
 
     public static void register(IEventBus eventBus){

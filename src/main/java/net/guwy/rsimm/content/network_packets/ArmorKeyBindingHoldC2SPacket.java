@@ -68,14 +68,11 @@ public class ArmorKeyBindingHoldC2SPacket {
                                 itemStack.setTag(tag);
                                 AbstractArcReactorItem arcReactorItem = (AbstractArcReactorItem) itemStack.getItem();
 
-                                // If energy is 0 and there is a valid depleted item defined, give the depleted item instead
-                                if(arcReactor.getArcReactorEnergy() <= 0 && arcReactorItem.depletedItem() != null){
-                                    player.getInventory().placeItemBackInInventory(new ItemStack(arcReactorItem.depletedItem()));
-                                }
-                                // else continue as usual
-                                else {
-                                    player.getInventory().placeItemBackInInventory(itemStack);
-                                }
+                                // If energy is 0 then set the CustomModelData to 1 which will render the depleted reactor model if it exists
+                                arcReactorItem.checkAndTransformDepletion(itemStack);
+
+                                // Place the arc reactor in inventory
+                                player.getInventory().placeItemBackInInventory(itemStack);
 
                                 arcReactor.deleteArcReactor();
 

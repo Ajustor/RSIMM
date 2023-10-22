@@ -29,7 +29,7 @@ public class ModArcReactorItems {
 
     public static final RegistryObject<Item> MARK_1_ARC_REACTOR = ITEMS.register("mark_1_arc_reactor",
             () -> new ArcReactorItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN),
-                    "mark 1", 1000000, 100000, 5, 4, MARK_1_ARC_REACTOR_DEPLETED.get(),
+                    "mark 1", 1000000, 100000, 5, 4, new ResourceLocation("item.rsimm.mark_1_arc_reactor_depleted"),
                     new ResourceLocation(RsImm.MOD_ID, "textures/overlay/armor/edith_glasses/mk1_overlay_sprites.png")));
 
     public static final RegistryObject<Item> MARK_1_ARC_REACTOR_UNCHARGED = ITEMS.register("mark_1_arc_reactor_uncharged",
@@ -43,7 +43,7 @@ public class ModArcReactorItems {
 
     public static final RegistryObject<Item> MARK_2_ARC_REACTOR = ITEMS.register("mark_2_arc_reactor",
             () -> new ArcReactorItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTabs.MAIN),
-                    "mark 2", 10000000, 1000000, 25, 8, MARK_2_ARC_REACTOR_DEPLETED.get(),
+                    "mark 2", 10000000, 1000000, 25, 8, new ResourceLocation("item.rsimm.mark_2_arc_reactor_depleted"),
                     new ResourceLocation(RsImm.MOD_ID, "textures/overlay/armor/edith_glasses/edith_glasses_overlay.png")));
 
     public static final RegistryObject<Item> MARK_2_ARC_REACTOR_UNCHARGED = ITEMS.register("mark_2_arc_reactor_uncharged",
