@@ -3,6 +3,8 @@ package net.guwy.rsimm.content.overlays;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.guwy.rsimm.RsImm;
+import net.guwy.rsimm.config.GuiScreenAnchor;
+import net.guwy.rsimm.config.RsImmClientConfigs;
 import net.guwy.rsimm.content.items.EdithGlassesArmorItem;
 import net.guwy.rsimm.index.ModArmorItems;
 import net.guwy.sticky_foundations.client.view_bobbing.ViewBobbing;
@@ -23,19 +25,69 @@ import top.theillusivec4.curios.common.inventory.CurioSlot;
 import top.theillusivec4.curios.common.inventory.container.CuriosContainerProvider;
 
 import java.util.Objects;
+import java.util.function.Supplier;
 
 public class EdithGlassesOverlay {
 
-    private static final double SIZE_MULTIPLIER = 1;
+    private static final Supplier<Double> SIZE_MULTIPLIER = RsImmClientConfigs.EDITH_GLASSES_OVERLAY_SCALE;
+    private static final Supplier<Integer> X_OFFSET = RsImmClientConfigs.EDITH_GLASSES_OVERLAY_X_OFFSET;
+    private static final Supplier<Integer> Y_OFFSET = RsImmClientConfigs.EDITH_GLASSES_OVERLAY_Y_OFFSET;
+    private static final Supplier<GuiScreenAnchor> ANCHOR_POS = RsImmClientConfigs.EDITH_GLASSES_OVERLAY_ANCHOR;
 
     public static final ResourceLocation OVERLAY_TEXTURE = new ResourceLocation(RsImm.MOD_ID,
             "textures/overlay/armor/edith_glasses/edith_glasses_overlay.png");
 
+
+
     public static final IGuiOverlay OVERLAY = (((gui, poseStack, partialTick, screenWidth, screenHeight) -> {
-        int bobX = (int) (ViewBobbing.MouseBobbing.GetMouseX() * 10 / SIZE_MULTIPLIER);
-        int bobY = (int) (ViewBobbing.MouseBobbing.GetMouseY() * 10 / SIZE_MULTIPLIER);
-        final int OFFSET_X = screenWidth / 2 + bobX;
-        final int OFFSET_Y = screenHeight / 2 + bobY;
+        int bobX = (int) (ViewBobbing.MouseBobbing.GetMouseX() * 10 / SIZE_MULTIPLIER.get());
+        int bobY = (int) (ViewBobbing.MouseBobbing.GetMouseY() * 10 / SIZE_MULTIPLIER.get());
+
+        // position
+        // final int POS_X = screenWidth / 2 + bobX;
+        // final int POS_Y = screenHeight / 2 + bobY;
+        int POS_X = 0;
+        int POS_Y = 0;
+        switch (ANCHOR_POS.get()) {
+            case TOP_LEFT -> {
+                POS_X = 0;
+                POS_Y = 0;
+            }
+            case TOP_MIDDLE -> {
+                POS_X = screenWidth / 2;
+                POS_Y = 0;
+            }
+            case TOP_RIGHT -> {
+                POS_X = screenWidth;
+                POS_Y = 0;
+            }
+            case CENTER_LEFT -> {
+                POS_X = 0;
+                POS_Y = screenHeight / 2;
+            }
+            case CENTER_MIDDLE -> {
+                POS_X = screenWidth / 2;
+                POS_Y = screenHeight / 2;
+            }
+            case CENTER_RIGHT -> {
+                POS_X = screenWidth;
+                POS_Y = screenHeight / 2;
+            }
+            case BOTTOM_LEFT -> {
+                POS_X = 0;
+                POS_Y = screenHeight;
+            }
+            case BOTTOM_MIDDLE -> {
+                POS_X = screenWidth / 2;
+                POS_Y = screenHeight;
+            }
+            case BOTTOM_RIGHT -> {
+                POS_X = screenWidth;
+                POS_Y = screenHeight;
+            }
+        }
+        POS_X += bobX + X_OFFSET.get();
+        POS_Y += bobY + Y_OFFSET.get();
 
         if(Minecraft.getInstance().options.getCameraType().equals(CameraType.FIRST_PERSON)){
             Player player = Minecraft.getInstance().player;
@@ -64,12 +116,12 @@ public class EdithGlassesOverlay {
                     RenderSystem.setShaderTexture(0, OVERLAY_TEXTURE);
 
                     // Render
-                    RenderReactorIcon(poseStack, OFFSET_X, OFFSET_Y, energyPercent, hasReactor, reactorIconTexture);
+                    RenderReactorIcon(poseStack, POS_X, POS_Y, energyPercent, hasReactor, reactorIconTexture);
                     // Reset texture in case the RenderReactorIcon function changes it
                     RenderSystem.setShaderTexture(0, OVERLAY_TEXTURE);
-                    RenderBackGround(poseStack, OFFSET_X, OFFSET_Y);
-                    RenderEnergyBar(poseStack, OFFSET_X, OFFSET_Y, energyPercent, hasReactor);
-                    RenderLoadBar(poseStack, OFFSET_X, OFFSET_Y, loadPercent, hasReactor);
+                    RenderBackGround(poseStack, POS_X, POS_Y);
+                    RenderEnergyBar(poseStack, POS_X, POS_Y, energyPercent, hasReactor);
+                    RenderLoadBar(poseStack, POS_X, POS_Y, loadPercent, hasReactor);
 
                     // Render End
                     RenderSystem.disableBlend();
@@ -110,13 +162,20 @@ public class EdithGlassesOverlay {
             vOff = 33;
         }
 
-        GuiComponent.blit(poseStack, x, y,uOff,vOff,
-                (int) (32 * SIZE_MULTIPLIER), (int) (32 * SIZE_MULTIPLIER), (int) (128 * SIZE_MULTIPLIER), (int) (128 * SIZE_MULTIPLIER));
+        GuiComponent.blit(poseStack, x, y, (float) (uOff * SIZE_MULTIPLIER.get()), (float) (vOff * SIZE_MULTIPLIER.get()),
+                (int) (32 * SIZE_MULTIPLIER.get()), (int) (32 * SIZE_MULTIPLIER.get()), (int) (128 * SIZE_MULTIPLIER.get()), (int) (128 * SIZE_MULTIPLIER.get()));
     }
 
     private static void RenderBackGround(PoseStack poseStack, int x, int y){
-        GuiComponent.blit(poseStack, x + 36, y,0,105,
-                (int) (128 * SIZE_MULTIPLIER), (int) (23 * SIZE_MULTIPLIER), (int) (128 * SIZE_MULTIPLIER), (int) (128 * SIZE_MULTIPLIER));
+        GuiComponent.blit(poseStack,
+                (int) (x + (36 * SIZE_MULTIPLIER.get())),
+                y,
+                (float) (0 * SIZE_MULTIPLIER.get()),
+                (float) (105 * SIZE_MULTIPLIER.get()),
+                (int) (128 * SIZE_MULTIPLIER.get()),
+                (int) (23 * SIZE_MULTIPLIER.get()),
+                (int) (128 * SIZE_MULTIPLIER.get()),
+                (int) (128 * SIZE_MULTIPLIER.get()));
 
     }
 
@@ -137,8 +196,15 @@ public class EdithGlassesOverlay {
                 else if(percentForCurrentBar <= 0.5) uOff = 12;
                 else if(percentForCurrentBar <= 0.75) uOff = 6;
 
-                GuiComponent.blit(poseStack, x + 38 + (i * 5), y + 9,100 + uOff,87,
-                        (int) (4 * SIZE_MULTIPLIER), (int) (12 * SIZE_MULTIPLIER), (int) (128 * SIZE_MULTIPLIER), (int) (128 * SIZE_MULTIPLIER));
+                GuiComponent.blit(poseStack,
+                        (int) (x + Math.round((38 * SIZE_MULTIPLIER.get() + (i * 5 * SIZE_MULTIPLIER.get())) )),
+                        (int) (y + Math.round(9 * SIZE_MULTIPLIER.get())),
+                        (float) ((100 + uOff) * SIZE_MULTIPLIER.get()),
+                        (float) Math.round(87 * SIZE_MULTIPLIER.get()),
+                        (int) Math.round(4 * SIZE_MULTIPLIER.get()),
+                        (int) Math.round(12 * SIZE_MULTIPLIER.get()),
+                        (int) Math.round(128 * SIZE_MULTIPLIER.get()),
+                        (int) Math.round(128 * SIZE_MULTIPLIER.get()));
             }
         }
     }
@@ -150,8 +216,15 @@ public class EdithGlassesOverlay {
             // Length of the bar rounded up to at least show if there is any energy consumption
             int bar = (int) Math.ceil(37 * loadPercent);
 
-            GuiComponent.blit(poseStack, x + 124, y + 3,88,101,
-                    (int) (bar * SIZE_MULTIPLIER), (int) (2 * SIZE_MULTIPLIER), (int) (128 * SIZE_MULTIPLIER), (int) (128 * SIZE_MULTIPLIER));
+            GuiComponent.blit(poseStack,
+                    (int) (x + (124 * SIZE_MULTIPLIER.get())),
+                    (int) (y + (3 * SIZE_MULTIPLIER.get())),
+                    (float) (88 * SIZE_MULTIPLIER.get()),
+                    (float) (101 * SIZE_MULTIPLIER.get()),
+                    (int) (bar * SIZE_MULTIPLIER.get()),
+                    (int) (2 * SIZE_MULTIPLIER.get()),
+                    (int) (128 * SIZE_MULTIPLIER.get()),
+                    (int) (128 * SIZE_MULTIPLIER.get()));
         }
     }
 }

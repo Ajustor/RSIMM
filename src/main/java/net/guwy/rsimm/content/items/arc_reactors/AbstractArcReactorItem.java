@@ -1,5 +1,6 @@
 package net.guwy.rsimm.content.items.arc_reactors;
 
+import net.guwy.rsimm.config.RsImmServerConfigs;
 import net.guwy.rsimm.index.ModSounds;
 import net.guwy.rsimm.mechanics.IItemEnergyContainer;
 import net.guwy.rsimm.mechanics.ItemEnergyStorageImpl;
@@ -75,7 +76,7 @@ public abstract class AbstractArcReactorItem extends Item implements IItemEnergy
             pPlayer.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactor -> {
                 if (arcReactor.hasArcReactorSlot()) {
                     if (!arcReactor.hasArcReactor()) {
-                        if(pPlayer.getItemBySlot(EquipmentSlot.CHEST).isEmpty()){
+                        if(pPlayer.getItemBySlot(EquipmentSlot.CHEST).isEmpty() || !RsImmServerConfigs.ARC_REACTOR_EXTRACT_INSERT_LIMITS.get()){
                             // bake the arc reactor to the player as capability
                             arcReactor.setArcReactor(displayName(), Item.getId(itemStack.getItem()), maxEnergy(), energy(itemStack),
                                     energyOutput(), idleDrain(), poisonFactor());

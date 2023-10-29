@@ -121,6 +121,17 @@ public class ModNetworking {
                 .consumerMainThread(PlayerArcReactorClientSyncS2CPacket::handle)
                 .add();
 
+        net.messageBuilder(MissingArcReactorC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(MissingArcReactorC2SPacket::new)
+                .encoder(MissingArcReactorC2SPacket::toBytes)
+                .consumerMainThread(MissingArcReactorC2SPacket::handle)
+                .add();
+
+        net.messageBuilder(MissingArcReactorS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(MissingArcReactorS2CPacket::new)
+                .encoder(MissingArcReactorS2CPacket::toBytes)
+                .consumerMainThread(MissingArcReactorS2CPacket::handle)
+                .add();
 
     }
 

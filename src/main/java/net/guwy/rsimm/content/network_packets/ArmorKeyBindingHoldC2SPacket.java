@@ -1,5 +1,6 @@
 package net.guwy.rsimm.content.network_packets;
 
+import net.guwy.rsimm.config.RsImmServerConfigs;
 import net.guwy.rsimm.content.items.arc_reactors.AbstractArcReactorItem;
 import net.guwy.rsimm.content.items.armors.AbstractIronmanArmorItem;
 import net.guwy.rsimm.index.ModSounds;
@@ -60,7 +61,7 @@ public class ArmorKeyBindingHoldC2SPacket {
                     // The part that does the Arc Reactor Stuff
                     else {
                         if(arcReactor.hasArcReactor()){
-                            if(player.getItemBySlot(EquipmentSlot.CHEST).isEmpty()){
+                            if(player.getItemBySlot(EquipmentSlot.CHEST).isEmpty() || !RsImmServerConfigs.ARC_REACTOR_EXTRACT_INSERT_LIMITS.get()){
 
                                 ItemStack itemStack = new ItemStack(Item.byId(arcReactor.getArcReactorTypeId()));
                                 CompoundTag tag = new CompoundTag();

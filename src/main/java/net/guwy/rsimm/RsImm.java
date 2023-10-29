@@ -1,6 +1,9 @@
 package net.guwy.rsimm;
 
 import com.mojang.logging.LogUtils;
+import net.guwy.rsimm.config.RsImmClientConfigs;
+import net.guwy.rsimm.config.RsImmCommonConfigs;
+import net.guwy.rsimm.config.RsImmServerConfigs;
 import net.guwy.rsimm.content.blocks.arc_reactor_charger.ArcReactorChargerScreen;
 import net.guwy.rsimm.content.blocks.armor_equipping_station.ArmorEquippingStationScreen;
 import net.guwy.rsimm.content.entities.non_living.mark_1_flame.Mark1FlameEntityRenderer;
@@ -13,7 +16,9 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLDedicatedServerSetupEvent;
@@ -57,6 +62,10 @@ public class RsImm {
         eventBus.addListener(this::commonSetup);
 
         GeckoLib.initialize();
+
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, RsImmClientConfigs.SPEC, "iron_man-client.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, RsImmCommonConfigs.SPEC, "iron_man-common.toml");
+        ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, RsImmServerConfigs.SPEC, "iron_man-server.toml");
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

@@ -1,10 +1,14 @@
 package net.guwy.rsimm.events.player_tick.content;
 
+import net.guwy.rsimm.config.RsImmServerConfigs;
 import net.guwy.rsimm.content.items.arc_reactors.ArcReactorItem;
+import net.guwy.rsimm.content.network_packets.MissingArcReactorC2SPacket;
+import net.guwy.rsimm.content.network_packets.MissingArcReactorS2CPacket;
 import net.guwy.rsimm.content.network_packets.PlayerArcReactorClientSyncS2CPacket;
 import net.guwy.rsimm.index.ModEffects;
 import net.guwy.rsimm.index.ModNetworking;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -24,7 +28,7 @@ public class ChestSlotCheck {
                 // if not adds the required effect to handle the situation
                 if(!(arcReactor.hasArcReactor()) || !(arcReactor.getArcReactorEnergy() > 0)){
                     if(!event.player.hasEffect(ModEffects.MISSING_REACTOR.get())){
-                        event.player.addEffect(new MobEffectInstance(ModEffects.MISSING_REACTOR.get(), 6000, 0 ,false, false, true));
+                        ModNetworking.sendToPlayer(new MissingArcReactorS2CPacket(RsImmServerConfigs.ARC_REACTOR_DEATH_TIME.get()), (ServerPlayer) event.player);
                     }
                 }
 
