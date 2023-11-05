@@ -6,7 +6,7 @@ import net.guwy.rsimm.RsImm;
 import net.guwy.rsimm.config.GuiScreenAnchor;
 import net.guwy.rsimm.config.RsImmClientConfigs;
 import net.guwy.rsimm.content.items.EdithGlassesArmorItem;
-import net.guwy.rsimm.index.ModArmorItems;
+import net.guwy.rsimm.index.RsImmArmorItems;
 import net.guwy.sticky_foundations.client.view_bobbing.ViewBobbing;
 import net.guwy.sticky_foundations.utils.ItemTagUtils;
 import net.minecraft.client.CameraType;
@@ -18,11 +18,6 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
-import top.theillusivec4.curios.Curios;
-import top.theillusivec4.curios.api.CuriosApi;
-import top.theillusivec4.curios.common.capability.CurioInventoryCapability;
-import top.theillusivec4.curios.common.inventory.CurioSlot;
-import top.theillusivec4.curios.common.inventory.container.CuriosContainerProvider;
 
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -93,7 +88,7 @@ public class EdithGlassesOverlay {
             Player player = Minecraft.getInstance().player;
             ItemStack helmetItem = player.getItemBySlot(EquipmentSlot.HEAD); // Worn Helmet Item
 
-            if(helmetItem.getItem().equals(ModArmorItems.EDITH_GLASSES.get())){
+            if(helmetItem.getItem().equals(RsImmArmorItems.EDITH_GLASSES.get())){
 
                 // Read tags from the item and assign variables
                 boolean hasReactorSlot = ItemTagUtils.getBoolean(helmetItem, EdithGlassesArmorItem.HAS_SLOT_TAG_KEY);

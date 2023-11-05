@@ -13,12 +13,12 @@
     "item.rsimm.chest_cutter": "Chest Cutter",
     "item.rsimm.edith_glasses": "E.D.I.T.H. Glasses",
 
-    "item.rsimm.dev_wand_1": "Dev Wand 1 (Add Mark1 Armor)",
-    "item.rsimm.dev_wand_2": "Dev Wand 2 (Check Arc Reactor Status)",
-    "item.rsimm.dev_wand_3": "Dev Wand 3 (Add/Remove Arc Reactor Slot)",
-    "item.rsimm.dev_wand_4": "Dev Wand 4 (Armor Status Check)",
+    "item.rsimm.dev_wand_1": "Dev Wand 1 (Fire Repulsor Shot)",
+    "item.rsimm.dev_wand_2": "Dev Wand 2 ()",
+    "item.rsimm.dev_wand_3": "Dev Wand 3 ()",
+    "item.rsimm.dev_wand_4": "Dev Wand 4 ()",
     "item.rsimm.dev_wand_5": "Dev Wand 5 ()",
-    "item.rsimm.dev_wand_6": "Dev Wand 6 (Fire Weapon 1)",
+    "item.rsimm.dev_wand_6": "Dev Wand 6 ()",
 
     "item.rsimm.mark_1_arc_reactor": "Mark 1 Arc Reactor",
     "item.rsimm.mark_1_arc_reactor_depleted": "Depleted Mark 1 Arc Reactor",

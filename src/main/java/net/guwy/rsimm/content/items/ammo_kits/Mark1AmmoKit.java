@@ -1,19 +1,15 @@
 package net.guwy.rsimm.content.items.ammo_kits;
 
-import net.guwy.rsimm.index.ModArmorItems;
-import net.guwy.rsimm.index.ModItems;
+import net.guwy.rsimm.index.RsImmArmorItems;
+import net.guwy.rsimm.index.RsImmItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
-
-import java.util.Objects;
 
 public class Mark1AmmoKit extends AbstractAmmoKit{
     public Mark1AmmoKit(Properties pProperties) {
@@ -31,7 +27,7 @@ public class Mark1AmmoKit extends AbstractAmmoKit{
 
     @Override
     public Item storage2() {
-        return ModItems.ROCKET.get();
+        return RsImmItems.ROCKET.get();
     }
     @Override
     public Integer storage2Capacity() {
@@ -104,41 +100,41 @@ public class Mark1AmmoKit extends AbstractAmmoKit{
 
     @Override
     public Item UnassembledHelmetItem() {
-        return ModArmorItems.UNASSAMBLED_MARK_1_HELMET.get();
+        return RsImmArmorItems.UNASSAMBLED_MARK_1_HELMET.get();
     }
 
     @Override
     public Item UnassembledChestplateItem() {
-        return ModArmorItems.UNASSAMBLED_MARK_1_CHESTPLATE.get();
+        return RsImmArmorItems.UNASSAMBLED_MARK_1_CHESTPLATE.get();
     }
 
     @Override
     public Item UnassembledLeggingsItem() {
-        return ModArmorItems.UNASSAMBLED_MARK_1_LEGGINGS.get();
+        return RsImmArmorItems.UNASSAMBLED_MARK_1_LEGGINGS.get();
     }
 
     @Override
     public Item UnassembledBootsItem() {
-        return ModArmorItems.UNASSAMBLED_MARK_1_BOOTS.get();
+        return RsImmArmorItems.UNASSAMBLED_MARK_1_BOOTS.get();
     }
 
     @Override
     public Item HelmetItem() {
-        return ModArmorItems.MARK_1_HELMET.get();
+        return RsImmArmorItems.MARK_1_HELMET.get();
     }
 
     @Override
     public Item ChestplateItem() {
-        return ModArmorItems.MARK_1_CHESTPLATE.get();
+        return RsImmArmorItems.MARK_1_CHESTPLATE.get();
     }
 
     @Override
     public Item LeggingsItem() {
-        return ModArmorItems.MARK_1_LEGGINGS.get();
+        return RsImmArmorItems.MARK_1_LEGGINGS.get();
     }
 
     @Override
     public Item BootsItem() {
-        return ModArmorItems.MARK_1_BOOTS.get();
+        return RsImmArmorItems.MARK_1_BOOTS.get();
     }
 }

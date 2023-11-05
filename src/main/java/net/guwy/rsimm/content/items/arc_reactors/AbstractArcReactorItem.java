@@ -1,7 +1,7 @@
 package net.guwy.rsimm.content.items.arc_reactors;
 
 import net.guwy.rsimm.config.RsImmServerConfigs;
-import net.guwy.rsimm.index.ModSounds;
+import net.guwy.rsimm.index.RsImmSounds;
 import net.guwy.rsimm.mechanics.IItemEnergyContainer;
 import net.guwy.rsimm.mechanics.ItemEnergyStorageImpl;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
@@ -95,7 +95,7 @@ public abstract class AbstractArcReactorItem extends Item implements IItemEnergy
                                     return false;
                                 }
                             };
-                            soundPlayer.playSound(ModSounds.ARC_REACTOR_EQUIP.get());
+                            soundPlayer.playSound(RsImmSounds.ARC_REACTOR_EQUIP.get());
                             soundPlayer.discard();
                         }
                         // don't put it in and return a message when the players chestplate slot is full

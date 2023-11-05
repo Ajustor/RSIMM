@@ -1,22 +1,14 @@
 package net.guwy.rsimm.content.network_packets;
 
 import net.guwy.rsimm.content.items.armors.AbstractIronmanArmorItem;
-import net.guwy.rsimm.index.ModSounds;
-import net.guwy.rsimm.index.ModTags;
+import net.guwy.rsimm.index.RsImmSounds;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
 import net.minecraft.ChatFormatting;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.network.NetworkEvent;
@@ -91,7 +83,7 @@ public class ArmorKeyBindingPressC2SPacket {
                                     return false;
                                 }
                             };
-                            soundPlayer.playSound(ModSounds.ARC_REACTOR_CHECK.get());
+                            soundPlayer.playSound(RsImmSounds.ARC_REACTOR_CHECK.get());
                         }
                     }
 

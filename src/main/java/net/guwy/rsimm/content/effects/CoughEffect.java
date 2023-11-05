@@ -1,7 +1,6 @@
 package net.guwy.rsimm.content.effects;
 
-import net.guwy.rsimm.index.ModItems;
-import net.guwy.rsimm.index.ModSounds;
+import net.guwy.rsimm.index.RsImmSounds;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.effect.MobEffect;
@@ -25,7 +24,7 @@ public class CoughEffect extends MobEffect {
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
         Player player = (Player) pLivingEntity;
         if(player.tickCount % 20 == 0){
-            player.playSound(ModSounds.PLAYER_COUGH.get(), 100, (float)Math.random() * 0.2f + 0.9f);
+            player.playSound(RsImmSounds.PLAYER_COUGH.get(), 100, (float)Math.random() * 0.2f + 0.9f);
             for(int i=0; i<=5; i++){
                 cough(player, pLivingEntity.level);
             }

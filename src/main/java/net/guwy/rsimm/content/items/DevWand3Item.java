@@ -15,29 +15,5 @@ public class DevWand3Item extends Item {
         super(pProperties);
     }
 
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        if(!pLevel.isClientSide) {
 
-            pPlayer.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactor -> {
-                boolean hasSlot = (arcReactor.hasArcReactorSlot());
-
-                if(!hasSlot){
-                    arcReactor.setHasArcReactorSlot(true);
-                }   else {
-                    arcReactor.setHasArcReactorSlot(false);
-                }
-            });
-
-            pPlayer.sendSystemMessage(Component.literal("Arc Reactor Has Been Set"));
-
-            pPlayer.getCooldowns().addCooldown(pPlayer.getItemInHand(pUsedHand).getItem(), 20);
-        }
-
-        if(pLevel.isClientSide){
-            pPlayer.swing(pUsedHand);
-        }
-
-        return super.use(pLevel, pPlayer, pUsedHand);
-    }
 }

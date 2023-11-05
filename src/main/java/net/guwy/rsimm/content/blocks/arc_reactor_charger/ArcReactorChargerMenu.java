@@ -1,7 +1,7 @@
 package net.guwy.rsimm.content.blocks.arc_reactor_charger;
 
-import net.guwy.rsimm.index.ModBlocks;
-import net.guwy.rsimm.index.ModMenuTypes;
+import net.guwy.rsimm.index.RsImmBlocks;
+import net.guwy.rsimm.index.RsImmMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -22,7 +22,7 @@ public class ArcReactorChargerMenu extends AbstractContainerMenu {
     }
 
     public ArcReactorChargerMenu(int id, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.ARC_REACTOR_CHARGER_MENU.get(), id);
+        super(RsImmMenuTypes.ARC_REACTOR_CHARGER_MENU.get(), id);
         checkContainerSize(inv, 1);
         blockEntity = (ArcReactorChargerBlockEntity) entity;
         this.level = inv.player.level;
@@ -103,7 +103,7 @@ public class ArcReactorChargerMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player pPlayer) {
-        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), pPlayer, ModBlocks.ARC_REACTOR_CHARGER.get());
+        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), pPlayer, RsImmBlocks.ARC_REACTOR_CHARGER.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

@@ -4,9 +4,9 @@ import net.guwy.rsimm.client.ArmorClientData;
 import net.guwy.rsimm.content.network_packets.FlightDataC2SPacket;
 import net.guwy.rsimm.content.network_packets.FlightDataS2CPacket;
 import net.guwy.rsimm.content.network_packets.FreezeDataS2CPacket;
-import net.guwy.rsimm.index.ModNetworking;
-import net.guwy.rsimm.index.ModSounds;
-import net.guwy.rsimm.index.ModTags;
+import net.guwy.rsimm.index.RsImmNetworking;
+import net.guwy.rsimm.index.RsImmSounds;
+import net.guwy.rsimm.index.RsImmTags;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.ArmorEnergyType;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.FlyMode;
@@ -77,7 +77,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
         if(!pLevel.isClientSide){
             armorCheck(player, pStack, pSlotId);
         }
-        if(pStack.is(ModTags.Items.IRONMAN_CHESTPLATES)){
+        if(pStack.is(RsImmTags.Items.IRONMAN_CHESTPLATES)){
             flightCheck(player);
             temperatureCheck(player);
             bootHandler(player);
@@ -182,7 +182,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
     public void armorKeyPressAction(Player player){
         // switches the helmet state
         ItemStack helmet = player.getItemBySlot(EquipmentSlot.HEAD);
-        if(helmet.is(ModTags.Items.IRONMAN_HELMETS)){
+        if(helmet.is(RsImmTags.Items.IRONMAN_HELMETS)){
             Level level = player.getLevel();
             player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
                 if(armorData.getHelmetOpen()){
@@ -257,7 +257,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
                             case CUSTOM -> flyCustomTickServer(player);
                             case NOT_FLYING -> armorData.setIsFlying(false);
                         }
-                        ModNetworking.sendToPlayer(new FlightDataS2CPacket(player.getVisualRotationYInDegrees(),
+                        RsImmNetworking.sendToPlayer(new FlightDataS2CPacket(player.getVisualRotationYInDegrees(),
                                 true, armorData.getFlyMode()), (ServerPlayer) player);
 
                         if(armorData.getMoveSpeed() * 20 > FlightOverSpeedThreshold()){
@@ -265,7 +265,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
                             flightSpeedArmorDamageEffects(player);
                         }
                     } else {
-                        ModNetworking.sendToPlayer(new FlightDataS2CPacket(0,
+                        RsImmNetworking.sendToPlayer(new FlightDataS2CPacket(0,
                                 false, FlyMode.NOT_FLYING), (ServerPlayer) player);
                         armorData.setMoveSpeed(0);
                     }
@@ -282,7 +282,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
                 double totalSpeed = Math.sqrt((Math.pow(player.getDeltaMovement().x, 2)) + Math.pow(player.getDeltaMovement().z, 2)
                         + Math.pow(player.getDeltaMovement().y, 2));
 
-                ModNetworking.sendToServer(new FlightDataC2SPacket(totalSpeed));
+                RsImmNetworking.sendToServer(new FlightDataC2SPacket(totalSpeed));
 
                 if(totalSpeed * 20 > FlightOverSpeedThreshold()){
                     flightSpeedArmorDamageEffects(player);
@@ -322,13 +322,13 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
             };
 
             // Armor Break Sound
-            soundPlayer.playSound(ModSounds.METAL_RATTLE_1.get(), 100,1 + (float)((Math.random() - 0.5) * 0.2) );
+            soundPlayer.playSound(RsImmSounds.METAL_RATTLE_1.get(), 100,1 + (float)((Math.random() - 0.5) * 0.2) );
 
             if(Math.random() < 0.3) {
-                soundPlayer.playSound(ModSounds.METAL_RATTLE_2.get(), 100,1 + (float)((Math.random() - 0.5) * 0.2) );
+                soundPlayer.playSound(RsImmSounds.METAL_RATTLE_2.get(), 100,1 + (float)((Math.random() - 0.5) * 0.2) );
             }
             if(Math.random() < 0.1) {
-                soundPlayer.playSound(ModSounds.METAL_RATTLE_3.get(), 100,1 + (float)((Math.random() - 0.5) * 0.2) );
+                soundPlayer.playSound(RsImmSounds.METAL_RATTLE_3.get(), 100,1 + (float)((Math.random() - 0.5) * 0.2) );
             }
         }
         player.level.addParticle(ParticleTypes.CRIT, player.getX() + (Math.random() - 0.5) * 3, player.getY() + 0.9 + (Math.random() - 0.5) * 3,
@@ -408,7 +408,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
                                 0, 0, 0);
                     }
 
-                    ModNetworking.sendToPlayer(new FreezeDataS2CPacket(armorData.getArmorFreezing()), (ServerPlayer) player);
+                    RsImmNetworking.sendToPlayer(new FreezeDataS2CPacket(armorData.getArmorFreezing()), (ServerPlayer) player);
 
                 }
             });
@@ -587,7 +587,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
             BlockPos pos = new BlockPos(player.getOnPos().getX() + 1, player.getOnPos().getY() + 2, player.getOnPos().getZ() + 1);
             if(level.isRainingAt(pos)){
                 if(level.canSeeSky(pos)){
-                    if(player.getItemBySlot(EquipmentSlot.HEAD).is(ModTags.Items.IRONMAN_HELMETS)){
+                    if(player.getItemBySlot(EquipmentSlot.HEAD).is(RsImmTags.Items.IRONMAN_HELMETS)){
                         if(player.tickCount % 20 == 0){
 
                             // Fake player for sounds
@@ -602,7 +602,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
                                     return false;
                                 }
                             };
-                            soundPlayer.playSound(ModSounds.RAIN_IN_HELMET.get(), 0.5f, 0.7f );
+                            soundPlayer.playSound(RsImmSounds.RAIN_IN_HELMET.get(), 0.5f, 0.7f );
                         }
                     }
                 }

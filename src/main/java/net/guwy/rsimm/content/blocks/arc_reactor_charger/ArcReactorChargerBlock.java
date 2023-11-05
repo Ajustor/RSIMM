@@ -1,14 +1,11 @@
 package net.guwy.rsimm.content.blocks.arc_reactor_charger;
 
-import net.guwy.rsimm.content.blocks.armor_equipping_station.ArmorEquippingStationBlockEntity;
-import net.guwy.rsimm.index.ModBlockEntities;
+import net.guwy.rsimm.index.RsImmBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -123,7 +120,7 @@ public class ArcReactorChargerBlock extends BaseEntityBlock {
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state,
                                                                   BlockEntityType<T> type) {
-        return createTickerHelper(type, ModBlockEntities.ARC_REACTOR_CHARGER.get(),
+        return createTickerHelper(type, RsImmBlockEntities.ARC_REACTOR_CHARGER.get(),
                 ArcReactorChargerBlockEntity::tick);
     }
 }

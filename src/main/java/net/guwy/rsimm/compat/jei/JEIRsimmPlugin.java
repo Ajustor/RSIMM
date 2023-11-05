@@ -9,7 +9,7 @@ import mezz.jei.api.registration.IRecipeRegistration;
 import net.guwy.rsimm.RsImm;
 import net.guwy.rsimm.compat.jei.recipe_categories.ArcReactorChargingRecipeCategory;
 import net.guwy.rsimm.content.recipe.ArcReactorChargerRecipe;
-import net.guwy.rsimm.index.ModBlocks;
+import net.guwy.rsimm.index.RsImmBlocks;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -47,7 +47,7 @@ public class JEIRsimmPlugin implements IModPlugin {
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ARC_REACTOR_CHARGER.get()), ARC_REACTOR_CHARGING_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(RsImmBlocks.ARC_REACTOR_CHARGER.get()), ARC_REACTOR_CHARGING_TYPE);
         IModPlugin.super.registerRecipeCatalysts(registration);
     }
 }

@@ -2,8 +2,7 @@ package net.guwy.rsimm.content.overlays;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.guwy.rsimm.RsImm;
-import net.guwy.rsimm.index.ModArmorItems;
-import net.guwy.rsimm.index.ModItems;
+import net.guwy.rsimm.index.RsImmArmorItems;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
@@ -12,7 +11,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 
 public class Mark1ArmorOverlay {
@@ -21,7 +19,7 @@ public class Mark1ArmorOverlay {
 
     public static final IGuiOverlay HELMET_OVERLAY = (((gui, poseStack, partialTick, screenWidth, screenHeight) -> {
         if(Minecraft.getInstance().options.getCameraType().equals(CameraType.FIRST_PERSON)){
-            if(Minecraft.getInstance().player.getItemBySlot(EquipmentSlot.HEAD).getItem().equals(ModArmorItems.MARK_1_HELMET.get())){
+            if(Minecraft.getInstance().player.getItemBySlot(EquipmentSlot.HEAD).getItem().equals(RsImmArmorItems.MARK_1_HELMET.get())){
                 Player player = Minecraft.getInstance().player;
                 ItemStack helmet = player.getItemBySlot(EquipmentSlot.HEAD);
 

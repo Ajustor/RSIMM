@@ -3,9 +3,9 @@ package net.guwy.rsimm.content.blocks.arc_reactor_charger;
 import net.guwy.rsimm.content.items.arc_reactors.AbstractArcReactorItem;
 import net.guwy.rsimm.content.items.arc_reactors.AbstractUnchargedArcReactorItem;
 import net.guwy.rsimm.content.network_packets.ArcReactorChargerClientSyncS2CPacket;
-import net.guwy.rsimm.index.ModBlockEntities;
-import net.guwy.rsimm.index.ModNetworking;
-import net.guwy.rsimm.index.ModTags;
+import net.guwy.rsimm.index.RsImmBlockEntities;
+import net.guwy.rsimm.index.RsImmNetworking;
+import net.guwy.rsimm.index.RsImmTags;
 import net.guwy.rsimm.mechanics.ModEnergyStorage;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -19,7 +19,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -43,7 +42,7 @@ public class ArcReactorChargerBlockEntity extends BlockEntity implements MenuPro
 
         @Override
         public boolean isItemValid(int slot, @NotNull ItemStack stack) {
-            return stack.is(ModTags.Items.UNCHARGED_ARC_REACTORS);
+            return stack.is(RsImmTags.Items.UNCHARGED_ARC_REACTORS);
         }
     };
 
@@ -54,7 +53,7 @@ public class ArcReactorChargerBlockEntity extends BlockEntity implements MenuPro
     private int maxProgress = 200;
 
     public ArcReactorChargerBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.ARC_REACTOR_CHARGER.get(), pPos, pBlockState);
+        super(RsImmBlockEntities.ARC_REACTOR_CHARGER.get(), pPos, pBlockState);
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {
@@ -82,7 +81,7 @@ public class ArcReactorChargerBlockEntity extends BlockEntity implements MenuPro
 
     public static void onUse(Level pLevel, BlockPos pPos, BlockState pState, Player pPlayer) {
         ArcReactorChargerBlockEntity blockEntity = (ArcReactorChargerBlockEntity) pLevel.getBlockEntity(pPos);
-        ModNetworking.sendToClients(new ArcReactorChargerClientSyncS2CPacket(blockEntity.getEnergyStorage().getEnergyStored(), pPos));
+        RsImmNetworking.sendToClients(new ArcReactorChargerClientSyncS2CPacket(blockEntity.getEnergyStorage().getEnergyStored(), pPos));
     }
 
     @Override
@@ -221,7 +220,7 @@ public class ArcReactorChargerBlockEntity extends BlockEntity implements MenuPro
             inventory.setItem(i, pEntity.itemHandler.getStackInSlot(i));
         }
 
-        boolean hasCorrectItemInSlot = pEntity.itemHandler.getStackInSlot(0).is(ModTags.Items.UNCHARGED_ARC_REACTORS);
+        boolean hasCorrectItemInSlot = pEntity.itemHandler.getStackInSlot(0).is(RsImmTags.Items.UNCHARGED_ARC_REACTORS);
 
         return hasCorrectItemInSlot && inventory.getItem(0).getCount() == 1;
     }
@@ -232,7 +231,7 @@ public class ArcReactorChargerBlockEntity extends BlockEntity implements MenuPro
         @Override
         public void onEnergyChanged() {
             setChanged();
-            ModNetworking.sendToClients(new ArcReactorChargerClientSyncS2CPacket(this.energy, getBlockPos()));
+            RsImmNetworking.sendToClients(new ArcReactorChargerClientSyncS2CPacket(this.energy, getBlockPos()));
         }
     };
 

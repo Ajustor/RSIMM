@@ -2,14 +2,12 @@ package net.guwy.rsimm.events.player_tick.content;
 
 import net.guwy.rsimm.config.RsImmServerConfigs;
 import net.guwy.rsimm.content.items.arc_reactors.ArcReactorItem;
-import net.guwy.rsimm.content.network_packets.MissingArcReactorC2SPacket;
 import net.guwy.rsimm.content.network_packets.MissingArcReactorS2CPacket;
 import net.guwy.rsimm.content.network_packets.PlayerArcReactorClientSyncS2CPacket;
-import net.guwy.rsimm.index.ModEffects;
-import net.guwy.rsimm.index.ModNetworking;
+import net.guwy.rsimm.index.RsImmEffects;
+import net.guwy.rsimm.index.RsImmNetworking;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.event.TickEvent;
@@ -27,8 +25,8 @@ public class ChestSlotCheck {
                 // checks if the player has an arc reactor with energy
                 // if not adds the required effect to handle the situation
                 if(!(arcReactor.hasArcReactor()) || !(arcReactor.getArcReactorEnergy() > 0)){
-                    if(!event.player.hasEffect(ModEffects.MISSING_REACTOR.get())){
-                        ModNetworking.sendToPlayer(new MissingArcReactorS2CPacket(RsImmServerConfigs.ARC_REACTOR_DEATH_TIME.get()), (ServerPlayer) event.player);
+                    if(!event.player.hasEffect(RsImmEffects.MISSING_REACTOR.get())){
+                        RsImmNetworking.sendToPlayer(new MissingArcReactorS2CPacket(RsImmServerConfigs.ARC_REACTOR_DEATH_TIME.get()), (ServerPlayer) event.player);
                     }
                 }
 
@@ -44,11 +42,11 @@ public class ChestSlotCheck {
 
                     int id = arcReactor.getArcReactorTypeId();
                     ArcReactorItem item = (ArcReactorItem) Item.byId(id);
-                    ModNetworking.sendToClients(new PlayerArcReactorClientSyncS2CPacket(id, event.player.getUUID(), energyPercentage));
+                    RsImmNetworking.sendToClients(new PlayerArcReactorClientSyncS2CPacket(id, event.player.getUUID(), energyPercentage));
                 }
                 // if no reactor is present sends a blank slate with the uuid which the client will use it to remove the arc reactor data from itself
                 else {
-                    ModNetworking.sendToClients(new PlayerArcReactorClientSyncS2CPacket(0, event.player.getUUID(), 0));
+                    RsImmNetworking.sendToClients(new PlayerArcReactorClientSyncS2CPacket(0, event.player.getUUID(), 0));
                 }
 
             }

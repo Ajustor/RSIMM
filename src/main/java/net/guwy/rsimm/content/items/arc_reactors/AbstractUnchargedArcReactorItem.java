@@ -1,10 +1,8 @@
 package net.guwy.rsimm.content.items.arc_reactors;
 
-import net.guwy.rsimm.index.ModTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;

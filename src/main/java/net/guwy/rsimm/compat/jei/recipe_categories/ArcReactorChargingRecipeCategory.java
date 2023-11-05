@@ -11,7 +11,7 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.guwy.rsimm.RsImm;
 import net.guwy.rsimm.compat.jei.JEIRsimmPlugin;
 import net.guwy.rsimm.content.recipe.ArcReactorChargerRecipe;
-import net.guwy.rsimm.index.ModBlocks;
+import net.guwy.rsimm.index.RsImmBlocks;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -26,7 +26,7 @@ public class ArcReactorChargingRecipeCategory implements IRecipeCategory<ArcReac
 
     public ArcReactorChargingRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 112, 36);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.ARC_REACTOR_CHARGER.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(RsImmBlocks.ARC_REACTOR_CHARGER.get()));
     }
 
 

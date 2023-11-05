@@ -47,27 +47,27 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
 
     @Override
     public Item HelmetItem() {
-        return ModArmorItems.MARK_1_HELMET.get();
+        return RsImmArmorItems.MARK_1_HELMET.get();
     }
     @Override
     public Item HelmetOpenItem() {
-        return ModArmorItems.MARK_1_OPEN_HELMET.get();
+        return RsImmArmorItems.MARK_1_OPEN_HELMET.get();
     }
     @Override
     public Item ChestplateItem() {
-        return ModArmorItems.MARK_1_CHESTPLATE.get();
+        return RsImmArmorItems.MARK_1_CHESTPLATE.get();
     }
     @Override
     public Item LeggingsItem() {
-        return ModArmorItems.MARK_1_LEGGINGS.get();
+        return RsImmArmorItems.MARK_1_LEGGINGS.get();
     }
     @Override
     public Item BootsItem() {
-        return ModArmorItems.MARK_1_BOOTS.get();
+        return RsImmArmorItems.MARK_1_BOOTS.get();
     }
     @Override
     public Item AmmoKitItem() {
-        return ModAmmoKitItems.MARK_1_AMMO_KIT.get();
+        return RsImmAmmoKitItems.MARK_1_AMMO_KIT.get();
     }
 
     @Override
@@ -159,7 +159,7 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
 
     @Override
     public void onArmorTick(ItemStack stack, Level level, Player player) {
-        if(stack.getItem().equals(ModArmorItems.MARK_1_CHESTPLATE.get())){
+        if(stack.getItem().equals(RsImmArmorItems.MARK_1_CHESTPLATE.get())){
             chestplateTickEvent(stack, level, player);
             player.clearFire();
             BootTextProvider(player);
@@ -227,7 +227,7 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
     @Override
     public void armorKeyPressAction(Player player) {
         ItemStack helmet = player.getItemBySlot(EquipmentSlot.HEAD);
-        if(helmet.is(ModTags.Items.IRONMAN_HELMETS)){
+        if(helmet.is(RsImmTags.Items.IRONMAN_HELMETS)){
             Level level = player.getLevel();
             player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
                 if(armorData.getHelmetOpen()){
@@ -319,10 +319,10 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
                     return false;
                 }
             };
-            soundPlayer.playSound(ModSounds.MARK_1_FLAME_THROWER.get(), 1, 1 + (float)((Math.random() - 0.5) * 0.2));
+            soundPlayer.playSound(RsImmSounds.MARK_1_FLAME_THROWER.get(), 1, 1 + (float)((Math.random() - 0.5) * 0.2));
 
             // Flame Effects
-            Mark1FlameEntity mark1FlameEntity = new Mark1FlameEntity(ModEntityTypes.MARK_1_FLAME.get(), player.getLevel());
+            Mark1FlameEntity mark1FlameEntity = new Mark1FlameEntity(RsImmEntityTypes.MARK_1_FLAME.get(), player.getLevel());
             mark1FlameEntity.setNoGravity(true);
             mark1FlameEntity.setSilent(true);
 
@@ -353,7 +353,7 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
 
             armorData.decreaseArmorStorage(1, 2);
 
-            Mark1FlameEntity entity2 = new Mark1FlameEntity(ModEntityTypes.MARK_1_FLAME.get(), player.getLevel());
+            Mark1FlameEntity entity2 = new Mark1FlameEntity(RsImmEntityTypes.MARK_1_FLAME.get(), player.getLevel());
             entity2.setNoGravity(true);
             entity2.setSilent(true);
 
@@ -471,7 +471,7 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
             if(armorData.getHasArmor()){
                 if(armorData.getArmorStorage(1) > 0){
 
-                    Mark1FlameEntity mark1FlameEntity = new Mark1FlameEntity(ModEntityTypes.MARK_1_FLAME.get(), player.getLevel());
+                    Mark1FlameEntity mark1FlameEntity = new Mark1FlameEntity(RsImmEntityTypes.MARK_1_FLAME.get(), player.getLevel());
                     mark1FlameEntity.setNoGravity(true);
                     mark1FlameEntity.setSilent(true);
 
@@ -516,12 +516,12 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
                                 return false;
                             }
                         };
-                        soundPlayer.playSound(ModSounds.MARK_1_FLAME_THROWER.get(), 1, 1 + (float)((Math.random() - 0.5) * 0.2));
+                        soundPlayer.playSound(RsImmSounds.MARK_1_FLAME_THROWER.get(), 1, 1 + (float)((Math.random() - 0.5) * 0.2));
                     }
 
                     if(armorData.getHandActTogether()){
 
-                        Mark1FlameEntity entity2 = new Mark1FlameEntity(ModEntityTypes.MARK_1_FLAME.get(), player.getLevel());
+                        Mark1FlameEntity entity2 = new Mark1FlameEntity(RsImmEntityTypes.MARK_1_FLAME.get(), player.getLevel());
                         entity2.setNoGravity(true);
                         entity2.setSilent(true);
 
@@ -549,7 +549,7 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
                                     return false;
                                 }
                             };
-                            soundPlayer.playSound(ModSounds.MARK_1_FLAME_THROWER.get(), 1, 1 + (float)((Math.random() - 0.5) * 0.2));
+                            soundPlayer.playSound(RsImmSounds.MARK_1_FLAME_THROWER.get(), 1, 1 + (float)((Math.random() - 0.5) * 0.2));
                         }
                     }
 
@@ -578,7 +578,7 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
             if(fireCall == KeyCallType.HOLD_RELEASE){
                 player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
                     if(armorData.getArmorStorage(2) > 0){
-                        RocketEntity rocketEntity = new RocketEntity(ModEntityTypes.ROCKET.get(), level);
+                        RocketEntity rocketEntity = new RocketEntity(RsImmEntityTypes.ROCKET.get(), level);
                         rocketEntity.setSilent(true);
                         rocketEntity.setOwner(player);
 
@@ -606,7 +606,7 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
                         rocketEntity.setDeltaMovement(XSpeed, YSpeed, ZSpeed);
                         rocketEntity.setYRot(player.getViewYRot(1));
                         rocketEntity.setXRot(player.getViewXRot(1));
-                        rocketEntity.addEffect(new MobEffectInstance(ModEffects.ROCKET_PARTICLE_EFFECT.get(), 20, 0, false, false, false), rocketEntity);
+                        rocketEntity.addEffect(new MobEffectInstance(RsImmEffects.ROCKET_PARTICLE_EFFECT.get(), 20, 0, false, false, false), rocketEntity);
 
                         level.addFreshEntity(rocketEntity);
 

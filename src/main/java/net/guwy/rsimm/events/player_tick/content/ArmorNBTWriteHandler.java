@@ -1,6 +1,6 @@
 package net.guwy.rsimm.events.player_tick.content;
 
-import net.guwy.rsimm.index.ModTags;
+import net.guwy.rsimm.index.RsImmTags;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -15,7 +15,7 @@ public class ArmorNBTWriteHandler {
         Level level = player.level;
 
         player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactor -> {
-            if(player.getItemBySlot(EquipmentSlot.CHEST).is(ModTags.Items.IRONMAN_CHESTPLATES)){
+            if(player.getItemBySlot(EquipmentSlot.CHEST).is(RsImmTags.Items.IRONMAN_CHESTPLATES)){
 
                 ItemStack itemStack = player.getItemBySlot(EquipmentSlot.CHEST);
                 CompoundTag nbtTag;

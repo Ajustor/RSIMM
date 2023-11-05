@@ -1,11 +1,7 @@
 package net.guwy.rsimm.content.network_packets;
 
 import net.guwy.rsimm.config.RsImmClientConfigs;
-import net.guwy.rsimm.content.blocks.arc_reactor_charger.ArcReactorChargerBlockEntity;
-import net.guwy.rsimm.content.blocks.arc_reactor_charger.ArcReactorChargerMenu;
-import net.guwy.rsimm.index.ModNetworking;
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.BlockPos;
+import net.guwy.rsimm.index.RsImmNetworking;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.network.NetworkEvent;
 
@@ -32,9 +28,9 @@ public class MissingArcReactorS2CPacket {
 
             // On the Client
             if(RsImmClientConfigs.ARC_REACTOR_DEATH_TIME.get() < 10){
-                ModNetworking.sendToServer(new MissingArcReactorC2SPacket(time));
+                RsImmNetworking.sendToServer(new MissingArcReactorC2SPacket(time));
             } else {
-                ModNetworking.sendToServer(new MissingArcReactorC2SPacket(Math.min(time, RsImmClientConfigs.ARC_REACTOR_DEATH_TIME.get())));
+                RsImmNetworking.sendToServer(new MissingArcReactorC2SPacket(Math.min(time, RsImmClientConfigs.ARC_REACTOR_DEATH_TIME.get())));
             }
 
 

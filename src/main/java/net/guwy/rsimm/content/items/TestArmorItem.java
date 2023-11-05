@@ -1,8 +1,6 @@
 package net.guwy.rsimm.content.items;
 
-import net.guwy.rsimm.index.ModArmorItems;
-import net.guwy.rsimm.index.ModCreativeModeTabs;
-import net.guwy.rsimm.index.ModItems;
+import net.guwy.rsimm.index.RsImmArmorItems;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -11,7 +9,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import software.bernie.example.GeckoLibMod;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -89,7 +86,7 @@ public class TestArmorItem extends GeoArmorItem implements IAnimatable, ILoopTyp
         // Make sure the player is wearing all the armor. If they are, continue playing
         // the animation, otherwise stop
         boolean isWearingAll = armorList
-                .containsAll(Arrays.asList(ModArmorItems.TEST_ARMOR_BOOTS.get(), ModArmorItems.TEST_ARMOR_LEGGINGS.get(), ModArmorItems.TEST_ARMOR_HELMET.get()));
+                .containsAll(Arrays.asList(RsImmArmorItems.TEST_ARMOR_BOOTS.get(), RsImmArmorItems.TEST_ARMOR_LEGGINGS.get(), RsImmArmorItems.TEST_ARMOR_HELMET.get()));
         return isWearingAll ? PlayState.CONTINUE : PlayState.STOP;
     }
 

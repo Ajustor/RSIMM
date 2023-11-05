@@ -1,10 +1,8 @@
 package net.guwy.rsimm.content.network_packets;
 
-import net.guwy.rsimm.index.ModEffects;
-import net.minecraft.core.BlockPos;
+import net.guwy.rsimm.index.RsImmEffects;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -29,7 +27,7 @@ public class MissingArcReactorC2SPacket {
         context.enqueueWork(() -> {
 
             // On the Server
-            context.getSender().addEffect(new MobEffectInstance(ModEffects.MISSING_REACTOR.get(), time * 20, 0 ,false, false, true));
+            context.getSender().addEffect(new MobEffectInstance(RsImmEffects.MISSING_REACTOR.get(), time * 20, 0 ,false, false, true));
 
         });
         return true;

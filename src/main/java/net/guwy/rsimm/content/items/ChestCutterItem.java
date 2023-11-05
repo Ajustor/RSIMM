@@ -1,13 +1,10 @@
 package net.guwy.rsimm.content.items;
 
-import net.guwy.rsimm.index.ModEffects;
-import net.guwy.rsimm.index.ModItems;
-import net.guwy.rsimm.index.ModSounds;
+import net.guwy.rsimm.index.RsImmEffects;
+import net.guwy.rsimm.index.RsImmItems;
+import net.guwy.rsimm.index.RsImmSounds;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -40,17 +37,17 @@ public class ChestCutterItem extends Item {
                             return false;
                         }
                     };
-                    soundPlayer.playSound(ModSounds.CHEST_CUTTING.get());
+                    soundPlayer.playSound(RsImmSounds.CHEST_CUTTING.get());
 
                     // Effect to handle damaging over time
-                    pPlayer.addEffect(new MobEffectInstance(ModEffects.CHEST_CUTTING_HURT.get(),
+                    pPlayer.addEffect(new MobEffectInstance(RsImmEffects.CHEST_CUTTING_HURT.get(),
                             30, 1, false, false, false));
                 }   else {
                     pPlayer.sendSystemMessage(Component.translatable("message.rsimm.chest_cutter.don't_have_slot"));
                 }
             });
 
-            pPlayer.getCooldowns().addCooldown(ModItems.CHEST_CUTTER.get(), 40);
+            pPlayer.getCooldowns().addCooldown(RsImmItems.CHEST_CUTTER.get(), 40);
         }
         return super.use(pLevel, pPlayer, pUsedHand);
     }

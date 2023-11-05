@@ -5,7 +5,7 @@ import net.guwy.rsimm.content.entities.non_living.mark_1_flame.Mark1FlameEntity;
 import net.guwy.rsimm.content.entities.non_living.rocket.RocketEntity;
 import net.guwy.rsimm.events.player_tick.PlayerTickEventOrganizer;
 import net.guwy.rsimm.events.server_events.*;
-import net.guwy.rsimm.index.ModEntityTypes;
+import net.guwy.rsimm.index.RsImmEntityTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
@@ -92,8 +92,8 @@ public class ModEvents {
 
         @SubscribeEvent
         public static void entityAttributeEvent(EntityAttributeCreationEvent event) {
-            event.put(ModEntityTypes.MARK_1_FLAME.get(), Mark1FlameEntity.setAttributes());
-            event.put(ModEntityTypes.ROCKET.get(), RocketEntity.setAttributes());
+            event.put(RsImmEntityTypes.MARK_1_FLAME.get(), Mark1FlameEntity.setAttributes());
+            event.put(RsImmEntityTypes.ROCKET.get(), RocketEntity.setAttributes());
         }
     }
 

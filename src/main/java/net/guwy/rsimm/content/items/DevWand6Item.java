@@ -16,27 +16,5 @@ public class DevWand6Item extends Item {
         super(pProperties);
     }
 
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        if(!pLevel.isClientSide) {
-            pPlayer.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
-                if(armorData.getHasArmor()){
-                    ItemStack itemStack = pPlayer.getItemBySlot(EquipmentSlot.CHEST);
-                    AbstractIronmanArmorItem armorItem = (AbstractIronmanArmorItem) itemStack.getItem();
 
-                    armorItem.FireWeapon1(pPlayer, pLevel, false, KeyCallType.START_HOLD);
-                }
-            });
-
-            pPlayer.getCooldowns().addCooldown(pPlayer.getItemInHand(pUsedHand).getItem(), 20);
-        }
-
-        if(pLevel.isClientSide){
-            pPlayer.swing(pUsedHand);
-        }
-
-
-        return super.use(pLevel, pPlayer, pUsedHand);
-
-    }
 }

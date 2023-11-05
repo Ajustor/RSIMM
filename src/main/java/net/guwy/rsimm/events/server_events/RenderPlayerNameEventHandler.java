@@ -1,6 +1,6 @@
 package net.guwy.rsimm.events.server_events;
 
-import net.guwy.rsimm.index.ModTags;
+import net.guwy.rsimm.index.RsImmTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
@@ -11,8 +11,8 @@ public class RenderPlayerNameEventHandler {
     public static void init(RenderNameTagEvent event){
         if(event.getEntity().getType().equals(EntityType.PLAYER)){
             Player player = (Player)event.getEntity();
-            if(player.getItemBySlot(EquipmentSlot.HEAD).is(ModTags.Items.IRONMAN_HELMETS)){
-                if(!player.getItemBySlot(EquipmentSlot.HEAD).is(ModTags.Items.FORCED_NAME_TAG_HELMETS)){
+            if(player.getItemBySlot(EquipmentSlot.HEAD).is(RsImmTags.Items.IRONMAN_HELMETS)){
+                if(!player.getItemBySlot(EquipmentSlot.HEAD).is(RsImmTags.Items.FORCED_NAME_TAG_HELMETS)){
                     event.setResult(Event.Result.DENY);
                 }
             }

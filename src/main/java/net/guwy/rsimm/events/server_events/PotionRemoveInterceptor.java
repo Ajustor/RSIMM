@@ -1,6 +1,6 @@
 package net.guwy.rsimm.events.server_events;
 
-import net.guwy.rsimm.index.ModEffects;
+import net.guwy.rsimm.index.RsImmEffects;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
@@ -11,7 +11,7 @@ public class PotionRemoveInterceptor {
 
 
 
-        if(event.getEffect() == ModEffects.MISSING_REACTOR.get()) {
+        if(event.getEffect() == RsImmEffects.MISSING_REACTOR.get()) {
             if (event.getEntity().getType() == EntityType.PLAYER) {
 
                 Player player = (Player) event.getEntity();

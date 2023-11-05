@@ -1,6 +1,6 @@
 package net.guwy.rsimm.events.player_tick.content;
 
-import net.guwy.rsimm.index.ModEffects;
+import net.guwy.rsimm.index.RsImmEffects;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -17,8 +17,8 @@ public class ReactorPoisoningHandler {
                 }
 
                 if(event.player.tickCount % 1200 == 0){
-                    boolean hasSuppressant = event.player.hasEffect(ModEffects.REACTOR_POISONING_SUPPRESSANT.get());
-                    boolean hasBetterSuppressant = event.player.hasEffect(ModEffects.BETTER_REACTOR_POISONING_SUPPRESSANT.get());
+                    boolean hasSuppressant = event.player.hasEffect(RsImmEffects.REACTOR_POISONING_SUPPRESSANT.get());
+                    boolean hasBetterSuppressant = event.player.hasEffect(RsImmEffects.BETTER_REACTOR_POISONING_SUPPRESSANT.get());
 
                     if(!hasBetterSuppressant){
 
@@ -41,7 +41,7 @@ public class ReactorPoisoningHandler {
 
                         if(arcReactor.getPlayerArcReactorPoisoning() >= 50000 && !hasSuppressant &&
                                 Math.random() >= (((float)arcReactor.getPlayerArcReactorPoisoning() - 50000) / 790000)){
-                            event.player.addEffect(new MobEffectInstance(ModEffects.COUGH.get(), 19, 0, false, false, false));       //Cough
+                            event.player.addEffect(new MobEffectInstance(RsImmEffects.COUGH.get(), 19, 0, false, false, false));       //Cough
                         }
 
                     }

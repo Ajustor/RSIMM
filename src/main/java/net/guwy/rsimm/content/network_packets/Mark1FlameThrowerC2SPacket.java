@@ -1,7 +1,7 @@
 package net.guwy.rsimm.content.network_packets;
 
 import net.guwy.rsimm.content.entities.non_living.mark_1_flame.Mark1FlameEntity;
-import net.guwy.rsimm.index.ModEntityTypes;
+import net.guwy.rsimm.index.RsImmEntityTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -34,7 +34,7 @@ public class Mark1FlameThrowerC2SPacket {
             ServerPlayer player = context.getSender();
             ServerLevel level = player.getLevel();
 
-            Mark1FlameEntity mark1FlameEntity = new Mark1FlameEntity(ModEntityTypes.MARK_1_FLAME.get(), level);
+            Mark1FlameEntity mark1FlameEntity = new Mark1FlameEntity(RsImmEntityTypes.MARK_1_FLAME.get(), level);
             mark1FlameEntity.setPos(player.getX(), player.getY() + 1.2f, player.getZ());
             mark1FlameEntity.setNoGravity(true);
             mark1FlameEntity.setSilent(true);

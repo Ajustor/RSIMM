@@ -1,7 +1,7 @@
 package net.guwy.rsimm.content.blocks.armor_equipping_station;
 
-import net.guwy.rsimm.index.ModBlocks;
-import net.guwy.rsimm.index.ModMenuTypes;
+import net.guwy.rsimm.index.RsImmBlocks;
+import net.guwy.rsimm.index.RsImmMenuTypes;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -23,7 +23,7 @@ public class ArmorEquippingStationMenu extends AbstractContainerMenu {
     }
 
     public ArmorEquippingStationMenu(int id, Inventory inv, BlockEntity entity, ContainerData data) {
-        super(ModMenuTypes.ARMOR_EQUIPPING_STATION_MENU.get(), id);
+        super(RsImmMenuTypes.ARMOR_EQUIPPING_STATION_MENU.get(), id);
         checkContainerSize(inv, 1);
         blockEntity = (ArmorEquippingStationBlockEntity) entity;
         this.level = inv.player.level;
@@ -101,7 +101,7 @@ public class ArmorEquippingStationMenu extends AbstractContainerMenu {
 
     @Override
     public boolean stillValid(Player pPlayer) {
-        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), pPlayer, ModBlocks.ARMOR_EQUIPPING_STATION.get());
+        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), pPlayer, RsImmBlocks.ARMOR_EQUIPPING_STATION.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

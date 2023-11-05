@@ -1,19 +1,14 @@
 package net.guwy.rsimm.content.items.arc_reactors;
 
-import net.guwy.rsimm.index.ModArcReactorItems;
+import net.guwy.rsimm.index.RsImmArcReactorItems;
 import net.guwy.sticky_foundations.utils.ItemTagUtils;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.List;
 
 public class DepletedArcReactorItem extends Item {
     public DepletedArcReactorItem(Properties pProperties) {
@@ -27,10 +22,10 @@ public class DepletedArcReactorItem extends Item {
             Player player = (Player) pEntity;
             ItemStack itemStack;
 
-            if(item == ModArcReactorItems.MARK_1_ARC_REACTOR_DEPLETED.get()){
-                itemStack = new ItemStack(ModArcReactorItems.MARK_1_ARC_REACTOR.get());
-            } else if (item == ModArcReactorItems.MARK_2_ARC_REACTOR_DEPLETED.get()){
-                itemStack = new ItemStack(ModArcReactorItems.MARK_2_ARC_REACTOR.get());
+            if(item == RsImmArcReactorItems.MARK_1_ARC_REACTOR_DEPLETED.get()){
+                itemStack = new ItemStack(RsImmArcReactorItems.MARK_1_ARC_REACTOR.get());
+            } else if (item == RsImmArcReactorItems.MARK_2_ARC_REACTOR_DEPLETED.get()){
+                itemStack = new ItemStack(RsImmArcReactorItems.MARK_2_ARC_REACTOR.get());
             } else {
                 itemStack = new ItemStack(Items.DIRT);
             }

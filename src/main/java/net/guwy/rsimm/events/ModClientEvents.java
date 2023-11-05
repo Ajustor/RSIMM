@@ -1,14 +1,18 @@
 package net.guwy.rsimm.events;
 
 import net.guwy.rsimm.RsImm;
+import net.guwy.rsimm.content.particles.RepulsorBlastTrailParticle;
 import net.guwy.rsimm.events.client_events.*;
 import net.guwy.rsimm.events.server_events.RenderPlayerEventPreHandler;
 import net.guwy.rsimm.events.server_events.RenderPlayerNameEventHandler;
+import net.guwy.rsimm.index.RsImmParticles;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 public class ModClientEvents {
 
@@ -20,23 +24,16 @@ public class ModClientEvents {
         @SubscribeEvent
         public static void onKeyInput(InputEvent.Key event){
             OnKeyInputHandler.init(event);
-
         }
 
         @SubscribeEvent
         public static void onMouseScroll(InputEvent.MouseScrollingEvent event){
             MouseScrollHandler.init(event);
-
         }
 
         @SubscribeEvent
         public static void renderPlayerEvent(RenderPlayerEvent.Pre event) {
             RenderPlayerEventPreHandler.init(event);
-        }
-
-        @SubscribeEvent
-        public static void renderArmEvent(RenderArmEvent event) {
-            //RenderArmEventHandler.init(event);
         }
 
         @SubscribeEvent
@@ -69,6 +66,16 @@ public class ModClientEvents {
         @SubscribeEvent
         public static void registerGuiOverlays(RegisterGuiOverlaysEvent event){
             RegisterGuiOverlaysEventHandler.init(event);
+        }
+
+        @SubscribeEvent
+        public static void onClientSetup(FMLClientSetupEvent event) {
+            ClientSetupEventHandler.init(event);
+        }
+
+        @SubscribeEvent
+        public static void registerParticlesEvent(RegisterParticleProvidersEvent event) {
+            RegisterParticlesEventHandler.init(event);
         }
     }
 

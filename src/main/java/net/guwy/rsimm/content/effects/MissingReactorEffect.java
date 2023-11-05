@@ -1,7 +1,7 @@
 package net.guwy.rsimm.content.effects;
 
-import net.guwy.rsimm.index.ModEffects;
-import net.guwy.rsimm.index.ModSounds;
+import net.guwy.rsimm.index.RsImmEffects;
+import net.guwy.rsimm.index.RsImmSounds;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
@@ -24,11 +24,11 @@ public class MissingReactorEffect extends MobEffect {
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
         Player player = (Player) pLivingEntity;
         if(player.tickCount % 20 == 0){
-            float volume = 1 - ((float)player.getEffect(ModEffects.MISSING_REACTOR.get()).getDuration() / 6000);
-            player.playSound(ModSounds.HEARTBEAT.get(), volume, 1);
+            float volume = 1 - ((float)player.getEffect(RsImmEffects.MISSING_REACTOR.get()).getDuration() / 6000);
+            player.playSound(RsImmSounds.HEARTBEAT.get(), volume, 1);
         }
 
-        if(pLivingEntity.getEffect(ModEffects.MISSING_REACTOR.get()).getDuration() <= 1){
+        if(pLivingEntity.getEffect(RsImmEffects.MISSING_REACTOR.get()).getDuration() <= 1){
             player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactor -> {
                 if(arcReactor.hasArcReactorSlot()){
                     pLivingEntity.hurt(new DamageSource("missing_reactor"),Float.MAX_VALUE);
@@ -41,7 +41,7 @@ public class MissingReactorEffect extends MobEffect {
             if (arcReactor.hasArcReactorSlot()) {
                 if ((arcReactor.hasArcReactor()) && (arcReactor.getArcReactorEnergy() > 0)) {
 
-                    player.removeEffect(ModEffects.MISSING_REACTOR.get());
+                    player.removeEffect(RsImmEffects.MISSING_REACTOR.get());
                 }
             }
         });
