@@ -36,7 +36,7 @@ import top.theillusivec4.curios.api.client.ICurioRenderer;
 
 import java.util.function.Consumer;
 
-public class EdithGlassesArmorItem extends GeoArmorItem implements IAnimatable, ICurioRenderer {
+public class EdithGlassesArmorItem extends GeoArmorItem implements IAnimatable {
     public static final String LIT_TAG_KEY = "lit";
     public static final String HAS_SLOT_TAG_KEY = "has_arc_reactor_slot";
     public static final String HAS_REACTOR_TAG_KEY = "has_arc_reactor";
@@ -127,10 +127,5 @@ public class EdithGlassesArmorItem extends GeoArmorItem implements IAnimatable, 
         } else {
             return super.initCapabilities(stack, nbt);
         }
-    }
-
-    @Override
-    public <T extends LivingEntity, M extends EntityModel<T>> void render(ItemStack stack, SlotContext slotContext, PoseStack matrixStack, RenderLayerParent<T, M> renderLayerParent, MultiBufferSource renderTypeBuffer, int light, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-
     }
 }
