@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "rsimm:mark_1_ammo_kit",
-    "rsimm:mark_2_ammo_kit"
+    "rsimm:mark_1_ammo_kit"
   ]
 }

@@ -2,9 +2,6 @@
   "replace": false,
   "values": [
     "rsimm:mark_1_helmet",
-    "rsimm:mark_1_open_helmet",
-    "rsimm:mark_2_helmet",
-    "rsimm:mark_2_open_helmet",
-    "rsimm:test_armor_helmet"
+    "rsimm:mark_1_open_helmet"
   ]
 }
