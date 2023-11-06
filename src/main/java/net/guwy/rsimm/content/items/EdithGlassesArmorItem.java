@@ -1,17 +1,13 @@
 package net.guwy.rsimm.content.items;
 
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.guwy.rsimm.RsImm;
 import net.guwy.rsimm.compat.curios.Curios;
 import net.guwy.rsimm.content.entities.armor.misc.EdithGlassesItemRenderer;
 import net.guwy.rsimm.content.items.arc_reactors.AbstractArcReactorItem;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.sticky_foundations.utils.ItemTagUtils;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -29,10 +25,7 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.item.GeoArmorItem;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
-import software.bernie.geckolib3.renderers.geo.GeoItemRenderer;
 import software.bernie.geckolib3.util.GeckoLibUtil;
-import top.theillusivec4.curios.api.SlotContext;
-import top.theillusivec4.curios.api.client.ICurioRenderer;
 
 import java.util.function.Consumer;
 
