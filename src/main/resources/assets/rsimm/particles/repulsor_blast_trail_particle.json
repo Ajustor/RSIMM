@@ -1,13 +1,13 @@
 {
   "textures": [
-    "rsimm:repulsor/blast/trail/0",
-    "rsimm:repulsor/blast/trail/1",
-    "rsimm:repulsor/blast/trail/2",
-    "rsimm:repulsor/blast/trail/3",
-    "rsimm:repulsor/blast/trail/4",
-    "rsimm:repulsor/blast/trail/5",
-    "rsimm:repulsor/blast/trail/6",
-    "rsimm:repulsor/blast/trail/7",
+    "rsimm:repulsor/blast/trail/bright_yellow/0",
+    "rsimm:repulsor/blast/trail/bright_yellow/1",
+    "rsimm:repulsor/blast/trail/bright_yellow/2",
+    "rsimm:repulsor/blast/trail/bright_yellow/3",
+    "rsimm:repulsor/blast/trail/bright_yellow/4",
+    "rsimm:repulsor/blast/trail/bright_yellow/5",
+    "rsimm:repulsor/blast/trail/bright_yellow/6",
+    "rsimm:repulsor/blast/trail/bright_yellow/7",
     "rsimm:null"
   ]
 }

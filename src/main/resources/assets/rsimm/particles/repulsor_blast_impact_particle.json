@@ -1,12 +1,12 @@
 {
   "textures": [
-    "rsimm:repulsor/blast/impact/1",
-    "rsimm:repulsor/blast/impact/2",
-    "rsimm:repulsor/blast/impact/3",
-    "rsimm:repulsor/blast/impact/4",
-    "rsimm:repulsor/blast/impact/5",
-    "rsimm:repulsor/blast/impact/6",
-    "rsimm:repulsor/blast/impact/7",
+    "rsimm:repulsor/blast/impact/bright_yellow/1",
+    "rsimm:repulsor/blast/impact/bright_yellow/2",
+    "rsimm:repulsor/blast/impact/bright_yellow/3",
+    "rsimm:repulsor/blast/impact/bright_yellow/4",
+    "rsimm:repulsor/blast/impact/bright_yellow/5",
+    "rsimm:repulsor/blast/impact/bright_yellow/6",
+    "rsimm:repulsor/blast/impact/bright_yellow/7",
     "rsimm:null"
   ]
 }

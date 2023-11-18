@@ -1,5 +1,6 @@
 package net.guwy.rsimm.content.entities.projectiles;
 
+import net.guwy.rsimm.index.RsImmDamageSources;
 import net.guwy.rsimm.index.RsImmParticles;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.sounds.SoundEvent;
@@ -10,6 +11,7 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.network.NetworkHooks;
 
 public class RepulsorBeamEntity extends AbstractArrow {
@@ -27,6 +29,11 @@ public class RepulsorBeamEntity extends AbstractArrow {
     }
 
     @Override
+    protected void onHitEntity(EntityHitResult pResult) {
+        pResult.getEntity().hurt(RsImmDamageSources.repulsor_beam(this, this.getOwner()), this.damage * (1 - ((float)this.tickCount / this.lifetime)));
+    }
+
+    @Override
     protected ItemStack getPickupItem() {
         return ItemStack.EMPTY;
     }
@@ -38,43 +45,29 @@ public class RepulsorBeamEntity extends AbstractArrow {
 
     @Override
     public void tick() {
-        if (this.tickCount > 60){
-            impact();
+        if(!this.level.isClientSide){
+            tickDespawn();
         }
-
         super.tick();
     }
 
     @Override
-    protected void tickDespawn() {
-        ++this.tickCount;
-        if (this.tickCount >= lifetime) {
+    public void tickDespawn() {
+        if (this.tickCount >= this.lifetime) {
             this.discard();
         }
     }
 
     @Override
     protected void onHitBlock(BlockHitResult pResult) {
-        impact();
+        this.discard();
+
         super.onHitBlock(pResult);
     }
 
     @Override
     public Packet<?> getAddEntityPacket() {
         return NetworkHooks.getEntitySpawningPacket(this);
-    }
-
-    private void impact(){
-        if(this.level.isClientSide){
-            //this.level.addParticle(ParticleTypes.FLASH, true,
-            //        this.getX(), this.getY(), this.getZ(),
-            //        0, 0, 0);
-            //this.level.addParticle(ParticleTypes.SONIC_BOOM, true,
-            //        this.getX(), this.getY(), this.getZ(),
-            //        0, 0, 0);
-        }
-        //this.level.explode(this, this.getX(), this.getY(), this.getZ(), 0.5f, false, Explosion.BlockInteraction.BREAK);
-        this.discard();
     }
 
     @Override

@@ -26,8 +26,10 @@ public class RsImmItems {
     public static final RegistryObject<Item> REPULSOR = ITEMS.register("repulsor",
             () -> new RepulsorItem(new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).durability(250),
                     1, 1, 1, 1, 1,
-                    20, 1, 60, 1,
-                    1, 1));
+                    20, 4, 30, 10,
+                    1, 1,
+                    100, 0, 0, 0, 1.0,
+                    5000));
 
 
 

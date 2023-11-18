@@ -149,5 +149,9 @@
     "arc_reactor.rsimm.chat_display_title": "--| Arc Reactor Status |--",
     "arc_reactor.rsimm.chat_display_name": "Model: ",
 
-    "message.rsimm.chest_cutter.don't_have_slot": "You already have a slot in your chest"
+    "message.rsimm.chest_cutter.don't_have_slot": "You already have a slot in your chest",
+
+
+
+    "death.attack.repulsor_beam": "%1$s was blasted by %2$s using high density muon beam"
 }

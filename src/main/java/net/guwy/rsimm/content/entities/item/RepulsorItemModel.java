@@ -1,7 +1,6 @@
 package net.guwy.rsimm.content.entities.item;
 
 import net.guwy.rsimm.RsImm;
-import net.guwy.rsimm.content.items.EdithGlassesArmorItem;
 import net.guwy.rsimm.content.items.RepulsorItem;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
@@ -14,7 +13,7 @@ public class RepulsorItemModel extends AnimatedGeoModel<RepulsorItem> {
 
     @Override
     public ResourceLocation getTextureResource(RepulsorItem object) {
-        return new ResourceLocation(RsImm.MOD_ID, "textures/models/repulsor.png");
+        return new ResourceLocation(RsImm.MOD_ID, "textures/models/flight_test_suit.png");
     }
 
     @Override

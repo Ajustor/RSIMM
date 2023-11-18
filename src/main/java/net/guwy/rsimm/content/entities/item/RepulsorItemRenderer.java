@@ -1,6 +1,5 @@
 package net.guwy.rsimm.content.entities.item;
 
-import net.guwy.rsimm.content.items.EdithGlassesArmorItem;
 import net.guwy.rsimm.content.items.RepulsorItem;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.renderers.geo.GeoItemRenderer;
