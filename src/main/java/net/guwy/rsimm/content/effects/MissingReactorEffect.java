@@ -13,6 +13,8 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
+import java.util.Objects;
+
 public class MissingReactorEffect extends MobEffect {
 
     public MissingReactorEffect(MobEffectCategory p_19451_, int p_19452_) {
@@ -55,24 +57,25 @@ public class MissingReactorEffect extends MobEffect {
         });
 
         // Player doesn't get debuffed if someone stole their reactor
-        if(player.hasEffect(RsImmEffects.REACTOR_STOLEN.get())){
+        if(!player.hasEffect(RsImmEffects.REACTOR_STOLEN.get())){
             // Debuff effects
             if(RsImmServerConfigs.ARC_REACTOR_MISSING_SIDE_EFFECTS.get() == ArcReactorSideEffects.NORMAL){
                 player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 5, 0, false, false, false));
-                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 5, 0, false, false, false));
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 7, 0, false, false, false));
             }
             // Harder effects for ppl who want it
             else if(RsImmServerConfigs.ARC_REACTOR_MISSING_SIDE_EFFECTS.get() == ArcReactorSideEffects.HARD){
                 player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 5, 1, false, false, false));
-                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 5, 1, false, false, false));
-                player.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 5, 0, false, false, false));
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 7, 1, false, false, false));
+                player.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 9, 0, false, false, false));
             }
             // Even worse effects for straight-up suffering
             else if (RsImmServerConfigs.ARC_REACTOR_MISSING_SIDE_EFFECTS.get() == ArcReactorSideEffects.HARDCORE){
                 player.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 5, 1, false, false, false));
-                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 5, 2, false, false, false));
-                player.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 5, 1, false, false, false));
-                player.addEffect(new MobEffectInstance(MobEffects.POISON, 5, 0, false, false, false));
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 7, 2, false, false, false));
+                player.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 9, 1, false, false, false));
+                if(!player.hasEffect(MobEffects.POISON))
+                    player.addEffect(new MobEffectInstance(MobEffects.POISON, 25, 0, false, false, false));
             }
         }
 

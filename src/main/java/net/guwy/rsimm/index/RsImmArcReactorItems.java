@@ -2,7 +2,6 @@ package net.guwy.rsimm.index;
 
 import net.guwy.rsimm.RsImm;
 import net.guwy.rsimm.content.items.arc_reactors.ArcReactorItem;
-import net.guwy.rsimm.content.items.arc_reactors.DepletedArcReactorItem;
 import net.guwy.rsimm.content.items.arc_reactors.UnchargedArcReactorItem;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

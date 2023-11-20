@@ -11,6 +11,8 @@
     "item.rsimm.rocket": "Rocket (HE)",
 
     "item.rsimm.chest_cutter": "Chest Cutter",
+    "tooltip.rsimm.chest_cutter.1": "Used to cut a hole compatible with arc reactors on your chest",
+    "tooltip.rsimm.chest_cutter.2": "Hold [SHIFT] to steal other players reactors",
     "item.rsimm.edith_glasses": "E.D.I.T.H. Glasses",
 
     "item.rsimm.dev_wand_1": "Dev Wand 1 (Fire Repulsor Shot)",
