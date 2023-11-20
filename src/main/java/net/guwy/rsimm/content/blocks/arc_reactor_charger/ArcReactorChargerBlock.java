@@ -1,11 +1,14 @@
 package net.guwy.rsimm.content.blocks.arc_reactor_charger;
 
 import net.guwy.rsimm.index.RsImmBlockEntities;
+import net.guwy.rsimm.index.RsImmSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;

@@ -24,9 +24,6 @@ public class RsImmArcReactorItems {
 
 
     // Arc Reactors
-    public static final RegistryObject<Item> MARK_1_ARC_REACTOR_DEPLETED = ITEMS.register("mark_1_arc_reactor_depleted",
-            () -> new DepletedArcReactorItem(new Item.Properties().stacksTo(1).tab(RsImmCreativeModeTabs.MAIN)));
-
     public static final RegistryObject<Item> MARK_1_ARC_REACTOR = ITEMS.register("mark_1_arc_reactor",
             () -> new ArcReactorItem(new Item.Properties().stacksTo(1).tab(RsImmCreativeModeTabs.MAIN),
                     "mark 1", 1000000, 100000, 5, 4, new ResourceLocation("item.rsimm.mark_1_arc_reactor_depleted"),
@@ -37,9 +34,6 @@ public class RsImmArcReactorItems {
                     MARK_1_ARC_REACTOR.get(), 10000000, 200));
 
 
-
-    public static final RegistryObject<Item> MARK_2_ARC_REACTOR_DEPLETED = ITEMS.register("mark_2_arc_reactor_depleted",
-            () -> new DepletedArcReactorItem(new Item.Properties().stacksTo(1).tab(RsImmCreativeModeTabs.MAIN)));
 
     public static final RegistryObject<Item> MARK_2_ARC_REACTOR = ITEMS.register("mark_2_arc_reactor",
             () -> new ArcReactorItem(new Item.Properties().stacksTo(1).tab(RsImmCreativeModeTabs.MAIN),

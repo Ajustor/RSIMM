@@ -1,4 +1,4 @@
-package net.guwy.rsimm.config;
+package net.guwy.rsimm.config.enums;
 
 public enum GuiScreenAnchor {
     TOP_LEFT,

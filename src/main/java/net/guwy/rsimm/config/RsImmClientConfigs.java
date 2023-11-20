@@ -1,5 +1,6 @@
 package net.guwy.rsimm.config;
 
+import net.guwy.rsimm.config.enums.GuiScreenAnchor;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class RsImmClientConfigs {
@@ -42,6 +43,7 @@ public class RsImmClientConfigs {
         BUILDER.push("Preferences");
 
         BUILDER.push("Arc Reactor");
+        BUILDER.comment(".");
         ARC_REACTOR_DEATH_TIME = BUILDER.comment("The time (in seconds) you have before dying without a reactor")
                 .comment(" min: 10")
                 .comment(" values lower than 10: uses the server time (5 mins by default)")

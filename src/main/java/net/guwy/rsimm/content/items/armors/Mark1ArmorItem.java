@@ -12,6 +12,7 @@ import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataP
 import net.guwy.sticky_foundations.index.SFMinerals;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EntityType;
@@ -234,36 +235,12 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
                     armorData.setHelmetOpen(false, player);
 
                     // This will be helmet down sound
-                    // Fake player for sounds
-                    Player soundPlayer = new Player(level, player.getOnPos(), 0, player.getGameProfile(), null) {
-                        @Override
-                        public boolean isSpectator() {
-                            return false;
-                        }
-
-                        @Override
-                        public boolean isCreative() {
-                            return false;
-                        }
-                    };
-                    soundPlayer.playSound(SoundEvents.IRON_TRAPDOOR_CLOSE);
+                    level.playSound(null, player, SoundEvents.IRON_TRAPDOOR_CLOSE, SoundSource.PLAYERS, 1, 1);
                 }   else {
                     armorData.setHelmetOpen(true, player);
 
                     // This will be helmet up sound
-                    // Fake player for sounds
-                    Player soundPlayer = new Player(level, player.getOnPos(), 0, player.getGameProfile(), null) {
-                        @Override
-                        public boolean isSpectator() {
-                            return false;
-                        }
-
-                        @Override
-                        public boolean isCreative() {
-                            return false;
-                        }
-                    };
-                    soundPlayer.playSound(SoundEvents.IRON_TRAPDOOR_OPEN);
+                    level.playSound(null, player, SoundEvents.IRON_TRAPDOOR_OPEN, SoundSource.PLAYERS, 1, 1);
                 }
             });
         }
@@ -307,19 +284,8 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
 
             Level level = player.getLevel();
 
-            // Fake player for sounds
-            Player soundPlayer = new Player(level, player.getOnPos(), 0, player.getGameProfile(), null) {
-                @Override
-                public boolean isSpectator() {
-                    return false;
-                }
-
-                @Override
-                public boolean isCreative() {
-                    return false;
-                }
-            };
-            soundPlayer.playSound(RsImmSounds.MARK_1_FLAME_THROWER.get(), 1, 1 + (float)((Math.random() - 0.5) * 0.2));
+            // Sound
+            level.playSound(null, player, RsImmSounds.MARK_1_FLAME_THROWER.get(), SoundSource.PLAYERS, 1, 1);
 
             // Flame Effects
             Mark1FlameEntity mark1FlameEntity = new Mark1FlameEntity(RsImmEntityTypes.MARK_1_FLAME.get(), player.getLevel());
@@ -504,19 +470,8 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
 
                     if(player.tickCount % 5 == 0){
 
-                        // Fake player for sounds
-                        Player soundPlayer = new Player(player.getLevel(), player.getOnPos(), 0, player.getGameProfile(), null) {
-                            @Override
-                            public boolean isSpectator() {
-                                return false;
-                            }
-
-                            @Override
-                            public boolean isCreative() {
-                                return false;
-                            }
-                        };
-                        soundPlayer.playSound(RsImmSounds.MARK_1_FLAME_THROWER.get(), 1, 1 + (float)((Math.random() - 0.5) * 0.2));
+                        // Sound
+                        player.getLevel().playSound(null, player, RsImmSounds.MARK_1_FLAME_THROWER.get(), SoundSource.PLAYERS, 1, 1 + (float)((Math.random() - 0.5) * 0.2));
                     }
 
                     if(armorData.getHandActTogether()){
@@ -537,19 +492,8 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
 
                         if(player.tickCount % 5 == 2){
 
-                            // Fake player for sounds
-                            Player soundPlayer = new Player(player.getLevel(), player.getOnPos(), 0, player.getGameProfile(), null) {
-                                @Override
-                                public boolean isSpectator() {
-                                    return false;
-                                }
-
-                                @Override
-                                public boolean isCreative() {
-                                    return false;
-                                }
-                            };
-                            soundPlayer.playSound(RsImmSounds.MARK_1_FLAME_THROWER.get(), 1, 1 + (float)((Math.random() - 0.5) * 0.2));
+                            // Sound
+                            player.getLevel().playSound(null, player, RsImmSounds.MARK_1_FLAME_THROWER.get(), SoundSource.PLAYERS, 1, 1 + (float)((Math.random() - 0.5) * 0.2));
                         }
                     }
 
@@ -610,52 +554,19 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
 
                         level.addFreshEntity(rocketEntity);
 
-                        // Fake player for sounds
-                        Player soundPlayer = new Player(level, player.getOnPos(), 0, player.getGameProfile(), null) {
-                            @Override
-                            public boolean isSpectator() {
-                                return false;
-                            }
-
-                            @Override
-                            public boolean isCreative() {
-                                return false;
-                            }
-                        };
-                        soundPlayer.playSound(SoundEvents.FIREWORK_ROCKET_LAUNCH);
+                        // Sounds
+                        level.playSound(null, player, SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 1, 1);
 
                         armorData.decreaseArmorStorage(2, 1);
                     }
                 });
 
-                // Fake player for sounds
-                Player soundPlayer = new Player(level, player.getOnPos(), 0, player.getGameProfile(), null) {
-                    @Override
-                    public boolean isSpectator() {
-                        return false;
-                    }
-
-                    @Override
-                    public boolean isCreative() {
-                        return false;
-                    }
-                };
-                soundPlayer.playSound(SoundEvents.IRON_TRAPDOOR_CLOSE);
+                // Sound
+                level.playSound(null, player, SoundEvents.IRON_TRAPDOOR_CLOSE, SoundSource.PLAYERS, 1, 1);
             }
             if(fireCall == KeyCallType.START_HOLD){
-                // Fake player for sounds
-                Player soundPlayer = new Player(level, player.getOnPos(), 0, player.getGameProfile(), null) {
-                    @Override
-                    public boolean isSpectator() {
-                        return false;
-                    }
-
-                    @Override
-                    public boolean isCreative() {
-                        return false;
-                    }
-                };
-                soundPlayer.playSound(SoundEvents.IRON_TRAPDOOR_OPEN);
+                // Sound
+                level.playSound(null, player, SoundEvents.IRON_TRAPDOOR_OPEN, SoundSource.PLAYERS, 1, 1);
             }
         }
         return true;
@@ -669,19 +580,8 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
                     player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 2, false, false, false));
                     armorData.increaseArmorEnergyLoad(10000);
 
-                    // Fake player for sounds
-                    Player soundPlayer = new Player(player.getLevel(), player.getOnPos(), 0, player.getGameProfile(), null) {
-                        @Override
-                        public boolean isSpectator() {
-                            return false;
-                        }
-
-                        @Override
-                        public boolean isCreative() {
-                            return false;
-                        }
-                    };
-                    soundPlayer.playSound(SoundEvents.PISTON_EXTEND);
+                    // Sound
+                    player.getLevel().playSound(null, player, SoundEvents.PISTON_EXTEND, SoundSource.PLAYERS, 1, 1);
                 }
             }
         });

@@ -7,6 +7,7 @@ import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataP
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -72,18 +73,7 @@ public class ArmorKeyBindingPressC2SPacket {
 
                             // Arc Reactor Check Sound
                             // Fake player for sounds
-                            Player soundPlayer = new Player(level, player.getOnPos(), 0, player.getGameProfile(), null) {
-                                @Override
-                                public boolean isSpectator() {
-                                    return false;
-                                }
-
-                                @Override
-                                public boolean isCreative() {
-                                    return false;
-                                }
-                            };
-                            soundPlayer.playSound(RsImmSounds.ARC_REACTOR_CHECK.get());
+                            level.playSound(null, player, RsImmSounds.ARC_REACTOR_CHECK.get(), SoundSource.PLAYERS, 1, 1);
                         }
                     }
 

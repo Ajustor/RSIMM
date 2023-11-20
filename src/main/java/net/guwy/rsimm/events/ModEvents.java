@@ -12,7 +12,7 @@ import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -82,8 +82,8 @@ public class ModEvents {
         }
 
         @SubscribeEvent
-        public static void entityHurtEvent(LivingHurtEvent event) {
-            EntityHurtHandler.init(event);
+        public static void entityHurtEvent(LivingAttackEvent event) {
+            EntityAttackedHandler.init(event);
         }
     }
 

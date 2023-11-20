@@ -1,7 +1,17 @@
 package net.guwy.rsimm.mechanics.capabilities.player.arc_reactor;
 
+import net.guwy.rsimm.config.RsImmServerConfigs;
+import net.guwy.rsimm.content.items.arc_reactors.AbstractArcReactorItem;
+import net.guwy.rsimm.index.RsImmSounds;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+
+import java.util.concurrent.atomic.AtomicReference;
 
 public class ArcReactorSlot {
     /** Lots of variables to save **/
@@ -43,7 +53,10 @@ public class ArcReactorSlot {
         this.reactorPoisonFactor = reactorPoisonFactor;
     }
 
-    public void deleteArcReactor(){
+    /** Used for deleting the arc reactor data from the player,
+     * use {@link ArcReactorSlot#removeArcReactor(Player)}
+     * for removing the arc reactor from a player */
+    private void deleteArcReactor(){
         this.hasReactor = false;
         this.reactorTypeName = "";
         this.reactorTypeId = 0;
@@ -53,6 +66,60 @@ public class ArcReactorSlot {
         this.reactorLoad = 0;
         this.reactorIdleDrain = 0;
         this.reactorPoisonFactor = 0;
+    }
+
+
+    /**
+     * Used for removing the arc reactor from a player
+     *
+     * @param player the player to extract the arc reactor
+     */
+    public static void removeArcReactor(Player player){
+        removeArcReactor(player, true, true, true);
+    }
+
+    /** More advanced version of {@link ArcReactorSlot#removeArcReactor(Player)}
+     * use it for custom extractions
+     * @param player the player to extract the arc reactor
+     * @param playSound plays sound upon success
+     * @param sendFailMessage sends fail message if the chest is occupied
+     * @param giveItem gives the extracted reactor to the player
+     * @return the extracted arc reactor for custom removal,
+     * */
+    public static ItemStack removeArcReactor(Player player, boolean playSound, boolean sendFailMessage, boolean giveItem){
+        AtomicReference<ItemStack> toReturn = new AtomicReference<>();
+        player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactor -> {
+
+            if(arcReactor.hasArcReactor()){
+                if(player.getItemBySlot(EquipmentSlot.CHEST).isEmpty() || !RsImmServerConfigs.ARC_REACTOR_EXTRACT_INSERT_LIMITS.get()){
+
+                    ItemStack itemStack = new ItemStack(Item.byId(arcReactor.getArcReactorTypeId()));
+                    CompoundTag tag = new CompoundTag();
+                    tag.putLong("energy", arcReactor.getArcReactorEnergy());
+                    itemStack.setTag(tag);
+                    AbstractArcReactorItem arcReactorItem = (AbstractArcReactorItem) itemStack.getItem();
+
+                    // If energy is 0 then set the CustomModelData to 1 which will render the depleted reactor model if it exists
+                    arcReactorItem.checkAndTransformDepletion(itemStack);
+
+                    // Place the arc reactor in inventory
+                    if(giveItem) player.getInventory().placeItemBackInInventory(itemStack);
+
+                    arcReactor.deleteArcReactor();
+
+                    if(playSound){
+                        // Arc Reactor Unequip Sound
+                        player.getLevel().playSound(null, player, RsImmSounds.ARC_REACTOR_UNEQUIP.get(), SoundSource.PLAYERS, 1, 1);
+                    }
+
+                    // Set ItemStack to return
+                    toReturn.set(itemStack);
+                }
+                else if (sendFailMessage) player.sendSystemMessage(Component.translatable("arc_reactor.rsimm.chest_blocked"));
+            }
+        });
+
+        return toReturn.get();
     }
 
 

@@ -97,6 +97,8 @@
     "effect.rsimm.cough": "Cough",
     "effect.rsimm.missing_reactor": "Missing Arc Reactor",
     "effect.rsimm.chest_cutting_hurt": "Chest Cutting Procedure",
+    "effect.rsimm.reactor_stolen": "Shonen Protagonist",
+    "effect.rsimm.stole_reactor": "Obadiah",
 
     "effect.rsimm.sound_effect_arc_reactor_equip": "Sound Effect",
     "effect.rsimm.sound_effect_arc_reactor_unequip": "Sound Effect",
@@ -149,7 +151,14 @@
     "arc_reactor.rsimm.chat_display_title": "--| Arc Reactor Status |--",
     "arc_reactor.rsimm.chat_display_name": "Model: ",
 
+
+
     "message.rsimm.chest_cutter.don't_have_slot": "You already have a slot in your chest",
+    "message.rsimm.chest_cutter.steal.fail.no_reactor": "This player doesn't have a arc reactor",
+    "message.rsimm.chest_cutter.steal.fail.has_chestplate": "This player's chest is obstructed",
+    "message.rsimm.chest_cutter.steal.fail.notify": "A nearby player tried to steal your arc reactor",
+    "message.rsimm.chest_cutter.steal.success.victim.chat": "Your Arc Reactor has just been stolen, PUNCH the culprit in order to fight back",
+    "message.rsimm.chest_cutter.steal.success.victim.action_bar": "§6PUNCH §rthe culprit",
 
 
 

@@ -3,7 +3,7 @@ package net.guwy.rsimm.content.overlays;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.guwy.rsimm.RsImm;
-import net.guwy.rsimm.config.GuiScreenAnchor;
+import net.guwy.rsimm.config.enums.GuiScreenAnchor;
 import net.guwy.rsimm.config.RsImmClientConfigs;
 import net.guwy.rsimm.content.items.EdithGlassesArmorItem;
 import net.guwy.rsimm.index.RsImmArmorItems;

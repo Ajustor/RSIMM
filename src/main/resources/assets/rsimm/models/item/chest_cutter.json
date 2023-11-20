@@ -1,6 +1,6 @@
 {
-  "parent": "item/handheld",
-  "textures": {
-    "layer0": "rsimm:item/tools/chest_cutter"
-  }
+  "parent": "rsimm:item/chest_cutter/self",
+  "overrides": [
+    {"predicate":  {"custom_model_data": 1}, "model":  "rsimm:item/chest_cutter/target"}
+  ]
 }

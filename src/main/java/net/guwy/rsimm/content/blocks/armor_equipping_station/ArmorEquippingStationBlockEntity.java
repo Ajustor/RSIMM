@@ -11,6 +11,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -205,19 +206,8 @@ public class ArmorEquippingStationBlockEntity extends BlockEntity implements Men
                         pEntity.itemHandler.extractItem(3, 1, false);
                         pEntity.itemHandler.extractItem(4, 1, false);
 
-                        // Fake player for sounds
-                        Player soundPlayer = new Player(player.getLevel(), player.getOnPos(), 0, player.getGameProfile(), null) {
-                            @Override
-                            public boolean isSpectator() {
-                                return false;
-                            }
-
-                            @Override
-                            public boolean isCreative() {
-                                return false;
-                            }
-                        };
-                        soundPlayer.playSound(SoundEvents.ANVIL_USE);
+                        // Sounds
+                        player.getLevel().playSound(null, player, SoundEvents.ANVIL_USE, SoundSource.BLOCKS, 1, 1);
                     }
                 }
             }

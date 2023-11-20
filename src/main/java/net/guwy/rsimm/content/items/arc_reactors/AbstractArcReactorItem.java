@@ -12,6 +12,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
@@ -83,20 +84,8 @@ public abstract class AbstractArcReactorItem extends Item implements IItemEnergy
                             // remove the item
                             itemStack.setCount(0);
 
-                            // Fake player for sounds
-                            Player soundPlayer = new Player(pLevel, pPlayer.getOnPos(), 0, pPlayer.getGameProfile(), null) {
-                                @Override
-                                public boolean isSpectator() {
-                                    return false;
-                                }
-
-                                @Override
-                                public boolean isCreative() {
-                                    return false;
-                                }
-                            };
-                            soundPlayer.playSound(RsImmSounds.ARC_REACTOR_EQUIP.get());
-                            soundPlayer.discard();
+                            // Sounds
+                            pLevel.playSound(null, pPlayer, RsImmSounds.ARC_REACTOR_EQUIP.get(), SoundSource.PLAYERS, 1, 1);
                         }
                         // don't put it in and return a message when the players chestplate slot is full
                         else {

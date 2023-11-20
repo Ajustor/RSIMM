@@ -4,6 +4,7 @@ import net.guwy.rsimm.config.RsImmServerConfigs;
 import net.guwy.rsimm.content.items.arc_reactors.AbstractArcReactorItem;
 import net.guwy.rsimm.content.items.armors.AbstractIronmanArmorItem;
 import net.guwy.rsimm.index.RsImmSounds;
+import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlot;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
 import net.minecraft.nbt.CompoundTag;
@@ -57,43 +58,7 @@ public class ArmorKeyBindingHoldC2SPacket {
                     }
                     // The part that does the Arc Reactor Stuff
                     else {
-                        if(arcReactor.hasArcReactor()){
-                            if(player.getItemBySlot(EquipmentSlot.CHEST).isEmpty() || !RsImmServerConfigs.ARC_REACTOR_EXTRACT_INSERT_LIMITS.get()){
-
-                                ItemStack itemStack = new ItemStack(Item.byId(arcReactor.getArcReactorTypeId()));
-                                CompoundTag tag = new CompoundTag();
-                                tag.putLong("energy", arcReactor.getArcReactorEnergy());
-                                itemStack.setTag(tag);
-                                AbstractArcReactorItem arcReactorItem = (AbstractArcReactorItem) itemStack.getItem();
-
-                                // If energy is 0 then set the CustomModelData to 1 which will render the depleted reactor model if it exists
-                                arcReactorItem.checkAndTransformDepletion(itemStack);
-
-                                // Place the arc reactor in inventory
-                                player.getInventory().placeItemBackInInventory(itemStack);
-
-                                arcReactor.deleteArcReactor();
-
-                                // Arc Reactor Unequip Sound
-                                // Fake player for sounds
-                                Player soundPlayer = new Player(level, player.getOnPos(), 0, player.getGameProfile(), null) {
-                                    @Override
-                                    public boolean isSpectator() {
-                                        return false;
-                                    }
-
-                                    @Override
-                                    public boolean isCreative() {
-                                        return false;
-                                    }
-                                };
-                                soundPlayer.playSound(RsImmSounds.ARC_REACTOR_UNEQUIP.get());
-                            }   else {
-                                player.sendSystemMessage(Component.translatable("arc_reactor.rsimm.chest_blocked"));
-                            }
-
-
-                        }
+                        ArcReactorSlot.removeArcReactor(player);
                     }
 
                 });

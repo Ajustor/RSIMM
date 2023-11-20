@@ -17,6 +17,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -590,19 +591,8 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
                     if(player.getItemBySlot(EquipmentSlot.HEAD).is(RsImmTags.Items.IRONMAN_HELMETS)){
                         if(player.tickCount % 20 == 0){
 
-                            // Fake player for sounds
-                            Player soundPlayer = new Player(level, player.getOnPos(), 0, player.getGameProfile(), null) {
-                                @Override
-                                public boolean isSpectator() {
-                                    return false;
-                                }
-
-                                @Override
-                                public boolean isCreative() {
-                                    return false;
-                                }
-                            };
-                            soundPlayer.playSound(RsImmSounds.RAIN_IN_HELMET.get(), 0.5f, 0.7f );
+                            // Sounds
+                            level.playSound(null, player, RsImmSounds.RAIN_IN_HELMET.get(), SoundSource.PLAYERS, 0.5f, 0.7f);
                         }
                     }
                 }
