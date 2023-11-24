@@ -2,6 +2,7 @@ package net.guwy.rsimm.events.server_events;
 
 import net.guwy.rsimm.content.items.ChestCutterItem;
 import net.guwy.rsimm.index.RsImmEffects;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -11,9 +12,11 @@ import net.minecraftforge.event.entity.living.LivingAttackEvent;
 
 public class EntityAttackedHandler {
     public static void init(LivingAttackEvent event){
-        if(event.getSource().equals(DamageSource.IN_FIRE)){
-            if(event.getEntity().getType().equals(EntityType.PLAYER)){
-                LivingEntity entity = event.getEntity();
+        if(!event.getEntity().getLevel().isClientSide){
+            LivingEntity entity = event.getEntity();
+
+            // When there's a attacker (e.g. the player who fired an arrow, the shulker who fired the bullet, etc.)
+            if(event.getSource().getEntity() != null){
                 LivingEntity attacker = (LivingEntity) event.getSource().getEntity();
 
                 // Revenge trigger for someone stealing another persons arc reactor

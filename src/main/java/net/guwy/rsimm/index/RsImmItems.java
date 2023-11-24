@@ -24,7 +24,7 @@ public class RsImmItems {
             () -> new ChestCutterItem(new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1)));
 
     public static final RegistryObject<Item> REPULSOR = ITEMS.register("repulsor",
-            () -> new RepulsorItem(new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).durability(250),
+            () -> new RepulsorItem(new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).durability(1000),
                     1, 1, 1, 1, 1,
                     20, 4, 30, 10,
                     1, 1,

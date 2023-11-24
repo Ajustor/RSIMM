@@ -115,15 +115,15 @@ public class ChestCutterItem extends Item {
         targetPlayer.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(targetReactor -> {
             if(targetReactor.hasArcReactorSlot() && targetReactor.hasArcReactor()){
 
-                if(!targetPlayer.getItemBySlot(EquipmentSlot.CHEST).isEmpty()){
+                if(targetPlayer.getItemBySlot(EquipmentSlot.CHEST).isEmpty()){
 
                     // Extract and give reactor
                     ItemStack removedReactor = ArcReactorSlot.removeArcReactor(targetPlayer, false, false, false);
                     player.getInventory().placeItemBackInInventory(removedReactor);
 
                     // Add effects
-                    player.addEffect(new MobEffectInstance(RsImmEffects.STOLE_REACTOR.get(), 300, 0, false, false, true));
-                    targetPlayer.addEffect(new MobEffectInstance(RsImmEffects.REACTOR_STOLEN.get(), 300, 0, false, false, true));
+                    player.addEffect(new MobEffectInstance(RsImmEffects.STOLE_REACTOR.get(), 6000, 0, false, false, true));
+                    targetPlayer.addEffect(new MobEffectInstance(RsImmEffects.REACTOR_STOLEN.get(), 6000, 0, false, false, true));
                     targetPlayer.sendSystemMessage(Component.translatable("message.rsimm.chest_cutter.steal.success.victim.chat"));
 
 
@@ -149,25 +149,31 @@ public class ChestCutterItem extends Item {
     public static void triggerRevenge(Player culprit, Player victim){
         // Remove the culprits reactor from his chest and give it to the victim
         ItemStack culpritReactor = ArcReactorSlot.removeArcReactor(culprit, true, false, false);
-        victim.getInventory().placeItemBackInInventory(culpritReactor);
+        if(culpritReactor != null)
+            victim.getInventory().placeItemBackInInventory(culpritReactor);
 
-        // Carve a hole in the culprits chest if he doesn't have one yet
-        tryAndCutHole(culprit, false);
-
+        // Go through the culprits inventory
         for(int i = 0; i < culprit.getInventory().getContainerSize(); i++){
             ItemStack itemStack = culprit.getInventory().getItem(i);
 
             // Remove any chest cutter from the culprit's inventory, and give it to the victim
             //
             // Or for arc reactors
-            // If both parties set to suffer in the configs
-            // Leave the stolen reactor in the culprit
+            // If both parties set to suffer in the configs and victim already took the culprits reactor
+            // Leave the stolen reactor with the culprit
             // Else give that back to the victim as well
             if(itemStack.getItem() == RsImmItems.CHEST_CUTTER.get()
-            || (!RsImmServerConfigs.ARC_REACTOR_STOLEN_REVENGE_PUNISHMENT.get() && itemStack.getItem() instanceof AbstractArcReactorItem)){
+            || ((!RsImmServerConfigs.ARC_REACTOR_STOLEN_REVENGE_PUNISHMENT.get() || culpritReactor == null) && itemStack.getItem() instanceof AbstractArcReactorItem)){
                 culprit.getInventory().removeItem(itemStack);
                 victim.getInventory().placeItemBackInInventory(itemStack);
             }
         }
+
+        // Carve a hole in the culprits chest if he doesn't have one yet
+        tryAndCutHole(culprit, false);
+
+        // Remove the effects
+        culprit.removeEffect(RsImmEffects.STOLE_REACTOR.get());
+        victim.removeEffect(RsImmEffects.REACTOR_STOLEN.get());
     }
 }
