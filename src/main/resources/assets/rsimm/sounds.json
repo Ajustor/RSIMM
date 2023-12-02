@@ -5,6 +5,24 @@
       "rsimm:human/player_cough"
     ]
   },
+  "repulsor_on": {
+    "subtitle": "sounds.rsimm.repulsor.on",
+    "sounds": [
+      "rsimm:repulsor/on"
+    ]
+  },
+  "repulsor_off": {
+    "subtitle": "sounds.rsimm.repulsor.off",
+    "sounds": [
+      "rsimm:repulsor/off"
+    ]
+  },
+  "repulsor_shot": {
+    "subtitle": "sounds.rsimm.repulsor.shot",
+    "sounds": [
+      "rsimm:repulsor/shot"
+    ]
+  },
   "heartbeat": {
     "subtitle": "sounds.rsimm.heart_beat",
     "sounds": [

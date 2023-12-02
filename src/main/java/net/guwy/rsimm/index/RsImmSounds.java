@@ -3,6 +3,7 @@ package net.guwy.rsimm.index;
 import net.guwy.rsimm.RsImm;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraftforge.common.util.ForgeSoundType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -11,8 +12,6 @@ import net.minecraftforge.registries.RegistryObject;
 public class RsImmSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, RsImm.MOD_ID);
-
-
 
     public static final RegistryObject<SoundEvent> PLAYER_COUGH = registerSoundEvent("player_cough");
     public static final RegistryObject<SoundEvent> HEARTBEAT = registerSoundEvent("heartbeat");
@@ -25,8 +24,9 @@ public class RsImmSounds {
     public static final RegistryObject<SoundEvent> METAL_RATTLE_2 = registerSoundEvent("metal_rattle_2");
     public static final RegistryObject<SoundEvent> METAL_RATTLE_3 = registerSoundEvent("metal_rattle_3");
     public static final RegistryObject<SoundEvent> RAIN_IN_HELMET = registerSoundEvent("rain_in_helmet");
-
-
+    public static final RegistryObject<SoundEvent> REPULSOR_ON = registerSoundEvent("repulsor_on");
+    public static final RegistryObject<SoundEvent> REPULSOR_OFF = registerSoundEvent("repulsor_off");
+    public static final RegistryObject<SoundEvent> REPULSOR_SHOT = registerSoundEvent("repulsor_shot");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name){
         return SOUND_EVENTS.register(name, () -> new SoundEvent(new ResourceLocation(RsImm.MOD_ID, name)));

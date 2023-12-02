@@ -14,8 +14,6 @@ import net.minecraftforge.registries.RegistryObject;
 public class RsImmArmorItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, RsImm.MOD_ID);
 
-
-
     // Utility
     public static final RegistryObject<Item> ARC_REACTOR_CONNECTOR_ARMOR = ITEMS.register("arc_reactor_connector_armor",
             () -> new ArcReactorConnectorArmorItem(RsImmArmorMaterials.ARC_REACTOR_CONNECTOR,
@@ -60,6 +58,17 @@ public class RsImmArmorItems {
     public static final RegistryObject<Item> MARK_1_BOOTS = ITEMS.register("mark_1_boots",
             () -> new Mark1ArmorItem(RsImmArmorMaterials.MARK_1_ARMOR, EquipmentSlot.FEET, new Item.Properties().stacksTo(1)));
 
+    // Armor structure
+    public static final RegistryObject<Item> ARMOR_STRUCTURE_CHESTPLATE = ITEMS.register("armor_structure_chestplate",
+            () -> new Mark1ArmorItem(RsImmArmorMaterials.MARK_1_ARMOR, EquipmentSlot.CHEST, new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1)));
+
+    public static final RegistryObject<Item> ARMOR_STRUCTURE_LEGGINGS = ITEMS.register("armor_structure_leggings",
+            () -> new Mark1ArmorItem(RsImmArmorMaterials.MARK_1_ARMOR, EquipmentSlot.LEGS, new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1)));
+
+    public static final RegistryObject<Item> ARMOR_STRUCTURE_BOOTS = ITEMS.register("armor_structure_boots",
+            () -> new Mark1ArmorItem(RsImmArmorMaterials.MARK_1_ARMOR, EquipmentSlot.FEET, new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1)));
+
+    // Unassembled mark 1
     public static final RegistryObject<Item> UNASSAMBLED_MARK_1_HELMET = ITEMS.register("unassambled_mark_1_helmet",
             () -> new Item(new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1).durability(750)));
 

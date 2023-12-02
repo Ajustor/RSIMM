@@ -21,9 +21,11 @@ public class OnKeyInputHandler {
     private static final int holdTreshold = 2;     // 15: too much, 7: a bit much, 5: fine but still not fast enough
 
     public static void init(InputEvent.Key event){
+        if(Minecraft.getInstance().player == null) {
+            return;
+        }
+
         Player player = Objects.requireNonNull(Minecraft.getInstance().player);
-
-
 
         if(RsImmKeyBindings.ARMOR_KEY.isDown()){
             armorKeyHoldDuration = armorKeyHoldDuration + 1;
