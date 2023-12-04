@@ -60,13 +60,13 @@ public class RsImmArmorItems {
 
     // Armor structure
     public static final RegistryObject<Item> ARMOR_STRUCTURE_CHESTPLATE = ITEMS.register("armor_structure_chestplate",
-            () -> new Mark1ArmorItem(RsImmArmorMaterials.MARK_1_ARMOR, EquipmentSlot.CHEST, new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1)));
+            () -> new ArmorStructureItem(RsImmArmorMaterials.ARMOR_STRUCTURE, EquipmentSlot.CHEST, new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1)));
 
     public static final RegistryObject<Item> ARMOR_STRUCTURE_LEGGINGS = ITEMS.register("armor_structure_leggings",
-            () -> new Mark1ArmorItem(RsImmArmorMaterials.MARK_1_ARMOR, EquipmentSlot.LEGS, new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1)));
+            () -> new ArmorStructureItem(RsImmArmorMaterials.ARMOR_STRUCTURE, EquipmentSlot.LEGS, new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1)));
 
     public static final RegistryObject<Item> ARMOR_STRUCTURE_BOOTS = ITEMS.register("armor_structure_boots",
-            () -> new Mark1ArmorItem(RsImmArmorMaterials.MARK_1_ARMOR, EquipmentSlot.FEET, new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1)));
+            () -> new ArmorStructureItem(RsImmArmorMaterials.ARMOR_STRUCTURE, EquipmentSlot.FEET, new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1)));
 
     // Unassembled mark 1
     public static final RegistryObject<Item> UNASSAMBLED_MARK_1_HELMET = ITEMS.register("unassambled_mark_1_helmet",

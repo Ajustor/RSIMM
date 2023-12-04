@@ -6,6 +6,7 @@ import net.guwy.rsimm.client.ArmorClientData;
 import net.guwy.rsimm.content.entities.non_living.mark_1_flame.Mark1FlameEntity;
 import net.guwy.rsimm.content.entities.non_living.rocket.RocketEntity;
 import net.guwy.rsimm.index.*;
+import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.FlyMode;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
 import net.guwy.rsimm.utils.KeyCallType;
@@ -169,16 +170,8 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
     private void chestplateTickEvent(ItemStack pStack, Level pLevel, Player player){
         if(!pLevel.isClientSide){
             if(playerHasFullSet(player)){
-                player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
-                    if(armorData.getBoot() >= 100){
-                        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 10, 0, false, false, false));
-
-                        if(player.getEffect(MobEffects.DAMAGE_BOOST).getAmplifier() != 2){
-                            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10, 1, false, false, false));
-                        }
-                    }   else {
-                        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10, 9, false, false, false));
-                    }
+                player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactorSlot -> {
+                    this.LOGGER.info("player has a reacot arc and it is connected to the armor");
                 });
             }
         }
@@ -236,8 +229,8 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
     // Flight
     @Override
     public void flightKeyPressAction(Player player) {
-        player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
-            if(armorData.getHasArmor()){
+        player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactorSlot -> {
+            if(arcReactorSlot.hasArcReactor() && arcReactorSlot.getArcReactorEnergy() > 0){
                 if(armorData.getIsFlying()){
                     armorData.setIsFlying(false);
                     armorData.setFlyMode(FlyMode.NOT_FLYING);
@@ -254,10 +247,10 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
 
     @Override
     public void flyCustomTickServer(Player player) {
-        player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
+        /*player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
             player.resetFallDistance();
             player.setNoGravity(true);
-        });
+        });*/
     }
 
     @Override
@@ -305,7 +298,7 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
     }
     @Override
     public double FlightDragCoefficientAtSeaLevel() {
-        return 0.002;
+        return 0.02;
     }
     @Override
     public double FlightMaxAccelerationAtSeaLevel() {
@@ -325,6 +318,8 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
     public double handBootRequirement() {
         return 100;
     }
+
+
 
     @Override
     public void handKeyHoldAction(Player player) {

@@ -26,6 +26,12 @@ public enum RsImmArmorMaterials implements ArmorMaterial{
             Ingredient.of(RsImmDeveloperItems.DEV_WAND_1.get())),
 
 
+    // Armor structure
+    ARMOR_STRUCTURE("structure_armor", 3, new int[]{ 7, 9, 4}, 0,
+            null, 0.0F, 0.0F, () ->
+            Ingredient.of(RsImmDeveloperItems.DEV_WAND_1.get())),
+
+
     MARK_2_ARMOR("mark_2_armor", 3, new int[]{4, 7, 9, 4}, 0,
             null, 0.0F, 0.0F, () ->
             Ingredient.of(RsImmDeveloperItems.DEV_WAND_1.get())),
