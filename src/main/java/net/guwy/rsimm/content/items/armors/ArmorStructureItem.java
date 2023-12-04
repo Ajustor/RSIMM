@@ -1,5 +1,6 @@
 package net.guwy.rsimm.content.items.armors;
 
+import com.mojang.logging.LogUtils;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import net.guwy.rsimm.client.ArmorClientData;
@@ -42,6 +43,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAnimatable, ILoopType {
     public AnimationFactory factory = GeckoLibUtil.createFactory(this);
+
+    private static final org.slf4j.Logger LOGGER = LogUtils.getLogger();
 
     public ArmorStructureItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
         super(materialIn, slot, builder);
@@ -231,13 +234,17 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
     public void flightKeyPressAction(Player player) {
         player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactorSlot -> {
             if(arcReactorSlot.hasArcReactor() && arcReactorSlot.getArcReactorEnergy() > 0){
-                if(armorData.getIsFlying()){
-                    armorData.setIsFlying(false);
-                    armorData.setFlyMode(FlyMode.NOT_FLYING);
-                }   else {
-                    armorData.setIsFlying(true);
-                    armorData.setFlyMode(FlyMode.CUSTOM);
-                }
+                this.LOGGER.info("Check if player has an armor");
+                player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
+                    if(armorData.getIsFlying()){
+                        armorData.setIsFlying(false);
+                        armorData.setFlyMode(FlyMode.NOT_FLYING);
+                    }   else {
+                        armorData.setIsFlying(true);
+                        armorData.setFlyMode(FlyMode.CUSTOM);
+                    }
+                });
+
             }
         });
     }

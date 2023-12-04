@@ -1,10 +1,12 @@
 package net.guwy.rsimm.content.items;
 
 import net.guwy.rsimm.index.RsImmArmorItems;
+import net.guwy.rsimm.index.RsImmCreativeModeTabs;
 import net.guwy.rsimm.index.RsImmItems;
 import net.minecraft.client.resources.sounds.Sound;
 import net.minecraft.client.resources.sounds.SoundInstance;
-import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.Component;
+// import net.minecraft.network.chat.TextComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -40,7 +42,7 @@ public class Mark1ArmorItem extends GeoArmorItem implements IAnimatable, ILoopTy
     public AnimationFactory factory = GeckoLibUtil.createFactory(this);
 
     public Mark1ArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
-        super(materialIn, slot, builder.tab(ModCreativeModeTabs.MAIN));
+        super(materialIn, slot, builder.tab(RsImmCreativeModeTabs.MAIN));
     }
 
 
@@ -48,7 +50,8 @@ public class Mark1ArmorItem extends GeoArmorItem implements IAnimatable, ILoopTy
     public void onArmorTick(ItemStack stack, Level level, Player player) {
         if(stack.getItem().equals(RsImmArmorItems.MARK_1_CHESTPLATE.get())){
             chestplateTickEvent(stack, level, player);
-            player.sendMessage(new TextComponent("player tick: " + player.tickCount), player.getUUID());
+            player.sendSystemMessage(Component.literal("player tick: " + player.tickCount));
+            // player.sendMessage(new TextComponent("player tick: " + player.tickCount), player.getUUID());
         }
         super.onArmorTick(stack, level, player);
     }
