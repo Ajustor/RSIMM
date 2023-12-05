@@ -16,5 +16,6 @@ public class ArmorStructureRenderer extends GeoArmorRenderer<ArmorStructureItem>
         this.leftLegBone = "armorLeftLeg";
         this.rightBootBone = "armorRightBoot";
         this.leftBootBone = "armorLeftBoot";
+
     }
 }

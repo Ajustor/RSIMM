@@ -3,19 +3,26 @@ package net.guwy.rsimm.content.items.armors;
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
+import net.guwy.rsimm.client.ArcReactorClientData;
 import net.guwy.rsimm.client.ArmorClientData;
 import net.guwy.rsimm.content.entities.non_living.mark_1_flame.Mark1FlameEntity;
 import net.guwy.rsimm.content.entities.non_living.rocket.RocketEntity;
+import net.guwy.rsimm.content.items.arc_reactors.ArcReactorItem;
 import net.guwy.rsimm.index.*;
+import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlot;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
+import net.guwy.rsimm.mechanics.capabilities.player.armor_data.ArmorEnergyType;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.FlyMode;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
 import net.guwy.rsimm.utils.KeyCallType;
 import net.guwy.sticky_foundations.index.SFMinerals;
+import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,6 +33,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -37,8 +46,7 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAnimatable, ILoopType {
@@ -78,36 +86,6 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
     @Override
     public List<ItemStack> getBrokenLoot() {
         List<ItemStack> list = new ArrayList<>();
-        ItemStack itemStack;
-
-        itemStack = new ItemStack(SFMinerals.STEEL_PLATE.get());
-        itemStack.setCount(18);
-        list.add(itemStack);
-
-        itemStack = new ItemStack(net.guwy.sticky_foundations.index.SFItems.CIRCUITRY_BASIC.get());
-        itemStack.setCount(2);
-        list.add(itemStack);
-
-        itemStack = new ItemStack(net.guwy.sticky_foundations.index.SFItems.MOTOR.get());
-        itemStack.setCount(1);
-        list.add(itemStack);
-
-        itemStack = new ItemStack(SFMinerals.COPPER_WIRE.get());
-        itemStack.setCount(3);
-        list.add(itemStack);
-
-        itemStack = new ItemStack(AllBlocks.SPOUT.get());
-        itemStack.setCount(2);
-        list.add(itemStack);
-
-        itemStack = new ItemStack(Items.COPPER_INGOT);
-        itemStack.setCount(5);
-        list.add(itemStack);
-
-        itemStack = new ItemStack(AllItems.IRON_SHEET.get());
-        itemStack.setCount(1);
-        list.add(itemStack);
-
         return list;
     }
 
@@ -172,12 +150,29 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
 
     private void chestplateTickEvent(ItemStack pStack, Level pLevel, Player player){
         if(!pLevel.isClientSide){
+            if(playerHasFullSetWithoutData(player)) {
+                player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
+                    ArcReactorSlot arcReactorSlot = player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).resolve().get();
+                    if(!armorData.getHasArmor()) {
+                        AbstractIronmanArmorItem armorItem = (AbstractIronmanArmorItem) this.ChestplateItem();
+
+                        armorData.compileArmor(arcReactorSlot.getArcReactorEnergy(), armorItem.MaxStableEnergy(), ArmorEnergyType.MAIN, armorItem.MaxEnergyOutput(), armorItem.FlightOverSpeedThreshold(), armorItem.FlightStallSpeed());
+                        armorData.setBoot(100);
+                    }
+
+                });
+            }
             if(playerHasFullSet(player)){
-                player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactorSlot -> {
-                    this.LOGGER.info("player has a reacot arc and it is connected to the armor");
+                player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
+                    ArcReactorSlot arcReactorSlot = player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).resolve().get();
                 });
             }
         }
+    }
+
+    @Override
+    protected void armorCheck(Player player, ItemStack pStack, int pSlotId) {
+
     }
 
     @Override
@@ -187,6 +182,19 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
             hasArmor.set(armorData.getHasArmor());
         });
 
+        return player.getItemBySlot(EquipmentSlot.CHEST).getItem().equals(ChestplateItem())
+                && player.getItemBySlot(EquipmentSlot.LEGS).getItem().equals(LeggingsItem())
+                && player.getItemBySlot(EquipmentSlot.FEET).getItem().equals(BootsItem())
+                && player.getItemBySlot(EquipmentSlot.CHEST).getDamageValue() < player.getItemBySlot(EquipmentSlot.CHEST).getMaxDamage() - 1
+                && hasArmor.get();
+    }
+
+    private boolean playerHasFullSetWithoutData(Player player) {
+        AtomicBoolean hasArmor = new AtomicBoolean(false);
+        player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
+            hasArmor.set(!armorData.getHasArmor());
+        });
+        
         return player.getItemBySlot(EquipmentSlot.CHEST).getItem().equals(ChestplateItem())
                 && player.getItemBySlot(EquipmentSlot.LEGS).getItem().equals(LeggingsItem())
                 && player.getItemBySlot(EquipmentSlot.FEET).getItem().equals(BootsItem())
@@ -214,6 +222,7 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
         //return isWearingAll ? PlayState.CONTINUE : PlayState.STOP;
         return PlayState.CONTINUE;
     }
+
     @Override
     public void registerControllers(AnimationData data) {
         data.addAnimationController(new AnimationController(this, "controller", 20, this::predicate));
@@ -234,14 +243,15 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
     public void flightKeyPressAction(Player player) {
         player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactorSlot -> {
             if(arcReactorSlot.hasArcReactor() && arcReactorSlot.getArcReactorEnergy() > 0){
-                this.LOGGER.info("Check if player has an armor");
                 player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
                     if(armorData.getIsFlying()){
                         armorData.setIsFlying(false);
                         armorData.setFlyMode(FlyMode.NOT_FLYING);
-                    }   else {
+                        player.setNoGravity(false);
+                    } else {
+                        this.LOGGER.info("start flying");
                         armorData.setIsFlying(true);
-                        armorData.setFlyMode(FlyMode.CUSTOM);
+                        armorData.setFlyMode(FlyMode.HOVERING);
                     }
                 });
 
@@ -250,49 +260,84 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
     }
 
     @Override
-    public void flightKeyHoldAction(Player player) {}
+    public void flightKeyHoldAction(Player player) {
+        player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactorSlot -> {
+            if(arcReactorSlot.hasArcReactor() && arcReactorSlot.getArcReactorEnergy() > 0){
+                player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
+                    armorData.setIsFlying(true);
+                    if(armorData.getFlyMode() != FlyMode.CUSTOM){
+                        armorData.setFlyMode(FlyMode.CUSTOM);
+                    } else {
+                        armorData.setFlyMode(FlyMode.HOVERING);
+                    }
+                });
+                arcReactorSlot.removeArcReactorEnergy((long) FlightEnergyConsumptionAtMaxThrottle());
+            }
+        });
+    }
 
     @Override
     public void flyCustomTickServer(Player player) {
-        /*player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
-            player.resetFallDistance();
-            player.setNoGravity(true);
-        });*/
+        player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactorSlot -> {
+            player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
+                setLookingMotion(player, 1);
+            });
+        });
     }
 
     @Override
     public void flyCustomTickClient(Player player) {
-        player.setDeltaMovement(player.getDeltaMovement().x()
-                ,player.getDeltaMovement().y() + (FlightMaxAccelerationAtSeaLevel()/20)
-                , player.getDeltaMovement().z());
+        ArcReactorItem arcReactorItem = ArcReactorClientData.getReactorArcItem(player.getUUID());
 
+        if(arcReactorItem == null) {
+            return;
+        }
 
+        this.LOGGER.info("on client");
+        setLookingMotion(player, 1);
+    }
 
-        //Drag is applied here
-        player.setDeltaMovement(player.getDeltaMovement().x() - (player.getDeltaMovement().x() * FlightDragCoefficientAtSeaLevel()),
-                player.getDeltaMovement().y() - (player.getDeltaMovement().y() * FlightDragCoefficientAtSeaLevel()),
-                player.getDeltaMovement().z() - (player.getDeltaMovement().z() * FlightDragCoefficientAtSeaLevel()));
+    @Override
+    public void flyHoveringTickServer(Player player) {
+        player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactorSlot -> {
+            player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
+                if(arcReactorSlot.getArcReactorEnergy() < this.FlightEnergyConsumptionAtMaxThrottle()) {
+                    armorData.setFlyMode(FlyMode.NOT_FLYING);
+                    armorData.setIsFlying(false);
+                    return;
+                }
+                // hover mode - rise vertically (or hover if sneaking and firing)
+                setYMotion(player, player.isShiftKeyDown() ? 0 : 0.15 + 0.15 * 2);
+            });
+        });
+    }
 
+    @Override
+    public void flyHoveringTickClient(Player player) {
+        setYMotion(player, player.isShiftKeyDown() ? 0 : 0.15 + 0.15 * 2);
+    }
 
+    private void setYMotion(Entity entity, double y) {
+        Vec3 v = entity.getDeltaMovement();
+        v = v.add(0, y - v.y, 0);
+        entity.setDeltaMovement(v);
+    }
 
-        // Flight Particles are here
-        //double playerRotation = ArmorClientData.getPlayerRotation();
-        //Level level = player.getLevel();
-        //double particleX;
-        //double particleY;
-        //double particleZ;
-//
-        //particleX = player.getX() + (-Math.sin(Math.toRadians(playerRotation + 90)) * 0.2) ;
-        //particleY = player.getY();
-        //particleZ = player.getZ() + (Math.cos(Math.toRadians(playerRotation + 90)) * 0.2);
-        //level.addParticle(ParticleTypes.FLAME, particleX, particleY, particleZ,
-        //        (Math.random() - 0.5) * 0.5, (Math.random() - 0.5) * 0.5 - 1, (Math.random() - 0.5) * 0.5);
-//
-        //particleX = player.getX() + (-Math.sin(Math.toRadians(playerRotation - 90)) * 0.2) ;
-        //particleY = player.getY();
-        //particleZ = player.getZ() + (Math.cos(Math.toRadians(playerRotation - 90)) * 0.2);
-        //level.addParticle(ParticleTypes.FLAME, particleX, particleY, particleZ,
-        //        (Math.random() - 0.5) * 0.5, (Math.random() - 0.5) * 0.5 - 1, (Math.random() - 0.5) * 0.5);
+    private void setLookingMotion(Player player, long arcReactorEnergy) {
+        Vec3 lookVec = player.getLookAngle().scale(0.3 * FlightMaxAccelerationAtSeaLevel());
+        updateAccel(lookVec);
+        this.LOGGER.info("reactorEnergy: "+arcReactorEnergy);
+        lookVec = getEffectiveMotion(lookVec, player.isShiftKeyDown() ? 1 : 5);
+        player.setDeltaMovement(lookVec.x, player.isOnGround() ? 0 : lookVec.y, lookVec.z);
+    }
+
+    public void updateAccel(Vec3 lookVec) {
+        float div = lookVec.y > 0 ? -64f : -16f;
+        flightAccel = Mth.clamp(flightAccel + (float)lookVec.y / div, 0.8F, 4.2F);
+    }
+
+    public Vec3 getEffectiveMotion(Vec3 lookVec, double arcReactorEnergy) {
+        return lookVec.scale(flightAccel * arcReactorEnergy);
     }
 
     @Override
@@ -313,7 +358,7 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
     }
     @Override
     public double FlightEnergyConsumptionAtMaxThrottle() {
-        return 1;
+        return 100;
     }
     @Override
     public double FlightBootRequirement() {

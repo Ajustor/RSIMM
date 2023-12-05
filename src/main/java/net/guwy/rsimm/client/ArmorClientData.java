@@ -8,6 +8,14 @@ public class ArmorClientData {
     private static FlyMode flyMode = FlyMode.NOT_FLYING;
     private static double armorFreezing = 0;
     private static double accelerationAmount = 0.5;
+    private static float flightAccel = 1f;
+
+    public static float getFlightAccel() {
+        return flightAccel;
+    }
+    public static void setFlightAccel(float flightAccel) {
+        ArmorClientData.flightAccel = flightAccel;
+    }
 
     public static void setPlayerRotation(double rotation){
         ArmorClientData.playerRotation = rotation;

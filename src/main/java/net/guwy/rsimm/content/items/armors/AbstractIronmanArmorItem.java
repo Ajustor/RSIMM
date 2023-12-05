@@ -1,5 +1,6 @@
 package net.guwy.rsimm.content.items.armors;
 
+import com.mojang.logging.LogUtils;
 import net.guwy.rsimm.client.ArmorClientData;
 import net.guwy.rsimm.content.network_packets.FlightDataC2SPacket;
 import net.guwy.rsimm.content.network_packets.FlightDataS2CPacket;
@@ -42,6 +43,9 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
     public AbstractIronmanArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
         super(materialIn, slot, builder);
     }
+
+    protected static final org.slf4j.Logger LOGGER = LogUtils.getLogger();
+    protected float flightAccel = 1f;
 
     public abstract Item HelmetItem();
     public abstract Item HelmetOpenItem();
@@ -106,7 +110,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
 
 
     //armor Checks
-    private void armorCheck(Player player, ItemStack pStack, int pSlotId){
+    protected void armorCheck(Player player, ItemStack pStack, int pSlotId){
         if(!player.isCreative()){
             if(pStack.getItem() == ChestplateItem()){
                 if(pSlotId != EquipmentSlot.CHEST.getIndex() || !playerHasFullSet(player)){
@@ -258,7 +262,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
                             case NOT_FLYING -> armorData.setIsFlying(false);
                         }
                         RsImmNetworking.sendToPlayer(new FlightDataS2CPacket(player.getVisualRotationYInDegrees(),
-                                true, armorData.getFlyMode()), (ServerPlayer) player);
+                                true, armorData.getFlyMode(), flightAccel), (ServerPlayer) player);
 
                         if(armorData.getMoveSpeed() * 20 > FlightOverSpeedThreshold()){
                             flightSpeedArmorDamage(player);
@@ -266,7 +270,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
                         }
                     } else {
                         RsImmNetworking.sendToPlayer(new FlightDataS2CPacket(0,
-                                false, FlyMode.NOT_FLYING), (ServerPlayer) player);
+                                false, FlyMode.NOT_FLYING, flightAccel), (ServerPlayer) player);
                         armorData.setMoveSpeed(0);
                     }
                 }

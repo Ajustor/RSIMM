@@ -24,5 +24,7 @@ public class RegisterArmorRenderersEventHandler {
 
         GeoArmorRenderer.registerArmorRenderer(EdithGlassesArmorItem.class, EdithGlassesArmorRenderer::new);
 
+        GeoArmorRenderer.registerArmorRenderer(ArmorStructureItem.class, ArmorStructureRenderer::new);
+
     }
 }

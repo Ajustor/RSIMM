@@ -18,24 +18,27 @@ public class FlightDataS2CPacket {
     private final double playerRotation;
     private final boolean isFlying;
     private final FlyMode flyMode;
+    private final float flyAccel;
 
-    public FlightDataS2CPacket(double playerRotation, boolean isFlying, FlyMode flyMode) {
+    public FlightDataS2CPacket(double playerRotation, boolean isFlying, FlyMode flyMode, float flyAccel) {
         this.playerRotation = playerRotation;
         this.isFlying = isFlying;
         this.flyMode = flyMode;
+        this.flyAccel = flyAccel;
     }
 
     public FlightDataS2CPacket(FriendlyByteBuf buf) {
         this.playerRotation = buf.readDouble();
         this.isFlying = buf.readBoolean();
         this.flyMode = buf.readEnum(FlyMode.class);
+        this.flyAccel = buf.readFloat();
     }
 
     public void toBytes(FriendlyByteBuf buf) {
         buf.writeDouble(playerRotation);
         buf.writeBoolean(isFlying);
         buf.writeEnum(flyMode);
-
+        buf.writeFloat(flyAccel);
     }
 
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {
@@ -46,6 +49,7 @@ public class FlightDataS2CPacket {
             ArmorClientData.setPlayerRotation(playerRotation);
             ArmorClientData.setIsFlying(isFlying);
             ArmorClientData.setFlyMode(flyMode);
+            ArmorClientData.setFlightAccel(flyAccel);
         });
         return true;
     }

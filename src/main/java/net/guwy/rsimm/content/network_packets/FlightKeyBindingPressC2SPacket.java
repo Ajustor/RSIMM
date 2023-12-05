@@ -1,5 +1,6 @@
 package net.guwy.rsimm.content.network_packets;
 
+import com.mojang.logging.LogUtils;
 import net.guwy.rsimm.content.items.armors.AbstractIronmanArmorItem;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
@@ -13,6 +14,9 @@ import net.minecraftforge.network.NetworkEvent;
 import java.util.function.Supplier;
 
 public class FlightKeyBindingPressC2SPacket {
+
+    private static final org.slf4j.Logger LOGGER = LogUtils.getLogger();
+
     /**
      * Key Binding Transmitter to the server for keybinding handling
      *

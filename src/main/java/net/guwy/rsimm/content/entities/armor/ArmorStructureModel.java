@@ -20,7 +20,6 @@ public class ArmorStructureModel extends AnimatedGeoModel<ArmorStructureItem> {
 
     @Override
     public ResourceLocation getAnimationResource(ArmorStructureItem animatable) {
-        return null;
-        //return new ResourceLocation(RsImm.MOD_ID, "animations/structure_armor.animation.json");
+        return new ResourceLocation(RsImm.MOD_ID, "animations/structure_armor.animation.json");
     }
 }

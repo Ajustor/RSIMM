@@ -25,6 +25,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -197,8 +198,10 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
             player = (Player)livingEntity;
         }
 
-        event.getController().setAnimation(new AnimationBuilder()
-                .addAnimation("animation.model.spinny_boi", EDefaultLoopTypes.LOOP));
+        if(!event.getController().getAnimationState().equals(AnimationState.Running)) {
+            event.getController().setAnimation(new AnimationBuilder()
+                    .addAnimation("animation.model.spinny_boi", EDefaultLoopTypes.LOOP));
+        }
 
         if (livingEntity instanceof ArmorStand) {
             return PlayState.CONTINUE;

@@ -152,8 +152,6 @@ public class ArmorEquippingStationBlockEntity extends BlockEntity implements Men
             return;
         }
 
-
-
         if(hasRecipe(pEntity)){
 
             pEntity.progress = 1;

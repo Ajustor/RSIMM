@@ -91,6 +91,9 @@
     "item.rsimm.mark_1_ammo_kit": "Mark 1 Ammo Kit",
 
 
+    "item.rsimm.armor_structure_chestplate": "Armor structure chestplate",
+    "item.rsimm.armor_structure_leggings": "Armor structure Leggings",
+    "item.rsimm.armor_structure_boots": "Armor structure Boots",
 
     "effect.rsimm.reactor_poisoning_suppressant": "Suppressant",
     "effect.rsimm.better_reactor_poisoning_suppressant": "Suppressant II",

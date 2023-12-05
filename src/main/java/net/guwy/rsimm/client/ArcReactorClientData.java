@@ -59,6 +59,20 @@ public class ArcReactorClientData {
         }
     }
 
+    public static ArcReactorItem getReactorArcItem(UUID uuid){
+        if(ArcReactorClientData.playerUUID.contains(uuid)){
+
+            // gets the itemId on the same index as the uuid and assigns it to a item
+            int index = ArcReactorClientData.playerUUID.indexOf(uuid);
+
+            ArcReactorItem arcReactorItem = (ArcReactorItem) Item.byId(ArcReactorClientData.itemId.get(index));
+
+            return arcReactorItem;
+        } else {
+            return null;
+        }
+    }
+
     public static void removeArcReactorData(UUID uuid){
         if(ArcReactorClientData.playerUUID.contains(uuid)){
             // removes the uuid and index from the list so they won't show up anymore

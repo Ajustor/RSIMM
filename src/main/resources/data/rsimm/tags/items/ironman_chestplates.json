@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "rsimm:mark_1_chestplate"
+    "rsimm:mark_1_chestplate",
+    "rsimm:armor_structure_chestplate"
   ]
 }
