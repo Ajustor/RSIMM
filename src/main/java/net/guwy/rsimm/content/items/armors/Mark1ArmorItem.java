@@ -201,6 +201,7 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
         if(!event.getController().getAnimationState().equals(AnimationState.Running)) {
             event.getController().setAnimation(new AnimationBuilder()
                     .addAnimation("animation.model.spinny_boi", EDefaultLoopTypes.LOOP));
+            return PlayState.CONTINUE;
         }
 
         if (livingEntity instanceof ArmorStand) {

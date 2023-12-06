@@ -20,6 +20,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
+import net.minecraft.world.Difficulty;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -251,6 +253,7 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
                     } else {
                         this.LOGGER.info("start flying");
                         armorData.setIsFlying(true);
+
                         armorData.setFlyMode(FlyMode.HOVERING);
                     }
                 });
@@ -265,6 +268,7 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
             if(arcReactorSlot.hasArcReactor() && arcReactorSlot.getArcReactorEnergy() > 0){
                 player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
                     armorData.setIsFlying(true);
+                    player.resetFallDistance();
                     if(armorData.getFlyMode() != FlyMode.CUSTOM){
                         armorData.setFlyMode(FlyMode.CUSTOM);
                     } else {
@@ -281,6 +285,22 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
         player.getCapability(ArcReactorSlotProvider.PLAYER_REACTOR_SLOT).ifPresent(arcReactorSlot -> {
             player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
                 setLookingMotion(player, 1);
+                if (player.horizontalCollision) {
+                    double vel = player.getDeltaMovement().length();
+
+                    if (player.getLevel().getDifficulty() == Difficulty.HARD) {
+                        vel *= 2;
+                    } else if (player.getLevel().getDifficulty() == Difficulty.NORMAL) {
+                        vel *= 1.5;
+                    }
+                    if (vel > 2) {
+                        player.playSound(vel > 2.5 ? SoundEvents.GENERIC_BIG_FALL : SoundEvents.GENERIC_SMALL_FALL, 1.0F, 1.0F);
+
+                        player.hurt(RsImmDamageSources.FLY_INTO_WALL, (float) vel);
+                    }
+                    armorData.setIsFlying(false);
+                    armorData.setFlyMode(FlyMode.NOT_FLYING);
+                }
             });
         });
     }
@@ -329,6 +349,7 @@ public class ArmorStructureItem extends AbstractIronmanArmorItem implements IAni
         this.LOGGER.info("reactorEnergy: "+arcReactorEnergy);
         lookVec = getEffectiveMotion(lookVec, player.isShiftKeyDown() ? 1 : 5);
         player.setDeltaMovement(lookVec.x, player.isOnGround() ? 0 : lookVec.y, lookVec.z);
+
     }
 
     public void updateAccel(Vec3 lookVec) {

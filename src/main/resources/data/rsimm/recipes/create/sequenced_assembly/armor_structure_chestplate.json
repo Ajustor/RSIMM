@@ -1,0 +1,71 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "forge:plates/titanium"
+  },
+  "transitionalItem": {
+    "item": "sticky_foundations:titanium_plate"
+  },
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "minecraft:chainmail_chestplate"
+        },
+        [
+          {
+            "item": "sticky_foundations:circuitry_basic"
+          }
+        ]
+      ],
+      "results": [
+        {
+          "item": "minecraft:chainmail_chestplate"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "minecraft:chainmail_chestplate"
+        },
+        [
+          {
+            "tag": "rsimm:repulsor"
+          }
+        ]
+      ],
+      "results": [
+        {
+          "item": "minecraft:chainmail_chestplate"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "minecraft:chainmail_chestplate"
+        },
+        [
+          {
+            "tag": "rsimm:repulsor"
+          }
+        ]
+      ],
+      "results": [
+        {
+          "item": "minecraft:chainmail_chestplate"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "item": "rsimm:armor_structure_chestplate"
+    }
+  ],
+  "loops": 1
+}
