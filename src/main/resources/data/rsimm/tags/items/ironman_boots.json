@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "rsimm:mark_1_boots"
+    "rsimm:mark_1_boots",
+    "rsimm:mark_2_boots"
   ]
 }

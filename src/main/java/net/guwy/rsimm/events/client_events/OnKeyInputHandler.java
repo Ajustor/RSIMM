@@ -1,5 +1,6 @@
 package net.guwy.rsimm.events.client_events;
 
+import com.mojang.logging.LogUtils;
 import net.guwy.rsimm.content.network_packets.*;
 import net.guwy.rsimm.index.RsImmKeyBindings;
 import net.guwy.rsimm.index.RsImmNetworking;
@@ -7,6 +8,7 @@ import net.guwy.rsimm.utils.KeyCallType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.client.event.InputEvent;
+import org.lwjgl.glfw.GLFW;
 
 import java.util.Objects;
 
@@ -17,6 +19,8 @@ public class OnKeyInputHandler {
     private static int specialKeyHoldDuration;
     private static int switchWeaponKeyHoldDuration;
     private static int weaponKeyHoldDuration;
+    private static final org.slf4j.Logger LOGGER = LogUtils.getLogger();
+
 
     private static final int holdTreshold = 2;     // 15: too much, 7: a bit much, 5: fine but still not fast enough
 

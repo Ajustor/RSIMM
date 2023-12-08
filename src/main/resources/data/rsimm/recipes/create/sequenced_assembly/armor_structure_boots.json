@@ -1,0 +1,35 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "forge:plates/titanium"
+  },
+  "transitionalItem": {
+    "item": "sticky_foundations:titanium_plate"
+  },
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "minecraft:chainmail_boots"
+        },
+        [
+          {
+            "item": "sticky_foundations:circuitry_basic"
+          }
+        ]
+      ],
+      "results": [
+        {
+          "item": "minecraft:chainmail_boots"
+        }
+      ]
+    }
+  ],
+  "results": [
+    {
+      "item": "rsimm:armor_structure_boots"
+    }
+  ],
+  "loops": 1
+}

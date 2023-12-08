@@ -68,6 +68,19 @@ public class RsImmArmorItems {
     public static final RegistryObject<Item> ARMOR_STRUCTURE_BOOTS = ITEMS.register("armor_structure_boots",
             () -> new ArmorStructureItem(RsImmArmorMaterials.ARMOR_STRUCTURE, EquipmentSlot.FEET, new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1)));
 
+    // Mark 2
+    public static final RegistryObject<Item> MARK_2_HELMET = ITEMS.register("mark_2_helmet",
+            () -> new Mark2ArmorItem(RsImmArmorMaterials.MARK_2_ARMOR, EquipmentSlot.HEAD, new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> MARK_2_CHESTPLATE = ITEMS.register("mark_2_chestplate",
+            () -> new Mark2ArmorItem(RsImmArmorMaterials.MARK_2_ARMOR, EquipmentSlot.CHEST, new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> MARK_2_LEGGINGS = ITEMS.register("mark_2_leggings",
+            () -> new Mark2ArmorItem(RsImmArmorMaterials.MARK_2_ARMOR, EquipmentSlot.LEGS, new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> MARK_2_BOOTS = ITEMS.register("mark_2_boots",
+            () -> new Mark2ArmorItem(RsImmArmorMaterials.MARK_2_ARMOR, EquipmentSlot.FEET, new Item.Properties().stacksTo(1)));
+
     // Unassembled mark 1
     public static final RegistryObject<Item> UNASSAMBLED_MARK_1_HELMET = ITEMS.register("unassambled_mark_1_helmet",
             () -> new Item(new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1).durability(750)));
@@ -81,6 +94,18 @@ public class RsImmArmorItems {
     public static final RegistryObject<Item> UNASSAMBLED_MARK_1_BOOTS = ITEMS.register("unassambled_mark_1_boots",
             () -> new Item(new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1).durability(750)));
 
+    // Unassembled mark 2
+    public static final RegistryObject<Item> UNASSAMBLED_MARK_2_HELMET = ITEMS.register("unassambled_mark_2_helmet",
+            () -> new Item(new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1).durability(750)));
+
+    public static final RegistryObject<Item> UNASSAMBLED_MARK_2_CHESTPLATE = ITEMS.register("unassambled_mark_2_chestplate",
+            () -> new Item(new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1).durability(750)));
+
+    public static final RegistryObject<Item> UNASSAMBLED_MARK_2_LEGGINGS = ITEMS.register("unassambled_mark_2_leggings",
+            () -> new Item(new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1).durability(750)));
+
+    public static final RegistryObject<Item> UNASSAMBLED_MARK_2_BOOTS = ITEMS.register("unassambled_mark_2_boots",
+            () -> new Item(new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1).durability(750)));
 
 
     // Flight Test Suit

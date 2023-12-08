@@ -18,154 +18,130 @@ public class FlightTestSuitArmorItem extends AbstractGen2IronmanArmorItem implem
     }
 
     @Override
+    public Item HelmetItem() {
+        return null;
+    }
+
+    @Override
+    public Item HelmetOpenItem() {
+        return null;
+    }
+
+    @Override
+    public Item ChestplateItem() {
+        return null;
+    }
+
+    @Override
+    public Item LeggingsItem() {
+        return null;
+    }
+
+    @Override
+    public Item BootsItem() {
+        return null;
+    }
+
+    @Override
+    public double FlightStallSpeed() {
+        return 0;
+    }
+
+    @Override
+    public double FlightOverSpeedThreshold() {
+        return 0;
+    }
+
+    @Override
+    public double FlightDragCoefficientAtSeaLevel() {
+        return 0;
+    }
+
+    @Override
+    public double FlightMaxAccelerationAtSeaLevel() {
+        return 0;
+    }
+
+    @Override
+    public double FlightEnergyConsumptionAtMaxThrottle() {
+        return 0;
+    }
+
+    @Override
+    public double FlightBootRequirement() {
+        return 0;
+    }
+
+    @Override
     public boolean ShouldBreakWhenNotWearing() {
         return false;
     }
 
     @Override
-    public List<ItemStack> BrokenLoot() {
-        return null;
+    public int FreezingHeight() {
+        return 0;
     }
 
-    // @Override
-    // public Item HelmetItem() {
-    //     return null;
-    // }
-//
-    // @Override
-    // public Item HelmetOpenItem() {
-    //     return null;
-    // }
-//
-    // @Override
-    // public Item ChestplateItem() {
-    //     return null;
-    // }
-//
-    // @Override
-    // public Item LeggingsItem() {
-    //     return null;
-    // }
-//
-    // @Override
-    // public Item BootsItem() {
-    //     return null;
-    // }
-//
-    // @Override
-    // public Item AmmoKitItem() {
-    //     return null;
-    // }
-//
-    // @Override
-    // public List<ItemStack> getBrokenLoot() {
-    //     return null;
-    // }
-//
-    // @Override
-    // public double FlightStallSpeed() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public double FlightOverSpeedThreshold() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public double FlightDragCoefficientAtSeaLevel() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public double FlightMaxAccelerationAtSeaLevel() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public double FlightEnergyConsumptionAtMaxThrottle() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public double FlightBootRequirement() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public void flyCustomTickServer(Player player) {
-//
-    // }
-//
-    // @Override
-    // public void flyCustomTickClient(Player player) {
-//
-    // }
-//
-    // @Override
-    // public int FreezingHeight() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public int FreezingCoefficient() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public double Heating() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public long HeatingEnergyCost() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public double HeatingBootRequirement() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public double bootRate() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public double OverloadTextDisappearThreshold() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public long MaxStableEnergy() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public long MaxEnergyOutput() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public int ConstantEnergyDraw() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public double RunningExtraEnergyDraw() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public double handBootRequirement() {
-    //     return 0;
-    // }
-//
-    // @Override
-    // public double WeaponsBootRequirement() {
-    //     return 0;
-    // }
+    @Override
+    public int FreezingCoefficient() {
+        return 0;
+    }
+
+    @Override
+    public double Heating() {
+        return 0;
+    }
+
+    @Override
+    public long HeatingEnergyCost() {
+        return 0;
+    }
+
+    @Override
+    public double HeatingBootRequirement() {
+        return 0;
+    }
+
+    @Override
+    public double bootRate() {
+        return 0;
+    }
+
+    @Override
+    public double OverloadTextDisappearThreshold() {
+        return 0;
+    }
+
+    @Override
+    public long MaxStableEnergy() {
+        return 0;
+    }
+
+    @Override
+    public long MaxEnergyOutput() {
+        return 0;
+    }
+
+    @Override
+    public int ConstantEnergyDraw() {
+        return 0;
+    }
+
+    @Override
+    public double RunningExtraEnergyDraw() {
+        return 0;
+    }
+
+    @Override
+    public double handBootRequirement() {
+        return 0;
+    }
+
+    @Override
+    public double WeaponsBootRequirement() {
+        return 0;
+    }
+
 
     @Override
     public void registerControllers(AnimationData data) {

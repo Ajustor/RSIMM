@@ -11,7 +11,7 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "minecraft:chainmail_chestplate"
+          "item": "minecraft:chainmail_leggings"
         },
         [
           {
@@ -21,7 +21,7 @@
       ],
       "results": [
         {
-          "item": "minecraft:chainmail_chestplate"
+          "item": "minecraft:chainmail_leggings"
         }
       ]
     },
@@ -29,7 +29,7 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "minecraft:chainmail_chestplate"
+          "item": "minecraft:chainmail_leggings"
         },
         [
           {
@@ -39,7 +39,7 @@
       ],
       "results": [
         {
-          "item": "minecraft:chainmail_chestplate"
+          "item": "minecraft:chainmail_leggings"
         }
       ]
     },
@@ -47,7 +47,7 @@
       "type": "create:deploying",
       "ingredients": [
         {
-          "item": "minecraft:chainmail_chestplate"
+          "item": "minecraft:chainmail_leggings"
         },
         [
           {
@@ -57,14 +57,14 @@
       ],
       "results": [
         {
-          "item": "minecraft:chainmail_chestplate"
+          "item": "minecraft:chainmail_leggings"
         }
       ]
     }
   ],
   "results": [
     {
-      "item": "rsimm:armor_structure_chestplate"
+      "item": "rsimm:armor_structure_leggings"
     }
   ],
   "loops": 1

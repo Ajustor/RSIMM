@@ -2,6 +2,7 @@ package net.guwy.rsimm.content.network_packets;
 
 import com.mojang.logging.LogUtils;
 import net.guwy.rsimm.content.items.armors.AbstractIronmanArmorItem;
+import net.guwy.rsimm.content.items.armors.IronmanArmorInterface;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
 import net.minecraft.network.FriendlyByteBuf;
@@ -47,7 +48,7 @@ public class FlightKeyBindingPressC2SPacket {
 
                     if(armorData.getHasArmor()){
                         ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
-                        AbstractIronmanArmorItem armor = (AbstractIronmanArmorItem) chestplate.getItem();
+                        IronmanArmorInterface armor = (IronmanArmorInterface) chestplate.getItem();
                         armor.flightKeyPressAction(player);
 
                     }

@@ -3,6 +3,7 @@ package net.guwy.rsimm.content.network_packets;
 import net.guwy.rsimm.config.RsImmServerConfigs;
 import net.guwy.rsimm.content.items.arc_reactors.AbstractArcReactorItem;
 import net.guwy.rsimm.content.items.armors.AbstractIronmanArmorItem;
+import net.guwy.rsimm.content.items.armors.IronmanArmorInterface;
 import net.guwy.rsimm.index.RsImmSounds;
 import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
@@ -51,7 +52,7 @@ public class ArmorKeyBindingHoldC2SPacket {
                     // The part that does the armor stuff
                     if(armorData.getHasArmor()){
                         ItemStack chestplate = player.getItemBySlot(EquipmentSlot.CHEST);
-                        AbstractIronmanArmorItem armor = (AbstractIronmanArmorItem) chestplate.getItem();
+                        IronmanArmorInterface armor = (IronmanArmorInterface) chestplate.getItem();
                         armor.armorKeyHoldAction(player);
 
                     }

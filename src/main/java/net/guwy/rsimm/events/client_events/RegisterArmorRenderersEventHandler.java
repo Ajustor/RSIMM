@@ -20,7 +20,6 @@ public class RegisterArmorRenderersEventHandler {
         GeoArmorRenderer.registerArmorRenderer(ArcReactorConnectorArmorItem.class, ArcReactorConnectorRenderer::new);
 
         GeoArmorRenderer.registerArmorRenderer(Mark2ArmorItem.class, Mark2ArmorRenderer::new);
-        GeoArmorRenderer.registerArmorRenderer(Mark2OpenHelmetArmorItem.class, Mark2OpenHelmetArmorRenderer::new);
 
         GeoArmorRenderer.registerArmorRenderer(EdithGlassesArmorItem.class, EdithGlassesArmorRenderer::new);
 

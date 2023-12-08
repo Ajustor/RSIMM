@@ -39,7 +39,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
  *
  * This class will stay if there's any need for it in the future
  */
-public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
+public abstract class AbstractIronmanArmorItem extends GeoArmorItem implements IronmanArmorInterface {
     public AbstractIronmanArmorItem(ArmorMaterial materialIn, EquipmentSlot slot, Properties builder) {
         super(materialIn, slot, builder);
     }
@@ -137,7 +137,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
         }
     }
 
-    private void removeArmor(ItemStack pStack, Player player){
+    protected void removeArmor(ItemStack pStack, Player player){
         // Fake player for sounds
         Player soundPlayer = new Player(player.getLevel(), player.getOnPos(), 0, player.getGameProfile(), null) {
             @Override
