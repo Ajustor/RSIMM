@@ -34,6 +34,7 @@ public class RsImm {
         RsImmDeveloperItems.register(eventBus);
         RsImmArcReactorItems.register(eventBus);
         RsImmArmorItems.register(eventBus);
+        RsImmSuitComponentItems.register(eventBus);
         RsImmAmmoKitItems.register(eventBus);
 
         RsImmBlocks.register(eventBus);

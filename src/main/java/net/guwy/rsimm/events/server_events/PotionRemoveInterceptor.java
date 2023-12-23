@@ -1,7 +1,7 @@
 package net.guwy.rsimm.events.server_events;
 
 import net.guwy.rsimm.index.RsImmEffects;
-import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.arc_reactor.ArcReactorSlotProvider;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.MobEffectEvent;

@@ -4,7 +4,7 @@ import net.guwy.rsimm.RsImm;
 import net.guwy.rsimm.compat.curios.Curios;
 import net.guwy.rsimm.content.entities.armor.misc.EdithGlassesItemRenderer;
 import net.guwy.rsimm.content.items.arc_reactors.AbstractArcReactorItem;
-import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.sticky_foundations.utils.ItemTagUtils;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;

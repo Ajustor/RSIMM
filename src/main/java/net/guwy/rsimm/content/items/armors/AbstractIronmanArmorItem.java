@@ -4,14 +4,14 @@ import net.guwy.rsimm.client.ArmorClientData;
 import net.guwy.rsimm.content.network_packets.FlightDataC2SPacket;
 import net.guwy.rsimm.content.network_packets.FlightDataS2CPacket;
 import net.guwy.rsimm.content.network_packets.FreezeDataS2CPacket;
+import net.guwy.rsimm.enums.KeyActionTypes;
 import net.guwy.rsimm.index.RsImmNetworking;
 import net.guwy.rsimm.index.RsImmSounds;
 import net.guwy.rsimm.index.RsImmTags;
-import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
-import net.guwy.rsimm.mechanics.capabilities.player.armor_data.ArmorEnergyType;
-import net.guwy.rsimm.mechanics.capabilities.player.armor_data.FlyMode;
-import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
-import net.guwy.rsimm.utils.KeyCallType;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.arc_reactor.ArcReactorSlotProvider;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.armor_data.ArmorEnergyType;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.armor_data.FlyMode;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.armor_data.IronmanArmorDataProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -51,16 +51,16 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
     public abstract Item BootsItem();
     public abstract Item AmmoKitItem();
 
-    public boolean FireWeapon1(@Nullable Player player, @Nullable Level level, boolean simulate, KeyCallType fireCall){return false;}
-    public boolean FireWeapon2(@Nullable Player player, @Nullable Level level, boolean simulate, KeyCallType fireCall){return false;}
-    public boolean FireWeapon3(@Nullable Player player, @Nullable Level level, boolean simulate, KeyCallType fireCall){return false;}
-    public boolean FireWeapon4(@Nullable Player player, @Nullable Level level, boolean simulate, KeyCallType fireCall){return false;}
-    public boolean FireWeapon5(@Nullable Player player, @Nullable Level level, boolean simulate, KeyCallType fireCall){return false;}
-    public boolean FireWeapon6(@Nullable Player player, @Nullable Level level, boolean simulate, KeyCallType fireCall){return false;}
-    public boolean FireWeapon7(@Nullable Player player, @Nullable Level level, boolean simulate, KeyCallType fireCall){return false;}
-    public boolean FireWeapon8(@Nullable Player player, @Nullable Level level, boolean simulate, KeyCallType fireCall){return false;}
-    public boolean FireWeapon9(@Nullable Player player, @Nullable Level level, boolean simulate, KeyCallType fireCall){return false;}
-    public boolean FireWeapon10(@Nullable Player player, @Nullable Level level, boolean simulate, KeyCallType fireCall){return false;}
+    public boolean FireWeapon1(@Nullable Player player, @Nullable Level level, boolean simulate, KeyActionTypes fireCall){return false;}
+    public boolean FireWeapon2(@Nullable Player player, @Nullable Level level, boolean simulate, KeyActionTypes fireCall){return false;}
+    public boolean FireWeapon3(@Nullable Player player, @Nullable Level level, boolean simulate, KeyActionTypes fireCall){return false;}
+    public boolean FireWeapon4(@Nullable Player player, @Nullable Level level, boolean simulate, KeyActionTypes fireCall){return false;}
+    public boolean FireWeapon5(@Nullable Player player, @Nullable Level level, boolean simulate, KeyActionTypes fireCall){return false;}
+    public boolean FireWeapon6(@Nullable Player player, @Nullable Level level, boolean simulate, KeyActionTypes fireCall){return false;}
+    public boolean FireWeapon7(@Nullable Player player, @Nullable Level level, boolean simulate, KeyActionTypes fireCall){return false;}
+    public boolean FireWeapon8(@Nullable Player player, @Nullable Level level, boolean simulate, KeyActionTypes fireCall){return false;}
+    public boolean FireWeapon9(@Nullable Player player, @Nullable Level level, boolean simulate, KeyActionTypes fireCall){return false;}
+    public boolean FireWeapon10(@Nullable Player player, @Nullable Level level, boolean simulate, KeyActionTypes fireCall){return false;}
 
 
 
@@ -496,7 +496,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
                             //Draw from arc reactor if it's not in a critical state
                             long outputAbleEnergy = Math.min(arcReactor.getArcReactorEnergy(), arcReactor.getArcReactorEnergyOutput());
                             long outputtedEnergy = Math.min(outputAbleEnergy, armorData.getArmorEnergyLoad());
-                            if(arcReactor.simulateAddEnergyLoad(outputtedEnergy)){
+                            if(arcReactor.testAddEnergyLoad(outputtedEnergy)){
                                 arcReactor.addEnergyLoad(outputtedEnergy);
                                 armorData.decreaseArmorEnergyLoad(outputtedEnergy);
                             }
@@ -510,7 +510,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
                             if(arcReactor.hasArcReactor()){
                                 outputAbleEnergy = Math.min(arcReactor.getArcReactorEnergy(), arcReactor.getArcReactorEnergyOutput());
                                 long outputtedEnergy = Math.min(outputAbleEnergy, armorData.getArmorEnergyLoad());
-                                if(arcReactor.simulateAddEnergyLoad(outputtedEnergy)){
+                                if(arcReactor.testAddEnergyLoad(outputtedEnergy)){
                                     arcReactor.addEnergyLoad(outputtedEnergy);
                                     armorData.decreaseArmorEnergyLoad(outputtedEnergy);
                                 }
@@ -526,7 +526,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
                             //Draw from arc reactor if it's not too low
                             long outputAbleEnergy = Math.min(arcReactor.getArcReactorEnergy(), arcReactor.getArcReactorEnergyOutput());
                             long outputtedEnergy = Math.min(outputAbleEnergy, armorData.getArmorEnergyLoad());
-                            if(arcReactor.simulateAddEnergyLoad(outputtedEnergy)){
+                            if(arcReactor.testAddEnergyLoad(outputtedEnergy)){
                                 arcReactor.addEnergyLoad(outputtedEnergy);
                                 armorData.decreaseArmorEnergyLoad(outputtedEnergy);
                             }
@@ -541,7 +541,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
                     if(arcReactor.hasArcReactor()){
                         outputAbleEnergy = Math.min(arcReactor.getArcReactorEnergy(), arcReactor.getArcReactorEnergyOutput());
                         long outputtedEnergy = Math.min(outputAbleEnergy, armorData.getArmorEnergyLoad());
-                        if(arcReactor.simulateAddEnergyLoad(outputtedEnergy)){
+                        if(arcReactor.testAddEnergyLoad(outputtedEnergy)){
                             arcReactor.addEnergyLoad(outputtedEnergy);
                             armorData.decreaseArmorEnergyLoad(outputtedEnergy);
                         }
@@ -560,7 +560,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
 
                             outputAbleEnergy = Math.min(arcReactor.getArcReactorEnergy(), arcReactor.getArcReactorEnergyOutput());
                             long outputtedEnergy = Math.min(outputAbleEnergy, armorData.getArmorEnergyLoad());
-                            if(arcReactor.simulateAddEnergyLoad(outputtedEnergy)){
+                            if(arcReactor.testAddEnergyLoad(outputtedEnergy)){
                                 arcReactor.addEnergyLoad(outputtedEnergy);
                                 armorData.decreaseArmorEnergyLoad(outputtedEnergy);
                             }
@@ -666,7 +666,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
 
     public abstract double WeaponsBootRequirement();
 
-    public void weaponFireKeyAction(Player player, KeyCallType callType){
+    public void weaponFireKeyAction(Player player, KeyActionTypes callType){
         player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
             if(armorData.getBoot() >= WeaponsBootRequirement()){
                 switch (armorData.getSelectedStorage()){
@@ -685,7 +685,7 @@ public abstract class AbstractIronmanArmorItem extends GeoArmorItem {
         });
     }
 
-    public void specialKeyAction(Player player, KeyCallType callType){
+    public void specialKeyAction(Player player, KeyActionTypes callType){
 
     }
 }

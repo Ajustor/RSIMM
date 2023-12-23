@@ -1,9 +1,11 @@
 package net.guwy.rsimm.index;
 
 import net.guwy.rsimm.RsImm;
+import net.guwy.rsimm.content.items.ArcReactorConnectorArmorItem;
 import net.guwy.rsimm.content.items.EdithGlassesArmorItem;
 import net.guwy.rsimm.content.items.TestArmorItem;
 import net.guwy.rsimm.content.items.armors.*;
+import net.guwy.rsimm.content.items.armors.gen_2.HullItem;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -75,6 +77,21 @@ public class RsImmArmorItems {
 
 
     // Flight Test Suit
+
+
+
+    // Mark 2
+    public static final RegistryObject<Item> MARK_2_HELMET = ITEMS.register("mark_2_helmet",
+            () -> new Mark2ArmorItem(RsImmArmorMaterials.MARK_2_ARMOR, EquipmentSlot.HEAD, new Item.Properties()));
+
+    public static final RegistryObject<Item> MARK_2_CHESTPLATE = ITEMS.register("mark_2_chestplate",
+            () -> new Mark2ArmorItem(RsImmArmorMaterials.MARK_2_ARMOR, EquipmentSlot.CHEST, new Item.Properties()));
+
+    public static final RegistryObject<Item> MARK_2_LEGGINGS = ITEMS.register("mark_2_leggings",
+            () -> new Mark2ArmorItem(RsImmArmorMaterials.MARK_2_ARMOR, EquipmentSlot.LEGS, new Item.Properties()));
+
+    public static final RegistryObject<Item> MARK_2_BOOTS = ITEMS.register("mark_2_boots",
+            () -> new Mark2ArmorItem(RsImmArmorMaterials.MARK_2_ARMOR, EquipmentSlot.FEET, new Item.Properties()));
 
 
     public static void register(IEventBus eventBus){

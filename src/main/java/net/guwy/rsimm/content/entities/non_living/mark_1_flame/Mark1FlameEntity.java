@@ -1,6 +1,6 @@
 package net.guwy.rsimm.content.entities.non_living.mark_1_flame;
 
-import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.armor_data.IronmanArmorDataProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
@@ -13,7 +13,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseFireBlock;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import software.bernie.geckolib3.core.IAnimatable;

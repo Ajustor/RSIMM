@@ -53,62 +53,6 @@ public class RsImmNetworking {
                 .consumerMainThread(FreezeDataS2CPacket::handle)
                 .add();
 
-
-        net.messageBuilder(ArmorKeyBindingPressC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(ArmorKeyBindingPressC2SPacket::new)
-                .encoder(ArmorKeyBindingPressC2SPacket::toBytes)
-                .consumerMainThread(ArmorKeyBindingPressC2SPacket::handle)
-                .add();
-
-
-        net.messageBuilder(ArmorKeyBindingHoldC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(ArmorKeyBindingHoldC2SPacket::new)
-                .encoder(ArmorKeyBindingHoldC2SPacket::toBytes)
-                .consumerMainThread(ArmorKeyBindingHoldC2SPacket::handle)
-                .add();
-
-        net.messageBuilder(FlightKeyBindingPressC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(FlightKeyBindingPressC2SPacket::new)
-                .encoder(FlightKeyBindingPressC2SPacket::toBytes)
-                .consumerMainThread(FlightKeyBindingPressC2SPacket::handle)
-                .add();
-
-        net.messageBuilder(FlightKeyBindingHoldC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(FlightKeyBindingHoldC2SPacket::new)
-                .encoder(FlightKeyBindingHoldC2SPacket::toBytes)
-                .consumerMainThread(FlightKeyBindingHoldC2SPacket::handle)
-                .add();
-
-        net.messageBuilder(HandKeyBindingPressC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(HandKeyBindingPressC2SPacket::new)
-                .encoder(HandKeyBindingPressC2SPacket::toBytes)
-                .consumerMainThread(HandKeyBindingPressC2SPacket::handle)
-                .add();
-
-        net.messageBuilder(HandKeyBindingHoldingC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(HandKeyBindingHoldingC2SPacket::new)
-                .encoder(HandKeyBindingHoldingC2SPacket::toBytes)
-                .consumerMainThread(HandKeyBindingHoldingC2SPacket::handle)
-                .add();
-
-        net.messageBuilder(HandKeyBindingHoldReleaseC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(HandKeyBindingHoldReleaseC2SPacket::new)
-                .encoder(HandKeyBindingHoldReleaseC2SPacket::toBytes)
-                .consumerMainThread(HandKeyBindingHoldReleaseC2SPacket::handle)
-                .add();
-
-        net.messageBuilder(WeaponKeyBindingC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(WeaponKeyBindingC2SPacket::new)
-                .encoder(WeaponKeyBindingC2SPacket::toBytes)
-                .consumerMainThread(WeaponKeyBindingC2SPacket::handle)
-                .add();
-
-        net.messageBuilder(SpecialKeyBindingC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(SpecialKeyBindingC2SPacket::new)
-                .encoder(SpecialKeyBindingC2SPacket::toBytes)
-                .consumerMainThread(SpecialKeyBindingC2SPacket::handle)
-                .add();
-
         net.messageBuilder(ArcReactorChargerClientSyncS2CPacket.class, id(), NetworkDirection.PLAY_TO_CLIENT)
                 .decoder(ArcReactorChargerClientSyncS2CPacket::new)
                 .encoder(ArcReactorChargerClientSyncS2CPacket::toBytes)
@@ -131,6 +75,12 @@ public class RsImmNetworking {
                 .decoder(MissingArcReactorS2CPacket::new)
                 .encoder(MissingArcReactorS2CPacket::toBytes)
                 .consumerMainThread(MissingArcReactorS2CPacket::handle)
+                .add();
+
+        net.messageBuilder(KeyBindingGenericC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(KeyBindingGenericC2SPacket::new)
+                .encoder(KeyBindingGenericC2SPacket::toBytes)
+                .consumerMainThread(KeyBindingGenericC2SPacket::handle)
                 .add();
 
     }

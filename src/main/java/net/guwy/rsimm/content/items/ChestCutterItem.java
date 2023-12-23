@@ -1,14 +1,12 @@
 package net.guwy.rsimm.content.items;
 
-import com.simibubi.create.foundation.utility.RaycastHelper;
 import net.guwy.rsimm.config.RsImmServerConfigs;
 import net.guwy.rsimm.content.items.arc_reactors.AbstractArcReactorItem;
-import net.guwy.rsimm.enums.RepulsorAttackType;
 import net.guwy.rsimm.index.RsImmEffects;
 import net.guwy.rsimm.index.RsImmItems;
 import net.guwy.rsimm.index.RsImmSounds;
-import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlot;
-import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.arc_reactor.ArcReactorSlot;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.sticky_foundations.utils.ItemTagUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -17,7 +15,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -26,10 +23,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;

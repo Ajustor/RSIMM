@@ -3,7 +3,7 @@ package net.guwy.rsimm.events.server_events;
 import com.mojang.math.Vector3f;
 import net.guwy.rsimm.client.ArcReactorClientData;
 import net.guwy.rsimm.index.RsImmTags;
-import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.armor_data.IronmanArmorDataProvider;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.block.model.ItemTransforms;

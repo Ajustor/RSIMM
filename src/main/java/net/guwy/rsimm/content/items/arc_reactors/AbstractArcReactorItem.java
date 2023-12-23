@@ -2,9 +2,9 @@ package net.guwy.rsimm.content.items.arc_reactors;
 
 import net.guwy.rsimm.config.RsImmServerConfigs;
 import net.guwy.rsimm.index.RsImmSounds;
-import net.guwy.rsimm.mechanics.IItemEnergyContainer;
-import net.guwy.rsimm.mechanics.ItemEnergyStorageImpl;
-import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
+import net.guwy.rsimm.mechanics.capabilities.forge.IItemExtendedEnergyContainer;
+import net.guwy.rsimm.mechanics.capabilities.forge.ItemExtendedEnergyStorageImpl;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.arc_reactor.ArcReactorSlotProvider;
 import net.guwy.sticky_foundations.utils.ItemTagUtils;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -31,7 +31,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public abstract class AbstractArcReactorItem extends Item implements IItemEnergyContainer {
+public abstract class AbstractArcReactorItem extends Item implements IItemExtendedEnergyContainer {
     /**
      * you gotta override
      * - displayName()
@@ -226,13 +226,13 @@ public abstract class AbstractArcReactorItem extends Item implements IItemEnergy
      * I'm too dumb to do anything myself :P*/
     @Override
     public ICapabilityProvider initCapabilities(ItemStack stack, CompoundTag nbt) {
-        IItemEnergyContainer container = this;
+        IItemExtendedEnergyContainer container = this;
         return new ICapabilityProvider() {
             @Nonnull
             @Override
             public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side) {
                 if (cap == ForgeCapabilities.ENERGY)
-                    return LazyOptional.of(() -> new ItemEnergyStorageImpl(stack, container)).cast();
+                    return LazyOptional.of(() -> new ItemExtendedEnergyStorageImpl(stack, container)).cast();
                 return LazyOptional.empty();
             }
         };

@@ -12,6 +12,7 @@ public class RsImmClientConfigs {
     public static final ForgeConfigSpec.EnumValue<GuiScreenAnchor> EDITH_GLASSES_OVERLAY_ANCHOR;
     public static final ForgeConfigSpec.ConfigValue<Double> EDITH_GLASSES_OVERLAY_SCALE;
     public static final ForgeConfigSpec.ConfigValue<Integer> ARC_REACTOR_DEATH_TIME;
+    public static final ForgeConfigSpec.ConfigValue<Integer> KEY_BIND_HOLD_THRESHOLD;
 
     static {
         BUILDER.push("Client");
@@ -50,6 +51,12 @@ public class RsImmClientConfigs {
                 .comment(" !This value will not go above the server limit. Look into the server configs to make it higher")
                 .define("Death time", 0);
         BUILDER.pop();
+
+        BUILDER.push("Key Binds");
+        BUILDER.comment(".");
+        KEY_BIND_HOLD_THRESHOLD = BUILDER.comment("The time you have before a keybinding switches from triggering the PRESS action to HOLD action")
+                .defineInRange("Hold Time", 2, 0, Integer.MAX_VALUE);
+
 
         BUILDER.pop();
 

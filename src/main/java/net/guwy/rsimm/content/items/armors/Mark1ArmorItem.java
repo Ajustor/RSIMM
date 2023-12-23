@@ -4,11 +4,9 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import net.guwy.rsimm.client.ArmorClientData;
 import net.guwy.rsimm.content.entities.non_living.mark_1_flame.Mark1FlameEntity;
-import net.guwy.rsimm.content.entities.non_living.rocket.RocketEntity;
 import net.guwy.rsimm.index.*;
-import net.guwy.rsimm.utils.KeyCallType;
-import net.guwy.rsimm.mechanics.capabilities.player.armor_data.FlyMode;
-import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.armor_data.FlyMode;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.armor_data.IronmanArmorDataProvider;
 import net.guwy.sticky_foundations.index.SFMinerals;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -25,7 +23,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -514,76 +511,5 @@ public class Mark1ArmorItem extends AbstractIronmanArmorItem implements IAnimata
     @Override
     public double WeaponsBootRequirement() {
         return 100;
-    }
-
-    @Override
-    public boolean FireWeapon1(@Nullable Player player, @Nullable Level level, boolean simulate, KeyCallType fireCall) {
-        if(!simulate){
-            if(fireCall == KeyCallType.HOLD_RELEASE){
-                player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
-                    if(armorData.getArmorStorage(2) > 0){
-                        RocketEntity rocketEntity = new RocketEntity(RsImmEntityTypes.ROCKET.get(), level);
-                        rocketEntity.setSilent(true);
-                        rocketEntity.setOwner(player);
-
-
-                        double posX;
-                        double posY;
-                        double posZ;
-                        double playerRotation = player.getYRot();
-
-                        posX = player.getX() + (-Math.sin(Math.toRadians(playerRotation - 90)) * 0.4) ;
-                        posY = player.getY() + 1.2f;
-                        posZ = player.getZ() + (Math.cos(Math.toRadians(playerRotation - 90)) * 0.4);
-
-                        rocketEntity.setPos(posX, posY, posZ);
-
-
-                        double YLook = Math.sin(Math.toRadians(player.getViewXRot(1)));
-                        double XLook = Math.sin(Math.toRadians(player.getViewYRot(1)));
-                        double ZLook = Math.cos(Math.toRadians(player.getViewYRot(1)));
-
-                        double YSpeed =  (YLook * -2.5) + ((Math.random() - 0.5) * 0.3);
-                        double XSpeed = ((XLook * -4.5)) * Math.pow((1 - Math.abs(YLook)) * 1, 1) + ((Math.random() - 0.5) * 0.3);
-                        double ZSpeed = ((ZLook * 4.5)) * Math.pow((1 - Math.abs(YLook)) * 1, 1) + ((Math.random() - 0.5) * 0.3);
-
-                        rocketEntity.setDeltaMovement(XSpeed, YSpeed, ZSpeed);
-                        rocketEntity.setYRot(player.getViewYRot(1));
-                        rocketEntity.setXRot(player.getViewXRot(1));
-                        rocketEntity.addEffect(new MobEffectInstance(RsImmEffects.ROCKET_PARTICLE_EFFECT.get(), 20, 0, false, false, false), rocketEntity);
-
-                        level.addFreshEntity(rocketEntity);
-
-                        // Sounds
-                        level.playSound(null, player, SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.PLAYERS, 1, 1);
-
-                        armorData.decreaseArmorStorage(2, 1);
-                    }
-                });
-
-                // Sound
-                level.playSound(null, player, SoundEvents.IRON_TRAPDOOR_CLOSE, SoundSource.PLAYERS, 1, 1);
-            }
-            if(fireCall == KeyCallType.START_HOLD){
-                // Sound
-                level.playSound(null, player, SoundEvents.IRON_TRAPDOOR_OPEN, SoundSource.PLAYERS, 1, 1);
-            }
-        }
-        return true;
-    }
-
-    @Override
-    public void specialKeyAction(Player player, KeyCallType callType) {
-        player.getCapability(IronmanArmorDataProvider.PLAYER_IRONMAN_ARMOR_DATA).ifPresent(armorData -> {
-            if(armorData.getHasArmor()){
-                if(armorData.getBoot() >= 100){
-                    player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 200, 2, false, false, false));
-                    armorData.increaseArmorEnergyLoad(10000);
-
-                    // Sound
-                    player.getLevel().playSound(null, player, SoundEvents.PISTON_EXTEND, SoundSource.PLAYERS, 1, 1);
-                }
-            }
-        });
     }
 }

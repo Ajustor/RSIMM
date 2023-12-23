@@ -1,7 +1,7 @@
 package net.guwy.rsimm.events.server_events;
 
-import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlot;
-import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorData;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.arc_reactor.ArcReactorSlot;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.armor_data.IronmanArmorData;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 
 public class RegisterCapabilitiesHandler {

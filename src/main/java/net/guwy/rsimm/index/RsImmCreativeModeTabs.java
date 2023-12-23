@@ -10,6 +10,12 @@ public class RsImmCreativeModeTabs {
             return new ItemStack(RsImmArcReactorItems.MARK_1_ARC_REACTOR.get());
         }
     };
+    public static final CreativeModeTab SUIT_COMPONENTS = new CreativeModeTab("rsimm_tab_suit_components") {
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(RsImmArcReactorItems.MARK_1_ARC_REACTOR.get());
+        }
+    };
 
 
 }

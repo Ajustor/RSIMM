@@ -2,7 +2,6 @@ package net.guwy.rsimm.index;
 
 import net.guwy.rsimm.RsImm;
 import net.guwy.rsimm.content.items.ChestCutterItem;
-import net.guwy.rsimm.content.items.RepulsorItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -22,14 +21,6 @@ public class RsImmItems {
     // Tools
     public static final RegistryObject<Item> CHEST_CUTTER = ITEMS.register("chest_cutter",
             () -> new ChestCutterItem(new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).stacksTo(1)));
-
-    public static final RegistryObject<Item> REPULSOR = ITEMS.register("repulsor",
-            () -> new RepulsorItem(new Item.Properties().tab(RsImmCreativeModeTabs.MAIN).durability(1000),
-                    1, 1, 1, 1, 1,
-                    20, 4, 30, 10,
-                    1, 1,
-                    100, 0, 0, 0, 1.0,
-                    5000));
 
 
 

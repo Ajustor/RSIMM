@@ -1,6 +1,6 @@
 package net.guwy.rsimm.events.player_tick.content;
 
-import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.arc_reactor.ArcReactorSlotProvider;
 import net.minecraftforge.event.TickEvent;
 
 public class ReactorUtilization {

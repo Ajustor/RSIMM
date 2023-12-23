@@ -1,69 +1,59 @@
 package net.guwy.rsimm.events.client_events;
 
-import net.guwy.rsimm.content.network_packets.*;
+import net.guwy.rsimm.config.RsImmClientConfigs;
+import net.guwy.rsimm.content.network_packets.KeyBindingGenericC2SPacket;
+import net.guwy.rsimm.enums.KeyActionTypes;
+import net.guwy.rsimm.enums.KeyBinds;
 import net.guwy.rsimm.index.RsImmKeyBindings;
 import net.guwy.rsimm.index.RsImmNetworking;
-import net.guwy.rsimm.utils.KeyCallType;
-import net.minecraft.client.Minecraft;
-import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.client.event.InputEvent;
-
-import java.util.Objects;
 
 public class OnKeyInputHandler {
     private static int armorKeyHoldDuration;
     private static int flightKeyHoldDuration;
     private static int handKeyHoldDuration;
     private static int specialKeyHoldDuration;
-    private static int switchWeaponKeyHoldDuration;
     private static int weaponKeyHoldDuration;
+    private static int switchWeaponKeyHoldDuration;
 
-    private static final int holdTreshold = 2;     // 15: too much, 7: a bit much, 5: fine but still not fast enough
+    private static final int holdTreshold = RsImmClientConfigs.KEY_BIND_HOLD_THRESHOLD.get();     // 15: too much, 7: a bit much, 5: fine but still not fast enough
 
     public static void init(InputEvent.Key event){
-        Player player = Minecraft.getInstance().player;
-
-
 
         if(RsImmKeyBindings.ARMOR_KEY.isDown()){
-            armorKeyHoldDuration = armorKeyHoldDuration + 1;
+            armorKeyHoldDuration ++;
             if(armorKeyHoldDuration == holdTreshold){
-                // Hold Action
-                RsImmNetworking.sendToServer(new ArmorKeyBindingHoldC2SPacket());
-            }
-            if(armorKeyHoldDuration > holdTreshold){
-                // Triggered when holding and will preform hold release action
+                // Hold Start Action
+                RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.HOLD_START, KeyBinds.ARMOR_KEY));
             }
         } else if (!RsImmKeyBindings.ARMOR_KEY.isDown()) {
             if(armorKeyHoldDuration > 0){
                 if(armorKeyHoldDuration > holdTreshold){
                     // Hold Release Action
+                    RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.HOLD_RELEASE, KeyBinds.ARMOR_KEY));
                 }   else {
                     // Press Action
-                    RsImmNetworking.sendToServer(new ArmorKeyBindingPressC2SPacket(player.getUUID()));
+                    RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.PRESS, KeyBinds.ARMOR_KEY));
                 }
                 armorKeyHoldDuration = 0;
             }
         }
 
 
-
         if(RsImmKeyBindings.FLIGHT_KEY.isDown()){
-            flightKeyHoldDuration = flightKeyHoldDuration + 1;
+            flightKeyHoldDuration ++;
             if(flightKeyHoldDuration == holdTreshold){
-                // Hold Action
-                RsImmNetworking.sendToServer(new FlightKeyBindingHoldC2SPacket());
+                // Hold Start Action
+                RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.HOLD_START, KeyBinds.FLIGHT_KEY));
             }
-            if(flightKeyHoldDuration > holdTreshold){
-                // Triggered when holding and will preform hold release action
-            }
-        } else if (!RsImmKeyBindings.FLIGHT_KEY.isDown()) {
+        } else if (!RsImmKeyBindings.ARMOR_KEY.isDown()) {
             if(flightKeyHoldDuration > 0){
                 if(flightKeyHoldDuration > holdTreshold){
                     // Hold Release Action
+                    RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.HOLD_RELEASE, KeyBinds.FLIGHT_KEY));
                 }   else {
                     // Press Action
-                    RsImmNetworking.sendToServer(new FlightKeyBindingPressC2SPacket());
+                    RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.PRESS, KeyBinds.FLIGHT_KEY));
                 }
                 flightKeyHoldDuration = 0;
             }
@@ -72,24 +62,19 @@ public class OnKeyInputHandler {
 
 
         if(RsImmKeyBindings.HAND_KEY.isDown()){
-            handKeyHoldDuration = handKeyHoldDuration + 1;
+            handKeyHoldDuration ++;
             if(handKeyHoldDuration == holdTreshold){
-                // Hold Action
+                // Hold Start Action
+                RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.HOLD_START, KeyBinds.HAND_KEY));
             }
-            if(handKeyHoldDuration > holdTreshold){
-                // Triggered when holding and will preform hold release action
-                if (Minecraft.getInstance().player.tickCount % 5 == 0) {
-                    RsImmNetworking.sendToServer(new HandKeyBindingHoldingC2SPacket());
-                }
-            }
-        } else if (!RsImmKeyBindings.HAND_KEY.isDown()) {
+        } else if (!RsImmKeyBindings.ARMOR_KEY.isDown()) {
             if(handKeyHoldDuration > 0){
                 if(handKeyHoldDuration > holdTreshold){
                     // Hold Release Action
-                    RsImmNetworking.sendToServer(new HandKeyBindingHoldReleaseC2SPacket());
+                    RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.HOLD_RELEASE, KeyBinds.HAND_KEY));
                 }   else {
                     // Press Action
-                    RsImmNetworking.sendToServer(new HandKeyBindingPressC2SPacket());
+                    RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.PRESS, KeyBinds.HAND_KEY));
                 }
                 handKeyHoldDuration = 0;
             }
@@ -98,23 +83,19 @@ public class OnKeyInputHandler {
 
 
         if(RsImmKeyBindings.SPECIAL_KEY.isDown()){
-            specialKeyHoldDuration = specialKeyHoldDuration + 1;
+            specialKeyHoldDuration ++;
             if(specialKeyHoldDuration == holdTreshold){
-                // Hold Action
-                RsImmNetworking.sendToServer(new SpecialKeyBindingC2SPacket(KeyCallType.START_HOLD));
+                // Hold Start Action
+                RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.HOLD_START, KeyBinds.SPECIAL_KEY));
             }
-            if(specialKeyHoldDuration > holdTreshold){
-                // Triggered when holding and will preform hold release action
-                // ModNetworking.sendToServer(new SpecialKeyBindingC2SPacket(KeyCallType.HOLDING));
-            }
-        } else if (!RsImmKeyBindings.SPECIAL_KEY.isDown()) {
+        } else if (!RsImmKeyBindings.ARMOR_KEY.isDown()) {
             if(specialKeyHoldDuration > 0){
                 if(specialKeyHoldDuration > holdTreshold){
                     // Hold Release Action
-                    RsImmNetworking.sendToServer(new SpecialKeyBindingC2SPacket(KeyCallType.HOLD_RELEASE));
+                    RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.HOLD_RELEASE, KeyBinds.SPECIAL_KEY));
                 }   else {
                     // Press Action
-                    RsImmNetworking.sendToServer(new SpecialKeyBindingC2SPacket(KeyCallType.PRESS));
+                    RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.PRESS, KeyBinds.SPECIAL_KEY));
                 }
                 specialKeyHoldDuration = 0;
             }
@@ -122,55 +103,44 @@ public class OnKeyInputHandler {
 
 
 
-        if(RsImmKeyBindings.SWITCH_WEAPON_KEY.isDown()){
-            switchWeaponKeyHoldDuration = switchWeaponKeyHoldDuration + 1;
-            if(switchWeaponKeyHoldDuration == holdTreshold){
-                // Hold Action
-                //Minecraft.getInstance().player.sendSystemMessage(Component.literal("Triggered Hold Action"));
-            }
-            if(switchWeaponKeyHoldDuration > holdTreshold){
-                // Triggered when holding and will preform hold release action
-                //Minecraft.getInstance().player.sendSystemMessage(Component.literal("Holding"));
-            }
-        } else if (!RsImmKeyBindings.SWITCH_WEAPON_KEY.isDown()) {
-            if(switchWeaponKeyHoldDuration > 0){
-                if(switchWeaponKeyHoldDuration > holdTreshold){
-                    // Hold Release Action
-                    //Minecraft.getInstance().player.sendSystemMessage(Component.literal("Triggered Hold Release Action"));
-                }   else {
-                    // Press Action
-                    //Minecraft.getInstance().player.sendSystemMessage(Component.literal("Triggered Press Action"));
-                }
-                //Minecraft.getInstance().player.sendSystemMessage(Component.literal("Key hold Duration: " + switchWeaponKeyHoldDuration));
-                switchWeaponKeyHoldDuration = 0;
-            }
-        }
-
-
-
         if(RsImmKeyBindings.WEAPON_KEY.isDown()){
-            weaponKeyHoldDuration = weaponKeyHoldDuration + 1;
+            weaponKeyHoldDuration ++;
             if(weaponKeyHoldDuration == holdTreshold){
-                // Hold Action
-                RsImmNetworking.sendToServer(new WeaponKeyBindingC2SPacket(KeyCallType.START_HOLD));
+                // Hold Start Action
+                RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.HOLD_START, KeyBinds.WEAPON_KEY));
             }
-            if(weaponKeyHoldDuration > holdTreshold){
-                // Triggered when holding and will preform hold release action
-                /** While holding packet is unreliable and inconsistent **/
-                // ModNetworking.sendToServer(new WeaponKeyBindingC2SPacket(WeaponFireCall.HOLDING));
-            }
-        } else if (!RsImmKeyBindings.WEAPON_KEY.isDown()) {
+        } else if (!RsImmKeyBindings.ARMOR_KEY.isDown()) {
             if(weaponKeyHoldDuration > 0){
                 if(weaponKeyHoldDuration > holdTreshold){
                     // Hold Release Action
-                    RsImmNetworking.sendToServer(new WeaponKeyBindingC2SPacket(KeyCallType.HOLD_RELEASE));
+                    RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.HOLD_RELEASE, KeyBinds.WEAPON_KEY));
                 }   else {
                     // Press Action
-                    RsImmNetworking.sendToServer(new WeaponKeyBindingC2SPacket(KeyCallType.PRESS));
+                    RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.PRESS, KeyBinds.WEAPON_KEY));
                 }
                 weaponKeyHoldDuration = 0;
             }
         }
 
+
+
+        if(RsImmKeyBindings.SWITCH_WEAPON_KEY.isDown()){
+            switchWeaponKeyHoldDuration ++;
+            if(switchWeaponKeyHoldDuration == holdTreshold){
+                // Hold Start Action
+                RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.HOLD_START, KeyBinds.WEAPON_SWITCH_KEY));
+            }
+        } else if (!RsImmKeyBindings.ARMOR_KEY.isDown()) {
+            if(switchWeaponKeyHoldDuration > 0){
+                if(switchWeaponKeyHoldDuration > holdTreshold){
+                    // Hold Release Action
+                    RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.HOLD_RELEASE, KeyBinds.WEAPON_SWITCH_KEY));
+                }   else {
+                    // Press Action
+                    RsImmNetworking.sendToServer(new KeyBindingGenericC2SPacket(KeyActionTypes.PRESS, KeyBinds.WEAPON_SWITCH_KEY));
+                }
+                switchWeaponKeyHoldDuration = 0;
+            }
+        }
     }
 }

@@ -1,7 +1,7 @@
 package net.guwy.rsimm.events.server_events;
 
-import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
-import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.arc_reactor.ArcReactorSlotProvider;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.armor_data.IronmanArmorDataProvider;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 
 public class CapabilityCarryOverDeathHandler {

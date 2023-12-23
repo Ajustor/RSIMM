@@ -64,5 +64,11 @@
     "sounds": [
       "rsimm:armor/rain_in_helmet"
     ]
+  },
+  "repulsor_beam_continuous": {
+    "subtitle": "sounds.rsimm.repulsor_beam",
+    "sounds": [
+      "rsimm:repulsor/repulsor_beam.continuous"
+    ]
   }
 }

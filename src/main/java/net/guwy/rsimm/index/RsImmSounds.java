@@ -25,6 +25,7 @@ public class RsImmSounds {
     public static final RegistryObject<SoundEvent> METAL_RATTLE_2 = registerSoundEvent("metal_rattle_2");
     public static final RegistryObject<SoundEvent> METAL_RATTLE_3 = registerSoundEvent("metal_rattle_3");
     public static final RegistryObject<SoundEvent> RAIN_IN_HELMET = registerSoundEvent("rain_in_helmet");
+    public static final RegistryObject<SoundEvent> REPULSOR_BEAM_CONTINUOUS = registerSoundEvent("repulsor_beam_continuous");
 
 
 

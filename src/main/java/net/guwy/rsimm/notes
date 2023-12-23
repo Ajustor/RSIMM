@@ -1,3 +1,10 @@
-- remove the depleted arc reactors after the next update
-- Repulsor 1.1 pulls 10000 rf per shot
-- Repulsor 1.0 pulls
+- Repulsor 1.1 pulls 10000 rf per blast
+- Repulsor 1.0 pulls 5000 rf per blast
+
+- repulsors taking damage with the overheat of the hull in consideration
+- Hull has airtightness loss at durability % property
+- Circuitry gets damaged every tick the suit is flooded
+- Circuitry gets damaged every second the suit is overcharged
+- When circuitry is damaged it boots up slower
+
+- repulsor beam charge sound before beam is fired will change pitch between 0-4

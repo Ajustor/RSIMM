@@ -2,7 +2,6 @@ package net.guwy.rsimm.content.entities.armor.misc;
 
 import net.guwy.rsimm.RsImm;
 import net.guwy.rsimm.content.items.EdithGlassesArmorItem;
-import net.guwy.rsimm.content.items.armors.ArcReactorConnectorArmorItem;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 

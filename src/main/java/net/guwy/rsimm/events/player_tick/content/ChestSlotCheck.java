@@ -6,7 +6,7 @@ import net.guwy.rsimm.content.network_packets.MissingArcReactorS2CPacket;
 import net.guwy.rsimm.content.network_packets.PlayerArcReactorClientSyncS2CPacket;
 import net.guwy.rsimm.index.RsImmEffects;
 import net.guwy.rsimm.index.RsImmNetworking;
-import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.arc_reactor.ArcReactorSlotProvider;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;

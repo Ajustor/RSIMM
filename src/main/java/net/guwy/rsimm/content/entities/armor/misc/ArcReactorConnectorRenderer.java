@@ -1,6 +1,6 @@
 package net.guwy.rsimm.content.entities.armor.misc;
 
-import net.guwy.rsimm.content.items.armors.ArcReactorConnectorArmorItem;
+import net.guwy.rsimm.content.items.ArcReactorConnectorArmorItem;
 import software.bernie.geckolib3.renderers.geo.GeoArmorRenderer;
 
 public class ArcReactorConnectorRenderer extends GeoArmorRenderer<ArcReactorConnectorArmorItem> {

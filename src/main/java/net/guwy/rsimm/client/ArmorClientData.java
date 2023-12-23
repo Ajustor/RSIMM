@@ -1,6 +1,6 @@
 package net.guwy.rsimm.client;
 
-import net.guwy.rsimm.mechanics.capabilities.player.armor_data.FlyMode;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.armor_data.FlyMode;
 
 public class ArmorClientData {
     private static double playerRotation = 0;

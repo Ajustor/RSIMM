@@ -2,14 +2,12 @@ package net.guwy.rsimm.content.blocks.armor_unequipping_station;
 
 import net.guwy.rsimm.content.items.ammo_kits.AbstractAmmoKit;
 import net.guwy.rsimm.content.items.armors.AbstractIronmanArmorItem;
-import net.guwy.rsimm.index.RsImmSounds;
-import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorData;
-import net.guwy.rsimm.mechanics.capabilities.player.armor_data.IronmanArmorDataProvider;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.armor_data.IronmanArmorData;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.armor_data.IronmanArmorDataProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;

@@ -4,7 +4,7 @@ import net.guwy.rsimm.config.RsImmServerConfigs;
 import net.guwy.rsimm.config.enums.ArcReactorSideEffects;
 import net.guwy.rsimm.index.RsImmEffects;
 import net.guwy.rsimm.index.RsImmSounds;
-import net.guwy.rsimm.mechanics.capabilities.player.arc_reactor.ArcReactorSlotProvider;
+import net.guwy.rsimm.mechanics.capabilities.custom.player.arc_reactor.ArcReactorSlotProvider;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -12,8 +12,6 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-
-import java.util.Objects;
 
 public class MissingReactorEffect extends MobEffect {
 
